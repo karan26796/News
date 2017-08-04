@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="General">
+    <EditTextPreference
+        android:title="Notebook Title"
+        android:summary="This will change title on toolbar"
+        android:key="title"
+        android:defaultValue="@string/app_name">
+    </EditTextPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Color">
+        <CheckBoxPreference
+            android:key="bg_color"
+            android:summary="Color dark"
+            android:title="Dark Background">
+
+        </CheckBoxPreference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+
