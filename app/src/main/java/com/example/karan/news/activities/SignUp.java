@@ -1,10 +1,8 @@
 package com.example.karan.news.activities;
 
-import android.content.Intent;
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Vibrator;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,9 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.karan.news.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
+import com.example.karan.news.utils.LaunchManager;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -24,79 +21,73 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText newuser,newpass,conpass;
-    private String a,b,c;
+    private EditText newUser,newPass,conPass;
     private Button submit;
-    private Vibrator vibrator;
-    private FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        newuser=(EditText) findViewById(R.id.new_email);
-        newpass=(EditText) findViewById(R.id.new_pass);
-        conpass=(EditText) findViewById(R.id.con_pass);
+        newUser=(EditText) findViewById(R.id.new_email);
+        newPass=(EditText) findViewById(R.id.new_pass);
+        conPass=(EditText) findViewById(R.id.con_pass);
 
         submit=(Button) findViewById(R.id.submit);
-
-        firebaseAuth=FirebaseAuth.getInstance();
         submit.setOnClickListener(this);
     }
 
-    public void newUser(){
+    private void registerUser() {
 
-        a = newuser.getText().toString().trim();
-        b = conpass.getText().toString().trim();
-        c = newpass.getText().toString().trim();
+        // setup progress dialog
+        ProgressDialog mProgressDialog = new ProgressDialog(SignUp.this);
 
-        if(TextUtils.isEmpty(a)){
-            Toast.makeText(this,"Enter Email id",Toast.LENGTH_SHORT);
-            return;
-        }
-        if (TextUtils.isEmpty(b)){
-            Toast.makeText(this,"Enter Password",Toast.LENGTH_SHORT);
-            return;
-        }
-        if(TextUtils.isEmpty(c)){
-            Toast.makeText(this,"Confirm Password",Toast.LENGTH_SHORT);
-            return;
-        }
-        if(b!=c){
-            Toast.makeText(this,"Passwords do not match",Toast.LENGTH_SHORT);
-            return;
+        mProgressDialog.setTitle("New");
+        mProgressDialog.setMessage("New");
+        mProgressDialog.setCanceledOnTouchOutside(false);
+
+        String email = newUser.getText().toString().trim();
+        String password = newPass.getText().toString().trim();
+        String passcon=conPass.getText().toString().trim();
+
+        if(!newPass.equals(conPass))
+        {
+            Toast.makeText(this,R.string.passwords_differ,Toast.LENGTH_SHORT);
         }
 
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            Toast.makeText(this,"Enter user details",Toast.LENGTH_SHORT).show();
+        }
 
-        firebaseAuth.createUserWithEmailAndPassword(a,b).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"User successfully registered",Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),"Try again",Toast.LENGTH_SHORT);
-                }
-            }
-        });
+        if (!(TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(passcon))) {
+
+            mProgressDialog.setMessage(getString(R.string.wait_message));
+            mProgressDialog.setCanceledOnTouchOutside(false);
+            mProgressDialog.show();
+
+            // register user to firebase authentication
+            // store name and email to firebase database
+            FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(SignUp.this);
+            firebaseAuthentication.newUser(email,password,passcon,mProgressDialog);
+        }
         SharedPreferences preferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
         SharedPreferences.Editor edit = preferences.edit();
-        edit.putString("user_new",a);
+        edit.putString("user_new",email);
         edit.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        LaunchManager.showSignInScreen(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.submit: {
-
-                newUser();
-                Intent intent = new Intent(this, NewsActivity.class);
-                startActivity(intent);
-            }
+            case R.id.submit:
+                registerUser();
             break;
-
         }
     }
 }

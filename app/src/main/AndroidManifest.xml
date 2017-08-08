@@ -14,19 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppFullScreenTheme">
-        <activity android:name=".activities.SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/AppFullScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"></action>
+                <category android:name="android.intent.category.LAUNCHER"></category>
+            </intent-filter>
         </activity>
         <activity
-            android:name=".activities.NewsActivity"
-            android:parentActivityName=".activities.LoginActivity"
+            android:name=".activities.NewsHome"
              />
         <activity
             android:name=".activities.SignUp"
@@ -35,7 +32,7 @@
         <activity
             android:name=".activities.AppPreferences"
             android:label="Settings"
-            android:parentActivityName=".activities.NewsActivity"
+            android:parentActivityName=".activities.NewsHome"
             android:theme="@style/AppTheme" />
     </application>
 

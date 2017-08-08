@@ -1,5 +1,6 @@
 package com.example.karan.news.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,12 +21,12 @@ import com.google.firebase.database.FirebaseDatabase;
  * Created by karan on 7/19/2017.
  */
 
-public class RecyclerViewFragment extends Fragment implements RecyclerViewClickListener {
+public class NewsHomeFragment extends Fragment implements RecyclerViewClickListener {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
+    String child;
+    Context context;
 
-    public RecyclerViewFragment() {
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState){
@@ -33,7 +34,10 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewClickL
         recyclerView=(RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new android.support.v7.widget.DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("/item");
+
+        child = this.getArguments().getString("category");
+        databaseReference= FirebaseDatabase.getInstance().getReference().child(child);
+
         FirebaseRecyclerAdapter<NewsList,NewsViewHolder> adapter= new FirebaseRecyclerAdapter<NewsList, NewsViewHolder>(NewsList.class
                 ,R.layout.card_view,NewsViewHolder.class,databaseReference) {
             @Override
@@ -44,7 +48,7 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewClickL
             }
         };
 
-        recyclerView.addOnItemTouchListener(new RecyclerViewTouchListener(getActivity(), recyclerView, this));
+        recyclerView.addOnItemTouchListener(new RecyclerViewTouchListener(context, recyclerView, this));
         recyclerView.setAdapter(adapter);
         return view;
     }

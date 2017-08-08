@@ -6,6 +6,4 @@ package com.example.karan.news.utils;
 
 public class Constants {
 
-    public static final int SPLASH_TIME=1200;
-    public static final int VIBRATE_LENGTH=100;
 }
