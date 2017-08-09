@@ -11,26 +11,17 @@ public class NewsList {
     public NewsList() {
     }
 
-    private String title,description,image;
+    private String title,description,image,date;
     
     //Defined for predefined cities
-    public NewsList(String title, String description, String image)
+    public NewsList(String title, String image,String date)
     {
         this.title=title;
-        this.description=description;
         this.image=image;
+        this.date=date;
         
     }
     //Defined for user entered title
-    
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public String getTitle() {
         return title;
@@ -44,8 +35,18 @@ public class NewsList {
         return image;
     }
 
+    public String getDescription() {return description;}
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public void setImage(String image) {
         this.image = image;
     }
-   
+
+    public String getDate() {return date;}
+
+    public void setDate(String date) {this.date = date;}
+
 }

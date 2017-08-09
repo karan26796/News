@@ -1,16 +1,15 @@
 package com.example.karan.news.activities;
 
+import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,8 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.karan.news.R;
@@ -28,9 +25,8 @@ import com.example.karan.news.fragment.NewsHomeFragment;
 import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 import com.example.karan.news.utils.RecyclerViewClickListener;
 
-
 public class NewsHome extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,RecyclerViewClickListener{
+        implements NavigationView.OnNavigationItemSelectedListener{
     private TextView tv,user_name;
     private NewsHomeFragment newsHomeFragment;
     private Toolbar toolbar;
@@ -40,10 +36,6 @@ public class NewsHome extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_page);
-
-        Window window = getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,10 +49,6 @@ public class NewsHome extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        newsHomeFragment =new NewsHomeFragment();
-
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.relative, newsHomeFragment);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header=navigationView.inflateHeaderView(R.layout.nav_header_main);
 
@@ -112,33 +100,33 @@ public class NewsHome extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    private void displaySelectedScreen(int id) {
 
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
         Bundle bundle=new Bundle();
         String child;
 
         switch (id){
-            case R.id.nav_camera:
-                child="item";
+            case R.id.sports:
+                child="sports";
                 break;
-            case R.id.nav_gallery:
-                child="rent";
+            case R.id.politics:
+                child="politics";
                 break;
-            case R.id.nav_slideshow:
-                child="rent";
+            case R.id.world:
+                child="sports";
                 break;
-            case R.id.nav_manage:
-                child="item";
+            case R.id.bookmarks:
+                child="politics";
+                break;
+            case R.id.top_stories:
+                child="sports";
                 break;
             default:
-                child="item";
+                child="sports";
                 break;
         }
 
+        newsHomeFragment = new NewsHomeFragment();
         bundle.putString("category",child);
         newsHomeFragment.setArguments(bundle);
 
@@ -146,10 +134,8 @@ public class NewsHome extends AppCompatActivity
         fragmentTransaction.replace(R.id.content_frame, newsHomeFragment);
         fragmentTransaction.commit();
 
-        newsHomeFragment.setArguments(bundle);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 
 
@@ -166,13 +152,12 @@ public class NewsHome extends AppCompatActivity
         return toolbar_title;
     }
 
-    @Override
-    public void onClick(View view, int position) {
-
-    }
 
     @Override
-    public void onLongClick(View view, int position) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+        displaySelectedScreen(item.getItemId());
+
+        return true;
     }
 }

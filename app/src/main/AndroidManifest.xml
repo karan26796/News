@@ -18,22 +18,21 @@
             android:name=".activities.LoginActivity"
             android:theme="@style/AppFullScreenTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"></action>
-                <category android:name="android.intent.category.LAUNCHER"></category>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.NewsHome"
-             />
+        <activity android:name=".activities.NewsHome" />
         <activity
             android:name=".activities.SignUp"
-            android:label="user">
-        </activity>
+            android:label="user"></activity>
         <activity
             android:name=".activities.AppPreferences"
             android:label="Settings"
             android:parentActivityName=".activities.NewsHome"
             android:theme="@style/AppTheme" />
+        <activity android:name=".activities.NewsDetails"></activity>
     </application>
 
 </manifest>

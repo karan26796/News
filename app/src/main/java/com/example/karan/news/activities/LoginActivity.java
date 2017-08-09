@@ -65,8 +65,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(this);
             firebaseAuthentication.loginUser(mEmail, mPass, mProgressDialog);
 
-            LaunchManager.launchHome(this);
-
             SharedPreferences sharedPreferences=getSharedPreferences("myPreferences",MODE_PRIVATE);
             sharedPreferences.getString(mEmail,"userName");
         } else {

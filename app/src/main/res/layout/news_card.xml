@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="320sp"
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
@@ -14,14 +14,15 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:padding="5dp">
+        android:padding="5dp"
+        app:cardElevation="4dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="match_parent"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
@@ -32,36 +33,56 @@
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_alignParentStart="true"
+                android:layout_height="180sp"
                 android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:background="?selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true" />
 
             <TextView
-                android:id="@+id/filler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/headline"
-                android:layout_below="@+id/headline"
-                android:paddingLeft="5dp"
-                android:textColor="@color/filler"
-                android:textSize="12dp"
-                tools:text="filler" />
-
-            <TextView
                 android:id="@+id/headline"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_alignBottom="@+id/image"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image"
                 android:layout_centerHorizontal="true"
                 android:paddingLeft="5dp"
                 android:textColor="#282828"
-                android:textSize="25sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 tools:text="City" />
 
+            <TextView
+                android:id="@+id/filler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/headline"
+                android:paddingLeft="5dp"
+                android:textColor="@color/filler"
+                android:textSize="11sp"
+                tools:text="filler" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/headline"
+                android:paddingLeft="5sp"
+                android:text="12/12/12"
+                android:textAlignment="textEnd"
+                android:textColor="#000"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="35sp"
+                android:layout_height="35sp"
+                android:layout_alignEnd="@+id/headline"
+                android:layout_alignParentBottom="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:src="@drawable/bookmark" />
         </RelativeLayout>
 
 

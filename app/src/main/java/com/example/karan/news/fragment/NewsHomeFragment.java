@@ -1,6 +1,7 @@
 package com.example.karan.news.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.karan.news.R;
+import com.example.karan.news.activities.NewsDetails;
 import com.example.karan.news.news_page.NewsList;
 import com.example.karan.news.news_page.NewsViewHolder;
+import com.example.karan.news.utils.LaunchManager;
 import com.example.karan.news.utils.RecyclerViewClickListener;
 import com.example.karan.news.utils.RecyclerViewTouchListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -22,11 +25,10 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 
 public class NewsHomeFragment extends Fragment implements RecyclerViewClickListener {
-    RecyclerView recyclerView;
-    DatabaseReference databaseReference;
-    String child;
+    private RecyclerView recyclerView;
+    private DatabaseReference databaseReference;
+    private String child;
     Context context;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState){
@@ -39,11 +41,12 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         databaseReference= FirebaseDatabase.getInstance().getReference().child(child);
 
         FirebaseRecyclerAdapter<NewsList,NewsViewHolder> adapter= new FirebaseRecyclerAdapter<NewsList, NewsViewHolder>(NewsList.class
-                ,R.layout.card_view,NewsViewHolder.class,databaseReference) {
+                ,R.layout.news_card,NewsViewHolder.class,databaseReference) {
             @Override
             protected void populateViewHolder(NewsViewHolder viewHolder, NewsList model, int position) {
                 viewHolder.setHeadLine(model.getTitle());
                 viewHolder.setDescription(model.getDescription());
+                viewHolder.setDate(model.getDate());
                 viewHolder.setImage(model.getImage());
             }
         };
@@ -55,7 +58,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
 
     @Override
     public void onClick(View view, int position) {
-
+        LaunchManager.showDetailsPage(getActivity(),position);
     }
 
     @Override

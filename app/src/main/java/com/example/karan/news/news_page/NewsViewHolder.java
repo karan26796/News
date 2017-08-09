@@ -13,13 +13,15 @@ import com.squareup.picasso.Picasso;
  */
 /*Recycler view items are defined here to be held in the view*/
 public class NewsViewHolder extends RecyclerView.ViewHolder {
-    TextView head,filler;
+    TextView head,date,filler;
     ImageView imageView;
 
     public NewsViewHolder(View itemView) {
         super(itemView);
         head= (TextView) itemView.findViewById(R.id.headline);
-        filler= (TextView) itemView.findViewById(R.id.filler);
+        date=(TextView) itemView.findViewById(R.id.date);
+        filler=(TextView) itemView.findViewById(R.id.filler);
+
         imageView=(ImageView) itemView.findViewById(R.id.image);
     }
 
@@ -27,15 +29,14 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     head.setText(title);
     }
 
-    public void setDescription(String description) {
-        filler.setText(description);
-    }
+    public void setDescription(String description) {filler.setText(description);}
 
+    public void setDate(String updated){date.setText("Date: "+updated);
+    }
     public void setImage(String image) {
         Picasso.with(itemView.getContext())
                 .load(image)
-                .resize(300,200)
-                .centerInside()
+                .fit()
                 .into(imageView);
     }
 

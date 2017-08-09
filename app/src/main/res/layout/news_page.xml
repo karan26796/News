@@ -9,11 +9,12 @@
     tools:openDrawer="start">
 
     <include
-        android:id="@+id/recycler"
-        layout="@layout/fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:id="@+id/tool"
+        layout="@layout/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/cardview_default_elevation" />
+
+    <include layout="@layout/content_news_page" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -22,11 +23,5 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:menu="@menu/activity_main_drawer" />
-
-    <include
-        android:id="@+id/tool"
-        layout="@layout/toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/cardview_default_elevation" />
 
 </android.support.v4.widget.DrawerLayout>
