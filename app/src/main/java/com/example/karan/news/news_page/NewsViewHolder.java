@@ -2,6 +2,7 @@ package com.example.karan.news.news_page;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         filler=(TextView) itemView.findViewById(R.id.filler);
 
         imageView=(ImageView) itemView.findViewById(R.id.image);
+
     }
 
     public void setHeadLine(String title) {
@@ -31,15 +33,14 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
 
     public void setDescription(String description) {filler.setText(description);}
 
-    public void setDate(String updated){date.setText("Date: "+updated);
-    }
+    public void setDate(String updated){date.setText("Date: "+updated);}
+
     public void setImage(String image) {
         Picasso.with(itemView.getContext())
                 .load(image)
                 .fit()
                 .into(imageView);
     }
-
 
 }
 

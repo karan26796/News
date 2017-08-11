@@ -1,8 +1,5 @@
 package com.example.karan.news.news_page;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-
 /**
  * Created by karan on 7/3/2017.
  */

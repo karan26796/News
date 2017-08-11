@@ -1,5 +1,6 @@
 package com.example.karan.news.activities;
 
+import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
@@ -19,17 +20,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
 import com.example.karan.news.R;
 import com.example.karan.news.fragment.NewsHomeFragment;
-import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
-import com.example.karan.news.utils.RecyclerViewClickListener;
+import com.example.karan.news.utils.Constants;
+import com.example.karan.news.utils.LaunchManager;
+import com.example.karan.news.utils.NetworkChangeReceiver;
 
 public class NewsHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
+
     private TextView tv,user_name;
     private NewsHomeFragment newsHomeFragment;
     private Toolbar toolbar;
+
+    NetworkChangeReceiver networkChangeReceiver;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -53,7 +57,7 @@ public class NewsHome extends AppCompatActivity
         View header=navigationView.inflateHeaderView(R.layout.nav_header_main);
 
         tv=(TextView) header.findViewById(R.id.app_name);
-        tv.setText(loadPreferences());
+        //tv.setText(loadPreferences());
 
         user_name=(TextView) header.findViewById(R.id.tv);
         user_name.setText(m);
@@ -61,6 +65,16 @@ public class NewsHome extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // launch animation
+        overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_right);
+
+        // register broadcast receiver which listens for change in network state
+        registerReceiver(networkChangeReceiver, new IntentFilter(Constants.CONNECTIVITY_CHANGE_ACTION));
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -92,18 +106,16 @@ public class NewsHome extends AppCompatActivity
             return true;
         }
         else if (id == R.id.log_out) {
-            FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(this);
-            firebaseAuthentication.logoutUser();
+            LaunchManager.showDialog(this);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     private void displaySelectedScreen(int id) {
 
         Bundle bundle=new Bundle();
-        String child;
+        String child="sports";
 
         switch (id){
             case R.id.sports:
@@ -127,6 +139,7 @@ public class NewsHome extends AppCompatActivity
         }
 
         newsHomeFragment = new NewsHomeFragment();
+        toolbar.setTitle(child);
         bundle.putString("category",child);
         newsHomeFragment.setArguments(bundle);
 
@@ -138,8 +151,7 @@ public class NewsHome extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
     }
 
-
-    private String loadPreferences(){
+    /*private String loadPreferences(){
         SharedPreferences pref= PreferenceManager.getDefaultSharedPreferences(this);
         String toolbar_title;
         boolean Title=pref.getBoolean("bg_color", false);
@@ -150,14 +162,12 @@ public class NewsHome extends AppCompatActivity
             toolbar_title="News";
         }
         return toolbar_title;
-    }
-
+    }*/
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         displaySelectedScreen(item.getItemId());
-
         return true;
     }
+
 }

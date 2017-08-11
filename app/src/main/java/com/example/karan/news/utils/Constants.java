@@ -6,4 +6,5 @@ package com.example.karan.news.utils;
 
 public class Constants {
 
+    public static final String CONNECTIVITY_CHANGE_ACTION ="android.net.conn.CONNECTIVITY_CHANGE" ;
 }

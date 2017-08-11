@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/category_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@color/colorPrimary"
+        android:elevation="4sp"
+        android:paddingLeft="50sp"
+        app:title="Category"
+        app:titleTextColor="#fff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"></android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/details_date"
+        android:layout_width="match_parent"
+        android:layout_height="20sp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/category_toolbar"
+        android:textStyle="bold"
+        tools:text="hello" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:focusable="true"
+        android:visibility="visible"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/details_date" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/detail_image">>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
