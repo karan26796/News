@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 
 import com.example.karan.news.R;
+import com.example.karan.news.activities.AppPreferences;
 import com.example.karan.news.activities.LoginActivity;
 import com.example.karan.news.activities.NewsDetails;
 import com.example.karan.news.activities.NewsHome;
@@ -16,22 +17,39 @@ import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 
 /**
  * Handle launching different activities in launch scenario
- *
+ * All the intents for activity launch are defined here to clean corresponding
+ * activity code.
  */
 
 public class LaunchManager {
 
+    //Home activity is launched via intent wherever this method is called
     public static void launchHome(Activity activity) {
         Intent intent = new Intent(activity, NewsHome.class);
         activity.startActivity(intent);
     }
 
+    //Home activity is launched with the news category selected by the user previously
+    public static void categoryFragment(Activity activity,String category) {
+        Intent intent = new Intent(activity, NewsHome.class);
+        intent.putExtra(Constants.CATEGORY_NAME,category);
+        activity.startActivity(intent);
+    }
+
+    //Settings activity is launched via intent wherever this method is called
+    public static void launchSettings(Activity activity) {
+        Intent intent = new Intent(activity, AppPreferences.class);
+        activity.startActivity(intent);
+    }
+
+    //User sign up screen is launched via intent wherever this method is called
     public static void showSignUpScreen(Activity activity) {
         Intent intent = new Intent(activity, SignUp.class);
         activity.startActivity(intent);
         activity.finish();
     }
 
+    //User sign in Screen is launched via intent wherever this method is called
     public static void showSignInScreen(Activity activity) {
         Intent intent = new Intent(activity,LoginActivity.class);
         //clear activity stack while launching signin screen
@@ -40,30 +58,16 @@ public class LaunchManager {
         activity.finish();
     }
 
-    public static void showDetailsPage(Activity activity,int position,String category){
+    /**Valuable resources like position,color of toolbar and news category are sent to the
+    Details activity using this method via Intent and later fetched in the details activity*/
+    //News details page is opened from click of news article on News list
+    public static void showDetailsPage(Activity activity,int position,String category ,int color){
         Intent intent = new Intent(activity,NewsDetails.class);
-        intent.putExtra("position",position);
-        intent.putExtra("category",category);
+        intent.putExtra(Constants.POSITION,position);
+        intent.putExtra(Constants.CATEGORY_NAME,category);
+        intent.putExtra(Constants.COLOR_VALUE,color);
         activity.startActivity(intent);
         activity.finish();
     }
-
-    public static void showDialog(final Activity activity) {
-        AlertDialog alertbox = new AlertDialog.Builder(activity)
-                .setMessage(R.string.logout_out)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(activity);
-                        firebaseAuthentication.logoutUser();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        return;
-                    }
-                })
-                .show();
-    }
-
 
 }

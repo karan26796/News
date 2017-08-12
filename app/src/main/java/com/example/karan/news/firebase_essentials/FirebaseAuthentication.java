@@ -12,6 +12,7 @@ import com.example.karan.news.R;
 import com.example.karan.news.activities.LoginActivity;
 import com.example.karan.news.activities.NewsHome;
 import com.example.karan.news.models.User;
+import com.example.karan.news.utils.Constants;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FirebaseAuthentication {
 
-    String  email,password,passcon;
     Context mContext;
     FirebaseAuth firebaseAuth;
 
@@ -31,7 +31,7 @@ public class FirebaseAuthentication {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    public void newUser(final String email, final String password, String passcon, final ProgressDialog progressDialog){
+    public void newUser(final String email, final String password, final ProgressDialog progressDialog,final String userName){
 
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
@@ -76,6 +76,7 @@ public class FirebaseAuthentication {
 
                                     // launch HomeScreenActivity when user registration is complete
                                     Intent mainActivity = new Intent(mContext, NewsHome.class);
+                                    mainActivity.putExtra(Constants.USERNAME,userName);
                                     mainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     mContext.startActivity(mainActivity);
 
@@ -95,7 +96,7 @@ public class FirebaseAuthentication {
         }
     }
 
-    public void loginUser(String email, String password, final ProgressDialog mProgressDialog) {
+    public void loginUser(String email, String password, final ProgressDialog mProgressDialog,final String userName) {
 
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -107,6 +108,7 @@ public class FirebaseAuthentication {
                     mProgressDialog.dismiss();
                     // launch HomeScreenActivity when user registration is complete
                     Intent mainActivity = new Intent(mContext, NewsHome.class);
+                    mainActivity.putExtra(Constants.USERNAME,userName);
                     mainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     mContext.startActivity(mainActivity);
                     // finish current activity

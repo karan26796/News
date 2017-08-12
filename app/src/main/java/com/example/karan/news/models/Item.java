@@ -1,10 +1,13 @@
 package com.example.karan.news.models;
 
-public class Item{
+import java.io.Serializable;
+
+public class Item implements Serializable{
 
     private String date;
     private String headline;
     private String imageUrl1;
+    private String detail;
 
     public Item() {
         // Default constructor required for calls to DataSnapshot.getValue(Item.class)
@@ -40,4 +43,11 @@ public class Item{
         this.imageUrl1 = imageUrl1;
     }
 
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
 }

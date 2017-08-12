@@ -4,8 +4,8 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/sports"
-            android:title="Sports"
-            android:enabled="true"/>
+            android:enabled="true"
+            android:title="Sports" />
         <item
             android:id="@+id/politics"
             android:title="Politics" />
@@ -14,10 +14,10 @@
             android:title="World" />
         <item
             android:id="@+id/top_stories"
-            android:title="Top Stories"/>
+            android:title="Top Stories" />
         <item
             android:id="@+id/bookmarks"
-            android:title="Bookmarks"/>
+            android:title="Bookmarks" />
     </group>
 
 </menu>

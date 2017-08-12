@@ -1,13 +1,18 @@
 package com.example.karan.news.activities;
 
-import android.os.Bundle;;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.karan.news.R;
+import com.example.karan.news.models.Item;
+import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -18,30 +23,36 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class NewsDetails extends AppCompatActivity implements View.OnClickListener{
 
-    private String category,detail;
+    private String category,detail,date,headline,imageUrl1;
+    private int color;
     private TextView details;
     private ImageView imageView;
     private Toolbar toolbar;
+    Item newsItem;
     private ImageButton imageButton;
     private DatabaseReference databaseReference;
 
     int position;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_details);
 
-        position =getIntent().getIntExtra("position",0);
-        category=getIntent().getStringExtra("category");
+        position =getIntent().getIntExtra(Constants.POSITION,0);
+        category=getIntent().getStringExtra(Constants.CATEGORY_NAME);
+        color=getIntent().getIntExtra(Constants.COLOR_VALUE,R.color.colorAccent);
 
+        Window window=getWindow();
+        window.setStatusBarColor(color);
         details=(TextView) findViewById(R.id.details);
         imageView=(ImageView)findViewById(R.id.detail_image);
         toolbar=(Toolbar)findViewById(R.id.category_toolbar);
         imageButton=(ImageButton)findViewById(R.id.imageButton);
 
         imageButton.setOnClickListener(this);
-
+        getData();
         databaseReference= FirebaseDatabase.getInstance().getReference().child(category);
         /*detail=databaseReference.toString();*/
         loadData();
@@ -49,13 +60,29 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onBackPressed() {
-        LaunchManager.launchHome(this);
+        LaunchManager.categoryFragment(this,category);
         super.onBackPressed();}
 
     public void loadData(){
         toolbar.setTitle(category);
         details.setText(category);
+        for(int i=0;i<=6;i++)
+        {
+            if(i==position){
+                toolbar.setBackgroundColor(color);
+            }
+        }
+
         imageView.setImageResource(R.drawable.detail_button);
+    }
+    protected void getData() {
+
+        newsItem = (Item) getIntent().getSerializableExtra(Constants.INTENT_KEY_NEWS_DATA);
+
+        detail=newsItem.getDetail();
+        headline = newsItem.getHeadline();
+        imageUrl1 = newsItem.getImageUrl1();
+        date=newsItem.getDate();
     }
 
     @Override

@@ -16,7 +16,8 @@
     <string name="passwords_differ">Passwords do not match</string>
     <string name="logout_out">Logout user?</string>
     <string name="bookmark">Bookmark this article?</string>
-
+    <string name="home">Home</string>
+    <string name="enter_details">Enter user details</string>
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
@@ -89,5 +90,6 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="action_settings">Settings</string>
+
 
 </resources>

@@ -63,10 +63,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             mProgressDialog.show();
             // login registered user
             FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(this);
-            firebaseAuthentication.loginUser(mEmail, mPass, mProgressDialog);
+            firebaseAuthentication.loginUser(mEmail, mPass, mProgressDialog,mEmail);
 
-            SharedPreferences sharedPreferences=getSharedPreferences("myPreferences",MODE_PRIVATE);
-            sharedPreferences.getString(mEmail,"userName");
         } else {
             Toast.makeText(LoginActivity.this, R.string.start_error_message, Toast.LENGTH_LONG).show();
         }
