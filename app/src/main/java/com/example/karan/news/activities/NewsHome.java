@@ -12,6 +12,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,6 @@ public class NewsHome extends AppCompatActivity
 
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         userName=getIntent().getStringExtra(Constants.USERNAME);
 
         window= getWindow();
@@ -59,7 +59,7 @@ public class NewsHome extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        defaultFragment(toolbar);
+        defaultFragment();
 
         drawer.closeDrawer(GravityCompat.START);
 
@@ -78,21 +78,21 @@ public class NewsHome extends AppCompatActivity
 
         // launch animation
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_right);
-
+        defaultFragment();
         // register broadcast receiver which listens for change in network state
         registerReceiver(networkChangeReceiver, new IntentFilter(Constants.CONNECTIVITY_CHANGE_ACTION));
     }
 
     //Sets up view when activity is resumed
-    @Override
+    /*@Override
     protected void onResume(){
         super.onResume();
         activityResume();
-    }
+    }*/
 
     /*This method fetches the category previously selected by the user
     * and inflates it in the fragment*/
-    public void activityResume(){
+   /* public void activityResume(){
         detail_category=getIntent().getStringExtra(Constants.CATEGORY_NAME);
         Bundle bundle=new Bundle();
         bundle.putString(Constants.CATEGORY_NAME,detail_category);
@@ -102,7 +102,7 @@ public class NewsHome extends AppCompatActivity
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, newsHomeFragment);
         fragmentTransaction.commit();
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -214,11 +214,11 @@ public class NewsHome extends AppCompatActivity
      * with a predefined category.
      */
 
-    public void defaultFragment(Toolbar action_bar){
-        action_bar.setTitle("Sports");
+    public void defaultFragment(){
         newsHomeFragment = new NewsHomeFragment();
         Bundle bundle=new Bundle();
         bundle.putString(Constants.CATEGORY_NAME,"sports");
+        toolbar.setTitle(Constants.CATEGORY_NAME);
         newsHomeFragment.setArguments(bundle);
 
         //Default fragment with the aforementioned category is inflated

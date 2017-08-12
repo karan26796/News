@@ -9,6 +9,9 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
+        android:foregroundTint="#fff"
+        android:foregroundTintMode="src_over"
+        android:theme="@style/AppTheme"
         android:title="@string/app_name"
         app:titleTextColor="#fff" />
 </RelativeLayout>

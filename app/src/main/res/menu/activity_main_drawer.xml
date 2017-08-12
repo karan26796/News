@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/sports"
+            android:icon="@drawable/football"
             android:enabled="true"
             android:title="Sports" />
         <item
             android:id="@+id/politics"
+            android:icon="@drawable/human_greeting"
             android:title="Politics" />
         <item
             android:id="@+id/world"
+            android:icon="@drawable/earth"
             android:title="World" />
         <item
             android:id="@+id/top_stories"
+            android:icon="@drawable/fire"
             android:title="Top Stories" />
         <item
             android:id="@+id/bookmarks"
+            android:icon="@drawable/bookmark_check"
             android:title="Bookmarks" />
     </group>
 

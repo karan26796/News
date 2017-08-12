@@ -54,8 +54,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mProgressDialog.setMessage(getString(R.string.start_progress_dialog_message));
         mProgressDialog.setCanceledOnTouchOutside(false);
 
-        String mEmail = email.getText().toString();
-        String mPass = pass.getText().toString();
+        String mEmail = email.getText().toString().trim();
+        String mPass = pass.getText().toString().trim();
 
         if (!(TextUtils.isEmpty(mEmail) || TextUtils.isEmpty(mPass))) {
 
