@@ -7,9 +7,9 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="86dp"
+        android:layout_width="@dimen/layout_parameter_medium"
+        android:layout_height="@dimen/layout_parameter_medium"
+        android:layout_marginTop="86sp"
         app:srcCompat="@drawable/fingerprint"
         android:id="@+id/img"
         android:layout_alignParentTop="true"
@@ -17,27 +17,27 @@
 
     <Button
         android:id="@+id/sign_in"
-        android:layout_width="150dp"
-        android:layout_height="43dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_width"
         android:layout_marginTop="40dp"
         android:background="@drawable/rounded_button"
         android:text="Sign in"
         android:textColor="#fff"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:layout_below="@+id/pass"
         android:layout_alignStart="@+id/img" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="350dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="81dp"
+        android:layout_width="@dimen/edit_text_width"
+        android:layout_height="@dimen/edit_text_height"
+        android:layout_marginTop="81sp"
         android:background="@drawable/detail_button"
-        android:hint="123@xyz.com"
+        android:hint="@string/hint_username"
         android:lines="1"
         android:maxLength="30"
         android:singleLine="true"
-        android:paddingLeft="10dp"
+        android:paddingLeft="@dimen/padding_small"
         android:textColor="@color/filler"
         android:textColorHint="@color/hintColor"
         android:layout_below="@+id/img"
@@ -45,15 +45,15 @@
 
     <EditText
         android:id="@+id/pass"
-        android:layout_width="350dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="43dp"
+        android:layout_width="@dimen/edit_text_width"
+        android:layout_height="@dimen/edit_text_height"
+        android:layout_marginTop="@dimen/edit_text_height"
         android:background="@drawable/detail_button"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="none"
         android:lines="1"
         android:maxLength="12"
-        android:paddingLeft="10dp"
+        android:paddingLeft="@dimen/padding_small"
         android:password="true"
         android:singleLine="true"
         android:textColor="@color/filler"
@@ -63,14 +63,14 @@
 
     <Button
         android:id="@+id/sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
         android:background="@null"
-        android:text="New user?Sign Up"
+        android:text="@string/new_user"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:textStyle="bold"
         android:layout_below="@+id/sign_in"
         android:layout_centerHorizontal="true" />

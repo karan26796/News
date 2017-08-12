@@ -1,6 +1,7 @@
 package com.example.karan.news.activities;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.karan.news.R;
 import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
+import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 
 /**
@@ -43,7 +45,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         String email = newUser.getText().toString().trim();
         String password = newPass.getText().toString().trim();
-        String passcon=conPass.getText().toString().trim();
+        String pass_con=conPass.getText().toString().trim();
 
         if(!newPass.equals(conPass))
         {
@@ -54,7 +56,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             Toast.makeText(this,R.string.enter_details,Toast.LENGTH_SHORT).show();
         }
 
-        if (!(TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(passcon))) {
+        if (!(TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(pass_con))) {
 
             mProgressDialog.setMessage(getString(R.string.wait_message));
             mProgressDialog.setCanceledOnTouchOutside(false);
@@ -63,7 +65,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             // register user to firebase authentication
             // store name and email to firebase database
             FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(SignUp.this);
-            firebaseAuthentication.newUser(email,password,mProgressDialog,email);
+            firebaseAuthentication.newUser(email,password,mProgressDialog);
+
+            SharedPreferences sharedPreferences=getSharedPreferences(Constants.PREFERENCES,MODE_PRIVATE);
+            SharedPreferences.Editor edit = sharedPreferences.edit();
+            sharedPreferences.getString(Constants.USERNAME,email);
+            edit.commit();
         }
     }
 

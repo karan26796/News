@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="100sp"
-        android:layout_height="100sp"
+        android:layout_width="@dimen/layout_parameter_small"
+        android:layout_height="@dimen/layout_parameter_small"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="86sp"
@@ -17,25 +17,25 @@
 
     <Button
         android:id="@+id/submit"
-        android:layout_width="150sp"
-        android:layout_height="43sp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
         android:background="@drawable/rounded_button"
         android:text="Submit"
-        android:textColor="#fff"
+        android:textColor="@color/white"
         android:textSize="16sp"
-        android:layout_marginBottom="44sp"
+        android:layout_marginBottom="44dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/new_email"
-        android:layout_width="350sp"
-        android:layout_height="40sp"
+        android:layout_width="@dimen/edit_text_width"
+        android:layout_height="@dimen/edit_text_height"
         android:background="@drawable/detail_button"
         android:hint="123@xyz.com"
         android:lines="1"
         android:maxLength="30"
-        android:paddingLeft="10sp"
+        android:paddingLeft="@dimen/padding_small"
         android:singleLine="true"
         android:textColor="@color/filler"
         android:textColorHint="@color/hintColor"
@@ -45,13 +45,13 @@
 
     <EditText
         android:id="@+id/con_pass"
-        android:layout_width="350sp"
-        android:layout_height="40sp"
+        android:layout_width="@dimen/edit_text_width"
+        android:layout_height="@dimen/edit_text_height"
         android:background="@drawable/detail_button"
         android:hint="Confirm Password"
         android:lines="1"
         android:maxLength="12"
-        android:paddingLeft="10sp"
+        android:paddingLeft="@dimen/padding_small"
         android:password="true"
         android:singleLine="true"
         android:textColor="@color/filler"
@@ -62,13 +62,13 @@
 
     <EditText
         android:id="@+id/new_pass"
-        android:layout_width="350sp"
-        android:layout_height="40sp"
+        android:layout_width="@dimen/edit_text_width"
+        android:layout_height="@dimen/edit_text_height"
         android:background="@drawable/detail_button"
         android:hint="Password"
         android:lines="1"
         android:maxLength="12"
-        android:paddingLeft="10sp"
+        android:paddingLeft="@dimen/padding_small"
         android:password="true"
         android:singleLine="true"
         android:textColor="@color/filler"

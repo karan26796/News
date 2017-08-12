@@ -7,23 +7,23 @@
             android:id="@+id/sports"
             android:icon="@drawable/football"
             android:enabled="true"
-            android:title="Sports" />
+            android:title="@string/sports_nav_drawer" />
         <item
             android:id="@+id/politics"
             android:icon="@drawable/human_greeting"
-            android:title="Politics" />
+            android:title="@string/politics_nav_drawer" />
         <item
             android:id="@+id/world"
             android:icon="@drawable/earth"
-            android:title="World" />
+            android:title="@string/world_nav_drawer" />
         <item
             android:id="@+id/top_stories"
             android:icon="@drawable/fire"
-            android:title="Top Stories" />
+            android:title="@string/top_stories_nav_drawer" />
         <item
             android:id="@+id/bookmarks"
             android:icon="@drawable/bookmark_check"
-            android:title="Bookmarks" />
+            android:title="@string/bookmark_nav_drawer" />
     </group>
 
 </menu>

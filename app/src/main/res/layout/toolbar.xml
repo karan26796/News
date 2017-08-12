@@ -8,10 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:elevation="4dp"
-        android:foregroundTint="#fff"
+        android:elevation="@dimen/default_elevation"
+        android:foregroundTint="@color/white"
         android:foregroundTintMode="src_over"
         android:theme="@style/AppTheme"
-        android:title="@string/app_name"
+        android:title="@string/home"
         app:titleTextColor="#fff" />
 </RelativeLayout>

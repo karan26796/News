@@ -2,10 +2,8 @@ package com.example.karan.news.news_page;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.karan.news.R;
 import com.squareup.picasso.Picasso;
 

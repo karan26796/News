@@ -4,7 +4,6 @@ import android.app.FragmentTransaction;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.example.karan.news.R;
 
 public class AppPreferences extends AppCompatActivity {

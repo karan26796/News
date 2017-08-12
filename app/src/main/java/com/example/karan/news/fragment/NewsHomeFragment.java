@@ -48,7 +48,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
 
         databaseReference= FirebaseDatabase.getInstance().getReference().child(child);
 
-        //Firebase Recycler adaptermethod fetches details from firebase database
+        //Firebase Recycler adapter method fetches details from firebase database
         FirebaseRecyclerAdapter<NewsList,NewsViewHolder> adapter= new FirebaseRecyclerAdapter<NewsList, NewsViewHolder>(NewsList.class
                 ,R.layout.news_card,NewsViewHolder.class,databaseReference) {
             @Override
@@ -62,7 +62,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
                 viewHolder.setImage(model.getImage());
             }
         };
-
+        adapter.getItemCount();
         recyclerView.addOnItemTouchListener(new RecyclerViewTouchListener(context, recyclerView, this));
         recyclerView.setAdapter(adapter);
         return view;

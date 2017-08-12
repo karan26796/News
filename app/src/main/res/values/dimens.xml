@@ -5,4 +5,26 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="relative_layout_height">320sp</dimen>
+
+    <dimen name="layout_parameter_small">100sp</dimen>
+    <dimen name="layout_parameter_medium">150sp</dimen>
+    <dimen name="layout_parameter_large">200sp</dimen>
+
+    <dimen name="edit_text_width">350sp</dimen>
+    <dimen name="edit_text_height">40sp</dimen>
+
+    <dimen name="button_height">43sp</dimen>
+    <dimen name="button_width">150sp</dimen>
+
+    <dimen name="padding_large">50sp</dimen>
+    <dimen name="padding_medium">20sp</dimen>
+    <dimen name="padding_small">10sp</dimen>
+    <dimen name="padding_smaller">5sp</dimen>
+
+    <dimen name="back_button_width">50sp</dimen>
+
+    <dimen name="default_elevation">4sp</dimen>
+
 </resources>

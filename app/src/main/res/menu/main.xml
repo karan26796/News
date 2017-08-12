@@ -6,9 +6,8 @@
             android:id="@+id/action_settings"
             android:title="@string/action_settings"
             />
-
 </group>
         <item
             android:id="@+id/log_out"
-            android:title="Log out?" />
+            android:title="@string/logout" />
 </menu>

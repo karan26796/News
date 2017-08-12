@@ -1,8 +1,10 @@
 package com.example.karan.news.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
@@ -12,7 +14,6 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,7 @@ import com.example.karan.news.utils.NetworkChangeReceiver;
 public class NewsHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    private String userName,category,detail_category;
+    private String userName,category;
     private int toolbarColor;
     private TextView user_name;
     private NewsHomeFragment newsHomeFragment;
@@ -47,10 +48,14 @@ public class NewsHome extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_page);
 
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        userName=getIntent().getStringExtra(Constants.USERNAME);
+        SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", Context.MODE_PRIVATE);
+        userName= sharedPreferences.getString(Constants.USERNAME,"a");
 
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        toolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
+        setSupportActionBar(toolbar);
+
+        //method used to change status bar color
         window= getWindow();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -58,14 +63,12 @@ public class NewsHome extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        drawer.closeDrawer(GravityCompat.START);
 
         defaultFragment();
 
-        drawer.closeDrawer(GravityCompat.START);
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header=navigationView.inflateHeaderView(R.layout.nav_header_main);
-
         user_name=(TextView) header.findViewById(R.id.tv);
         user_name.setText(userName);
 
@@ -75,34 +78,12 @@ public class NewsHome extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-
         // launch animation
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_right);
         defaultFragment();
         // register broadcast receiver which listens for change in network state
         registerReceiver(networkChangeReceiver, new IntentFilter(Constants.CONNECTIVITY_CHANGE_ACTION));
     }
-
-    //Sets up view when activity is resumed
-    /*@Override
-    protected void onResume(){
-        super.onResume();
-        activityResume();
-    }*/
-
-    /*This method fetches the category previously selected by the user
-    * and inflates it in the fragment*/
-   /* public void activityResume(){
-        detail_category=getIntent().getStringExtra(Constants.CATEGORY_NAME);
-        Bundle bundle=new Bundle();
-        bundle.putString(Constants.CATEGORY_NAME,detail_category);
-        newsHomeFragment.setArguments(bundle);
-
-        //fragment with rhe category fetched is inflated in the following lines
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, newsHomeFragment);
-        fragmentTransaction.commit();
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -147,8 +128,8 @@ public class NewsHome extends AppCompatActivity
     and sends the item id and category string value along with setting the toolbar title
     and inflating list of each category in the fragment*/
 
-    //Requires api checks the users android api
-    //It is required to change the user's status bar color
+    //Requiresapi checks the user's android api
+    //It is required to change the app's status bar color
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void displaySelectedScreen(int id, String child, int color) {
 
@@ -168,23 +149,23 @@ public class NewsHome extends AppCompatActivity
 
         switch (id){
             case R.id.sports:
-                child="sports";
+                child=Constants.SPORTS_NEWS_CATEGORY ;
                 color=resources.getColor(R.color.colorAccent);
                 break;
             case R.id.politics:
-                child="politics";
+                child=Constants.POLITICS_NEWS_CATEGORY ;
                 color=resources.getColor(R.color.gray);
                 break;
             case R.id.world:
-                child="sports";
+                child=Constants.SPORTS_NEWS_CATEGORY ;
                 color=resources.getColor(R.color.colorAccent);
                 break;
             case R.id.bookmarks:
-                child="politics";
+                child=Constants.POLITICS_NEWS_CATEGORY ;
                 color=resources.getColor(R.color.gray);
                 break;
             case R.id.top_stories:
-                child="sports";
+                child=Constants.SPORTS_NEWS_CATEGORY ;
                 color=resources.getColor(R.color.colorAccent);
                 break;
         }
@@ -201,9 +182,7 @@ public class NewsHome extends AppCompatActivity
         bundle.putInt(Constants.TOOLBAR_COLOR,color);
         newsHomeFragment.setArguments(bundle);
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, newsHomeFragment);
-        fragmentTransaction.commit();
+        fragmentInflate();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -217,14 +196,12 @@ public class NewsHome extends AppCompatActivity
     public void defaultFragment(){
         newsHomeFragment = new NewsHomeFragment();
         Bundle bundle=new Bundle();
-        bundle.putString(Constants.CATEGORY_NAME,"sports");
-        toolbar.setTitle(Constants.CATEGORY_NAME);
+        bundle.putString(Constants.CATEGORY_NAME,Constants.SPORTS_NEWS_CATEGORY);
         newsHomeFragment.setArguments(bundle);
 
         //Default fragment with the aforementioned category is inflated
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, newsHomeFragment);
-        fragmentTransaction.commit();
+        fragmentInflate();
+
     }
 
     //Shows a Dialog box for user prompt on whether he wants to log out or continue using the app
@@ -245,10 +222,15 @@ public class NewsHome extends AppCompatActivity
                 .show();
     }
 
-
+    //Common method to inflate fragment every time it is called in the activity
+    public void fragmentInflate(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, newsHomeFragment);
+        fragmentTransaction.commit();
+    }
 
     //Requires api checks the users android api
-    //It is required to change the user's status bar color
+    //It is required to change the app's status bar color
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 
     /**Handles the onClick method for Navigation drawer items*/

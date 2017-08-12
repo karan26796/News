@@ -1,19 +1,12 @@
 package com.example.karan.news.utils;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-
-import com.example.karan.news.R;
 import com.example.karan.news.activities.AppPreferences;
 import com.example.karan.news.activities.LoginActivity;
 import com.example.karan.news.activities.NewsDetails;
 import com.example.karan.news.activities.NewsHome;
 import com.example.karan.news.activities.SignUp;
-import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
-
 
 /**
  * Handle launching different activities in launch scenario
@@ -69,5 +62,4 @@ public class LaunchManager {
         activity.startActivity(intent);
         activity.finish();
     }
-
 }

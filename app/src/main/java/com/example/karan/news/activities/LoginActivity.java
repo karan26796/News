@@ -1,6 +1,6 @@
 package com.example.karan.news.activities;
+
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,14 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.karan.news.R;
 import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
+import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 
 
 /**
  * Created by karan on 7/8/2017.
+ *
+ * User login activity takes existing user's details
+ * if they are already registered with the app.
  */
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -63,7 +66,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             mProgressDialog.show();
             // login registered user
             FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(this);
-            firebaseAuthentication.loginUser(mEmail, mPass, mProgressDialog,mEmail);
+            firebaseAuthentication.loginUser(mEmail, mPass, mProgressDialog);
+
+            SharedPreferences sharedPreferences=getSharedPreferences(Constants.PREFERENCES,MODE_PRIVATE);
+            SharedPreferences.Editor edit = sharedPreferences.edit();
+            sharedPreferences.getString(Constants.USERNAME,mEmail);
+            edit.commit();
 
         } else {
             Toast.makeText(LoginActivity.this, R.string.start_error_message, Toast.LENGTH_LONG).show();

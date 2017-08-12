@@ -11,7 +11,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.karan.news.R;
-import com.example.karan.news.models.Item;
 import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 import com.google.firebase.database.DatabaseReference;
@@ -23,12 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class NewsDetails extends AppCompatActivity implements View.OnClickListener{
 
-    private String category,detail,date,headline,imageUrl1;
+    private String category;
     private int color;
     private TextView details;
     private ImageView imageView;
     private Toolbar toolbar;
-    Item newsItem;
     private ImageButton imageButton;
     private DatabaseReference databaseReference;
 
@@ -52,8 +50,8 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
         imageButton=(ImageButton)findViewById(R.id.imageButton);
 
         imageButton.setOnClickListener(this);
-        getData();
-        databaseReference= FirebaseDatabase.getInstance().getReference().child(category);
+        //getData();
+        databaseReference= FirebaseDatabase.getInstance().getReference().child(category+position);
         /*detail=databaseReference.toString();*/
         loadData();
     }
@@ -75,15 +73,14 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
 
         imageView.setImageResource(R.drawable.detail_button);
     }
-    protected void getData() {
+    /*protected void getData() {
 
         newsItem = (Item) getIntent().getSerializableExtra(Constants.INTENT_KEY_NEWS_DATA);
 
-        detail=newsItem.getDetail();
         headline = newsItem.getHeadline();
         imageUrl1 = newsItem.getImageUrl1();
         date=newsItem.getDate();
-    }
+    }*/
 
     @Override
     public void onClick(View v) {
