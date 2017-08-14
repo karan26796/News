@@ -19,7 +19,7 @@ import com.example.karan.news.utils.LaunchManager;
  * Created by karan on 7/8/2017.
  *
  * User login activity takes existing user's details
- * if they are already registered with the app.
+ * and checks if they are already registered with the app.
  */
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -48,6 +48,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         finish();
     }
 
+    /*Method checks whether the entered details match that of an existing user
+    and logs in if the details match.*/
     private void loginUser() {
 
         // setup progress dialog

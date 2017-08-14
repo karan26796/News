@@ -11,6 +11,7 @@ import com.example.karan.news.R;
 import com.example.karan.news.activities.LoginActivity;
 import com.example.karan.news.activities.NewsHome;
 import com.example.karan.news.models.User;
+import com.example.karan.news.utils.Constants;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,11 +20,16 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**This class covers all the aspects of a user's details ie. logging in an
+ * existing user or registering a new user in the app's list of users and
+ * logging out a user from the app*/
+
 public class FirebaseAuthentication {
 
     Context mContext;
     FirebaseAuth firebaseAuth;
 
+    //Constructor for the class.
     public FirebaseAuthentication(Context context) {
         this.mContext = context;
         firebaseAuth = FirebaseAuth.getInstance();
@@ -57,7 +63,7 @@ public class FirebaseAuthentication {
                         DatabaseReference mDatabase;
 
                         // create a database reference for the user
-                        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(UID);
+                        mDatabase = FirebaseDatabase.getInstance().getReference().child(Constants.USERS_KEY).child(UID);
 
                         User user = new User(email, UID);
 
@@ -94,6 +100,7 @@ public class FirebaseAuthentication {
         }
     }
 
+    //Checks user entered credentials and matches with the existing list of app users.
     public void loginUser(String email, String password, final ProgressDialog mProgressDialog) {
 
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -121,6 +128,7 @@ public class FirebaseAuthentication {
         });
     }
 
+    //Logs existing user out from the app.
     public void logoutUser() {
 
         // sign out from firebase authentication

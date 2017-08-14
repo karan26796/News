@@ -7,6 +7,9 @@ import com.example.karan.news.activities.LoginActivity;
 import com.example.karan.news.activities.NewsDetails;
 import com.example.karan.news.activities.NewsHome;
 import com.example.karan.news.activities.SignUp;
+import com.example.karan.news.models.Item;
+
+import java.util.ArrayList;
 
 /**
  * Handle launching different activities in launch scenario
@@ -45,7 +48,7 @@ public class LaunchManager {
     //User sign in Screen is launched via intent wherever this method is called
     public static void showSignInScreen(Activity activity) {
         Intent intent = new Intent(activity,LoginActivity.class);
-        //clear activity stack while launching signin screen
+        //clear activity stack while launching sign in screen
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         activity.startActivity(intent);
         activity.finish();
@@ -53,12 +56,14 @@ public class LaunchManager {
 
     /**Valuable resources like position,color of toolbar and news category are sent to the
     Details activity using this method via Intent and later fetched in the details activity*/
+
     //News details page is opened from click of news article on News list
-    public static void showDetailsPage(Activity activity,int position,String category ,int color){
+    public static void showDetailsPage(Activity activity, int position, String category , int color, Item newsItem){
         Intent intent = new Intent(activity,NewsDetails.class);
         intent.putExtra(Constants.POSITION,position);
         intent.putExtra(Constants.CATEGORY_NAME,category);
         intent.putExtra(Constants.COLOR_VALUE,color);
+        intent.putExtra(Constants.NEWS_DETAILS, newsItem);
         activity.startActivity(intent);
         activity.finish();
     }

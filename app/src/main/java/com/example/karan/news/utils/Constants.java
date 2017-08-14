@@ -13,9 +13,9 @@ public class Constants {
 
     public static final String CONNECTIVITY_CHANGE_ACTION ="android.net.conn.CONNECTIVITY_CHANGE" ;
 
-/*------------------------------------------------------------------------------------------------------------------*/
-/*Mentioned below are some of the common parameters that are required to be sent at different times in different activities*/
-/*------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------*/
+//Mentioned below are some of the common parameters that are required to be sent at different times in different activities
+/*---------------------------------------------------------------------------------------------------------------------------------*/
     public static final String CATEGORY_NAME="category";
     public static final String POSITION ="position" ;
     public static final String COLOR_VALUE ="color" ;
@@ -23,12 +23,17 @@ public class Constants {
     public static final String USERNAME = "username";
 
 /*------------------------------------------------------------------------------------------------------------------*/
-/*Mentioned below are the news categories that'll be displayed in Navigation drawer*/
+//Mentioned below are the news categories that'll be displayed in Navigation drawer
 /*------------------------------------------------------------------------------------------------------------------*/
     public static final String SPORTS_NEWS_CATEGORY ="Sports";
     public static final String POLITICS_NEWS_CATEGORY ="Politics";
     public static final String WORLD_NEWS_CATEGORY ="World";
     public static final String TOP_STORIES_NEWS_CATEGORY ="Top Stories";
 
+/*------------------------------------------------------------------------------------------------------------------*/
+//Mentioned below are some custom constant fields used across the code.
+/*------------------------------------------------------------------------------------------------------------------*/
     public static final String PREFERENCES ="my_preferences" ;
+    public static final String USERS_KEY ="Users";
+    public static final String NEWS_DETAILS ="news_details" ;
 }

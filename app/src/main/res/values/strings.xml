@@ -44,9 +44,12 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Strings used as hints in Edit Text views -->
     <string name="hint_username">123@xyz.com</string>
     <string name="new_user">New user?Sign Up</string>
     <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
 
 
 </resources>

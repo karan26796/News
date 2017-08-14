@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso;
 /**
  * Created by karan on 7/3/2017.
  */
-/*Recycler view items are defined here to be held in the view*/
+/*News article views are defined here*/
 public class NewsViewHolder extends RecyclerView.ViewHolder {
     TextView head,date,filler;
     ImageView imageView;

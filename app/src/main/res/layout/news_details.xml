@@ -8,22 +8,14 @@
         android:id="@+id/category_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/back_button_width"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"
         android:elevation="@dimen/default_elevation"
         android:paddingLeft="@dimen/back_button_width"
+        android:theme="@style/AppTheme"
         app:title="@string/category"
-        app:titleTextColor="@color/white"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"></android.support.v7.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/details_date"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/padding_medium"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/category_toolbar"
-        android:textStyle="bold"
-        tools:text="hello" />
+        app:titleTextColor="@color/white"></android.support.v7.widget.Toolbar>
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -44,12 +36,17 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_parameter_large"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/details_date" />
+        android:padding="@dimen/padding_smaller"
+        android:layout_below="@+id/category_toolbar" />
 
     <ScrollView
+        style="@android:style/Widget.DeviceDefault.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/detail_image">>
+        android:layout_below="@+id/detail_image"
+        android:padding="@dimen/padding_smaller"
+        android:scrollbarStyle="outsideOverlay">>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -58,9 +55,9 @@
                 android:id="@+id/details"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
-
+                android:textSize="16sp" />
         </RelativeLayout>
     </ScrollView>
 

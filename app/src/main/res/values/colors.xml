@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--General purpose colors-->
     <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#FF4081</color>
     <color name="gray">#232323</color>
     <color name="black">#000</color>
     <color name="white">#efefef</color>
+
+    <!--Custom colors to be used across views and layouts-->
     <color name="hintColor">#9e9e9e</color>
     <color name="filler">#2e2e2e</color>
     <color name="primary_material_light">#333</color>
-    <color name="primary_dark_material_light">#32</color>
+    <color name="primary_dark_material_light">#323</color>
+    <color name="gradient_blue">#0091ea</color>
+    <color name="off_white">#c1c1c1</color>
+    <color name="light_gray">#363636</color>
+    <color name="button_gradient_color_1">#0091ea</color>
+    <color name="button_gradient_color_2">#304ffe</color>
 </resources>

@@ -18,14 +18,14 @@
     <Button
         android:id="@+id/sign_in"
         android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignStart="@+id/img"
+        android:layout_below="@+id/pass"
         android:layout_marginTop="40dp"
         android:background="@drawable/rounded_button"
         android:text="Sign in"
         android:textColor="#fff"
-        android:textSize="16sp"
-        android:layout_below="@+id/pass"
-        android:layout_alignStart="@+id/img" />
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/email"

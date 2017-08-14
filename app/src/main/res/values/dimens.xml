@@ -6,25 +6,44 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="relative_layout_height">320sp</dimen>
-
+    <!-- General values to be used as layout dimensions in case of square or rectangular views. -->
     <dimen name="layout_parameter_small">100sp</dimen>
     <dimen name="layout_parameter_medium">150sp</dimen>
     <dimen name="layout_parameter_large">200sp</dimen>
 
+    <!--Dimensions for edit text views in login and sign up screens-->
     <dimen name="edit_text_width">350sp</dimen>
     <dimen name="edit_text_height">40sp</dimen>
 
+    <!--Dimensions for Buttons in login and sign up screens-->
     <dimen name="button_height">43sp</dimen>
     <dimen name="button_width">150sp</dimen>
 
+    <!--General padding values to be used across layouts-->
     <dimen name="padding_large">50sp</dimen>
     <dimen name="padding_medium">20sp</dimen>
     <dimen name="padding_small">10sp</dimen>
     <dimen name="padding_smaller">5sp</dimen>
 
+    <!--News details back button dimensions-->
     <dimen name="back_button_width">50sp</dimen>
 
+    <!--Toolbar elevation value as per android guidelines-->
     <dimen name="default_elevation">4sp</dimen>
+
+    <!--Width and Height dimensions for xml icons in drawables-->
+    <dimen name="icon_parameter">24dp</dimen>
+
+    <!--Corner radii to be used universally across views and layouts-->
+    <dimen name="corner_radius">15sp</dimen>
+    <dimen name="corner_radius_medium">10sp</dimen>
+    <dimen name="corner_radius_small">5sp</dimen>
+
+    <!--Custom values for various views-->
+    <dimen name="image_view_height">180sp</dimen>
+    <dimen name="cardview_elevation">5sp</dimen>
+    <dimen name="cardview_margin_top">2sp</dimen>
+    <dimen name="cardview_margin_right">1sp</dimen>
+    <dimen name="relative_layout_height">330sp</dimen>
 
 </resources>

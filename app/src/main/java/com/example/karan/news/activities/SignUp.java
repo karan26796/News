@@ -16,6 +16,7 @@ import com.example.karan.news.utils.LaunchManager;
 
 /**
  * Created by karan on 7/9/2017.
+ * Activity lets user enter details and add to the app's user list.
  */
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
@@ -37,6 +38,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         submit.setOnClickListener(this);
     }
 
+    //Method to register user to the app's user list
     private void registerUser() {
 
         // setup progress dialog
@@ -76,6 +78,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
+        overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_right);
         LaunchManager.showSignInScreen(this);
     }
 

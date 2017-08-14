@@ -1,5 +1,6 @@
 package com.example.karan.news.activities;
 
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -10,26 +11,36 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.karan.news.R;
+import com.example.karan.news.models.Item;
 import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * Created by karan on 8/9/2017.
+ * Common activity that displays details of the news article
+ * clicked from the list on Home page
  */
 
 public class NewsDetails extends AppCompatActivity implements View.OnClickListener{
 
-    private String category;
+    private String category, imageUrl1, news_details;
     private int color;
     private TextView details;
+    private Window window;
     private ImageView imageView;
     private Toolbar toolbar;
     private ImageButton imageButton;
-    private DatabaseReference databaseReference;
 
+    DatabaseReference databaseReference;
+    Item newsItem = new Item();
     int position;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -42,17 +53,19 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
         category=getIntent().getStringExtra(Constants.CATEGORY_NAME);
         color=getIntent().getIntExtra(Constants.COLOR_VALUE,R.color.colorAccent);
 
-        Window window=getWindow();
-        window.setStatusBarColor(color);
+        window=getWindow();
+
         details=(TextView) findViewById(R.id.details);
+
         imageView=(ImageView)findViewById(R.id.detail_image);
+
         toolbar=(Toolbar)findViewById(R.id.category_toolbar);
         imageButton=(ImageButton)findViewById(R.id.imageButton);
 
         imageButton.setOnClickListener(this);
-        //getData();
         databaseReference= FirebaseDatabase.getInstance().getReference().child(category+position);
-        /*detail=databaseReference.toString();*/
+
+        getData();
         loadData();
     }
 
@@ -61,26 +74,28 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
         LaunchManager.categoryFragment(this,category);
         super.onBackPressed();}
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void loadData(){
         toolbar.setTitle(category);
-        details.setText(category);
-        for(int i=0;i<=6;i++)
-        {
-            if(i==position){
-                toolbar.setBackgroundColor(color);
-            }
-        }
+        toolbar.setBackgroundColor(color);
+        window.setStatusBarColor(color);
+        details.setText(news_details);
 
-        imageView.setImageResource(R.drawable.detail_button);
+        Picasso.with(getApplicationContext())
+                .load(imageUrl1)
+                .fit()
+                .into(imageView);
     }
-    /*protected void getData() {
 
-        newsItem = (Item) getIntent().getSerializableExtra(Constants.INTENT_KEY_NEWS_DATA);
+    protected void getData() {
 
-        headline = newsItem.getHeadline();
-        imageUrl1 = newsItem.getImageUrl1();
-        date=newsItem.getDate();
-    }*/
+        newsItem = (Item) getIntent().getSerializableExtra(Constants.NEWS_DETAILS);
+
+        this.imageUrl1=newsItem.getImage();
+        this.news_details=newsItem.getDetail();
+
+        Toast.makeText(NewsDetails.this, "\n" + imageUrl1 + "\n", Toast.LENGTH_LONG).show();
+    }
 
     @Override
     public void onClick(View v) {

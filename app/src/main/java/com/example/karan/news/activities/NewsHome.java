@@ -48,7 +48,7 @@ public class NewsHome extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_page);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("my_prefs", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.PREFERENCES, Context.MODE_PRIVATE);
         userName= sharedPreferences.getString(Constants.USERNAME,"a");
 
         toolbar=(Toolbar)findViewById(R.id.toolbar);
@@ -81,8 +81,15 @@ public class NewsHome extends AppCompatActivity
         // launch animation
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_right);
         defaultFragment();
+        user_name.setText(userName);
         // register broadcast receiver which listens for change in network state
         registerReceiver(networkChangeReceiver, new IntentFilter(Constants.CONNECTIVITY_CHANGE_ACTION));
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        user_name.setText(userName);
     }
 
     @Override
@@ -102,6 +109,7 @@ public class NewsHome extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            LaunchManager.showSignInScreen(this);
         }
     }
 
@@ -157,7 +165,7 @@ public class NewsHome extends AppCompatActivity
                 color=resources.getColor(R.color.gray);
                 break;
             case R.id.world:
-                child=Constants.SPORTS_NEWS_CATEGORY ;
+                child=Constants.WORLD_NEWS_CATEGORY ;
                 color=resources.getColor(R.color.colorAccent);
                 break;
             case R.id.bookmarks:
@@ -197,6 +205,7 @@ public class NewsHome extends AppCompatActivity
         newsHomeFragment = new NewsHomeFragment();
         Bundle bundle=new Bundle();
         bundle.putString(Constants.CATEGORY_NAME,Constants.SPORTS_NEWS_CATEGORY);
+        bundle.putInt(Constants.TOOLBAR_COLOR,R.color.colorPrimaryDark);
         newsHomeFragment.setArguments(bundle);
 
         //Default fragment with the aforementioned category is inflated

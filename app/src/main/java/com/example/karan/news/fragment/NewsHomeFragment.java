@@ -2,7 +2,9 @@ package com.example.karan.news.fragment;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,16 +12,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.karan.news.R;
+import com.example.karan.news.models.Item;
 import com.example.karan.news.news_page.NewsList;
 import com.example.karan.news.news_page.NewsViewHolder;
 import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 import com.example.karan.news.utils.RecyclerViewClickListener;
 import com.example.karan.news.utils.RecyclerViewTouchListener;
+import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * Created by karan on 7/19/2017.
@@ -35,9 +46,15 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
     private int color;
     Context context;
 
+    ArrayList<Item> newsItem = new ArrayList<>();
+
+    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState){
         View view=inflater.inflate(R.layout.fragment,container,false);
+
+        loadPreferences();
 
         //Recycler view contains the list of news articles foe different categories
         recyclerView=(RecyclerView) view.findViewById(R.id.recyclerview);
@@ -63,14 +80,45 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
             }
         };
         adapter.getItemCount();
+
+        readData(adapter);
+
         recyclerView.addOnItemTouchListener(new RecyclerViewTouchListener(context, recyclerView, this));
         recyclerView.setAdapter(adapter);
         return view;
     }
 
+    public void readData(final FirebaseRecyclerAdapter adapter) {
+
+        mDatabase.child(child).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // clear newsItem and newsListData to remove any redundant data
+                newsItem.clear();
+
+                for ( DataSnapshot userDataSnapshot : dataSnapshot.getChildren() ) {
+                    if (userDataSnapshot != null) {
+                        // add values fetched from firebase database to 'Item' newsItem
+                        newsItem.add(userDataSnapshot.getValue(Item.class));
+
+                        // update recycler view adapter
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
     @Override
     public void onClick(View view, int position) {
-        LaunchManager.showDetailsPage(getActivity(),position,child,color);
+        LaunchManager.showDetailsPage(getActivity(),position,child,color, newsItem.get(position));
     }
 
     @Override
@@ -88,5 +136,13 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
                     })
                     .show();
         }
+
+    protected void loadPreferences() {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+        boolean color  = sharedPreferences.getBoolean("bg_color", true);
+        Toast.makeText(getActivity(), String.valueOf(color), Toast.LENGTH_LONG).show();
     }
+}
 
