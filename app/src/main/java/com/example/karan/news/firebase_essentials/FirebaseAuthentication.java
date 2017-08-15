@@ -128,6 +128,17 @@ public class FirebaseAuthentication {
         });
     }
 
+    public String getCurrentUser() {
+
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
+        if (currentUser != null) {
+            return currentUser.getUid();
+        } else {
+            return null;
+        }
+    }
+
     //Logs existing user out from the app.
     public void logoutUser() {
 

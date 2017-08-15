@@ -169,7 +169,7 @@ public class NewsHome extends AppCompatActivity
                 color=resources.getColor(R.color.colorAccent);
                 break;
             case R.id.bookmarks:
-                child=Constants.POLITICS_NEWS_CATEGORY ;
+                child=Constants.BOOKMARK_CATEGORY;
                 color=resources.getColor(R.color.gray);
                 break;
             case R.id.top_stories:

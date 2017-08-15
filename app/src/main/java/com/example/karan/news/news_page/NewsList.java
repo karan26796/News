@@ -8,15 +8,19 @@ public class NewsList {
     public NewsList() {
     }
 
-    private String title,description,image,date;
+    private String title;
+    private String description;
+    private String image;
+    private String date;
+
     
     //Defined for predefined cities
-    public NewsList(String title, String image,String date)
+    public NewsList(String title, String image, String date,String description,String detail)
     {
         this.title=title;
         this.image=image;
         this.date=date;
-        
+        this.description=description;
     }
     //Defined for user entered title
 
@@ -45,5 +49,6 @@ public class NewsList {
     public String getDate() {return date;}
 
     public void setDate(String date) {this.date = date;}
+
 
 }

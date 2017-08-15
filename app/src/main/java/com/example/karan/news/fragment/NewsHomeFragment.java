@@ -142,6 +142,9 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         boolean color  = sharedPreferences.getBoolean("bg_color", true);
+        if(color){
+
+        }
         Toast.makeText(getActivity(), String.valueOf(color), Toast.LENGTH_LONG).show();
     }
 }

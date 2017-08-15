@@ -51,5 +51,12 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
 
+    <!-- Add/Remove bookmark strings-->
+    <string name="remove_bookmark">Remove Bookmark?</string>
+    <string name="add_bookmark">Bookmark?</string>
+    <string name="bookmark_added">Bookmark added</string>
+    <string name="users">Users</string>
+    <string name="remove_bookmark_alert_dialog_message">Sure to remove article from bookmarks?</string>
+
 
 </resources>

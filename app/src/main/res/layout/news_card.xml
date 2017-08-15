@@ -17,15 +17,12 @@
         cardUseCompatPadding="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="@dimen/cardview_margin_top"
-        android:layout_marginEnd="@dimen/cardview_margin_top"
         android:layout_marginLeft="@dimen/cardview_margin_right"
         android:layout_marginRight="@dimen/cardview_margin_right"
-        android:layout_marginTop="0dp"
         android:padding="@dimen/padding_smaller"
-        app:cardElevation="@dimen/cardview_elevation">
+        app:cardElevation="@dimen/cardview_elevation"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -83,6 +80,16 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <ImageButton
+                android:id="@+id/bookmark"
+                android:layout_width="@dimen/square_button_parameter"
+                android:layout_height="@dimen/square_button_parameter"
+                android:elevation="@dimen/button_elevation"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                app:srcCompat="@drawable/dots_vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
 
