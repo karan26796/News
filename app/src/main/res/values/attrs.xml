@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="icon_color" format="reference"> </attr>
+    <attr name="toolbar_tint" format="reference"> </attr>
+    <attr name="cardview_bg_color" format="reference"> </attr>
+    <attr name="cardview_read_bg_color" format="reference"> </attr>
+    <attr name="text_color" format="reference"> </attr>
+    <attr name="text_color_light" format="reference"> </attr>
+    <attr name="text_color_dark" format="reference"> </attr>
+</resources>

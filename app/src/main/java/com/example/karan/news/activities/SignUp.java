@@ -2,10 +2,13 @@ package com.example.karan.news.activities;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,17 +26,20 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     private EditText newUser,newPass,conPass;
     private Button submit;
+    private Window window;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
+        window=getWindow();
         newUser=(EditText) findViewById(R.id.new_email);
         newPass=(EditText) findViewById(R.id.new_pass);
         conPass=(EditText) findViewById(R.id.con_pass);
 
+        window.setStatusBarColor(getResources().getColor(R.color.gray));
         submit=(Button) findViewById(R.id.submit);
         submit.setOnClickListener(this);
     }
@@ -69,10 +75,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(SignUp.this);
             firebaseAuthentication.newUser(email,password,mProgressDialog);
 
-            SharedPreferences sharedPreferences=getSharedPreferences(Constants.PREFERENCES,MODE_PRIVATE);
-            SharedPreferences.Editor edit = sharedPreferences.edit();
-            sharedPreferences.getString(Constants.USERNAME,email);
-            edit.commit();
         }
     }
 

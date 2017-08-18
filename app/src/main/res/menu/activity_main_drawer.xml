@@ -5,8 +5,8 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/sports"
-            android:icon="@drawable/football"
             android:enabled="true"
+            android:icon="@drawable/football"
             android:title="@string/sports_nav_drawer" />
         <item
             android:id="@+id/politics"

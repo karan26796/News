@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -45,7 +46,7 @@ import java.util.List;
  * clicked from the list on Home page
  */
 
-public class NewsDetails extends AppCompatActivity implements View.OnClickListener{
+public class NewsDetails extends BaseActivity implements View.OnClickListener{
 
     private String category, imageUrl1, news_details;
     private int color;
@@ -54,7 +55,7 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
     private PopupMenu popup;
     private ImageView imageView;
     private Toolbar toolbar;
-    private ImageButton imageButton;
+    private ImageButton imageButton,bookmark;
     
     private ArrayList<Item> newsData;
     
@@ -83,12 +84,15 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
         toolbar=(Toolbar)findViewById(R.id.category_toolbar);
 
         imageButton=(ImageButton)findViewById(R.id.imageButton);
+        bookmark=(ImageButton)findViewById(R.id.bookmark);
 
         databaseReference= FirebaseDatabase.getInstance().getReference().child(category+position);
 
         getData();
         loadData();
+
         imageButton.setOnClickListener(this);
+        bookmark.setOnClickListener(this);
     }
 
     @Override
@@ -115,7 +119,7 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
 
         this.imageUrl1=newsItem.getImage();
         this.news_details=newsItem.getDetail();
-
+        getBookmarkCount();
         Toast.makeText(NewsDetails.this, "\n" + imageUrl1 + "\n", Toast.LENGTH_LONG).show();
     }
 
@@ -126,6 +130,9 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
             case R.id.imageButton:
                 LaunchManager.launchHome(this);
                 break;
+            case R.id.bookmark:
+                showPopup(v,position);
+
         }
     }
 
@@ -174,7 +181,7 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
         });
     }
 
-    private void getBookmarkCount() {
+    public void getBookmarkCount() {
 
         FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(this);
 
@@ -280,5 +287,20 @@ public class NewsDetails extends AppCompatActivity implements View.OnClickListen
                 .child(currentUser).child(getApplicationContext().getString(R.string.bookmark_nav_drawer))
                 .child(getApplicationContext().getString(R.string.bookmark_nav_drawer) + "_0" + String.valueOf(newsData.size()));
         removeDatabaseFinalValueReference.removeValue();
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return 0;
+    }
+
+    @Override
+    protected int getToolbarID() {
+        return 0;
+    }
+
+    @Override
+    protected String getToolbarTitle() {
+        return null;
     }
 }

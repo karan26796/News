@@ -2,10 +2,13 @@ package com.example.karan.news.activities;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,22 +29,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText pass,email;
     private Button login,user;
+    private Window window;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
         user=(Button) findViewById(R.id.sign_up);
+        window=getWindow();
 
         pass=(EditText) findViewById(R.id.pass);
         email=(EditText)findViewById(R.id.email);
 
         login=(Button) findViewById(R.id.sign_in);
 
+        window.setStatusBarColor(getResources().getColor(R.color.gray));
         login.setOnClickListener(this);
         user.setOnClickListener(this);
     }
+
 
     @Override
     public void onBackPressed() {

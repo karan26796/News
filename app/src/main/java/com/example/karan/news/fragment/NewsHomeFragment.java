@@ -3,7 +3,9 @@ package com.example.karan.news.fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.karan.news.R;
+import com.example.karan.news.activities.NewsDetails;
+import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 import com.example.karan.news.models.Item;
 import com.example.karan.news.news_page.NewsList;
 import com.example.karan.news.news_page.NewsViewHolder;
@@ -41,6 +45,7 @@ import java.util.ArrayList;
 public class NewsHomeFragment extends Fragment implements RecyclerViewClickListener{
 
     private RecyclerView recyclerView;
+
     private DatabaseReference databaseReference;
     private String child;
     private int color;
@@ -59,6 +64,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         //Recycler view contains the list of news articles foe different categories
         recyclerView=(RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         child = this.getArguments().getString(Constants.CATEGORY_NAME);
         color=this.getArguments().getInt(Constants.TOOLBAR_COLOR);
@@ -138,13 +144,9 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         }
 
     protected void loadPreferences() {
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         boolean color  = sharedPreferences.getBoolean("bg_color", true);
-        if(color){
-
-        }
         Toast.makeText(getActivity(), String.valueOf(color), Toast.LENGTH_LONG).show();
     }
 }

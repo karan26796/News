@@ -27,12 +27,12 @@ public abstract class NetworkChangeReceiver extends BroadcastReceiver {
     }
 
     /**
-     * PURPOSE: Dismisses error snackbar when metwork becomes available
+     * PURPOSE: Dismisses error snackbar when network becomes available
      */
     protected abstract void dismissSnackbar();
 
     /**
-     * PURPOSE: Show error fragment when there is no network state
+     * PURPOSE: Shows error fragment when there is no network state
      */
     protected abstract void setUpLayout();
 }

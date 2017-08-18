@@ -15,7 +15,7 @@ public class NewsList {
 
     
     //Defined for predefined cities
-    public NewsList(String title, String image, String date,String description,String detail)
+    public NewsList(String title, String image, String date,String description)
     {
         this.title=title;
         this.image=image;

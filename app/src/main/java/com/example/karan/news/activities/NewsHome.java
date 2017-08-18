@@ -3,6 +3,7 @@ package com.example.karan.news.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -30,14 +31,14 @@ import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 import com.example.karan.news.utils.NetworkChangeReceiver;
 
-public class NewsHome extends AppCompatActivity
+public class NewsHome extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    private String userName,category;
+    private String category,user;
     private int toolbarColor;
-    private TextView user_name;
     private NewsHomeFragment newsHomeFragment;
     private Window window;
+    private FirebaseAuthentication firebaseAuthentication;
     private Toolbar toolbar;
 
     NetworkChangeReceiver networkChangeReceiver;
@@ -48,8 +49,6 @@ public class NewsHome extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_page);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.PREFERENCES, Context.MODE_PRIVATE);
-        userName= sharedPreferences.getString(Constants.USERNAME,"a");
 
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
@@ -66,12 +65,12 @@ public class NewsHome extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
         defaultFragment();
-
+//        new NewsDetails().getBookmarkCount();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header=navigationView.inflateHeaderView(R.layout.nav_header_main);
-        user_name=(TextView) header.findViewById(R.id.tv);
-        user_name.setText(userName);
 
+        firebaseAuthentication=new FirebaseAuthentication(this);
+        user=firebaseAuthentication.getCurrentUser();
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -81,15 +80,8 @@ public class NewsHome extends AppCompatActivity
         // launch animation
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_right);
         defaultFragment();
-        user_name.setText(userName);
         // register broadcast receiver which listens for change in network state
         registerReceiver(networkChangeReceiver, new IntentFilter(Constants.CONNECTIVITY_CHANGE_ACTION));
-    }
-
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        user_name.setText(userName);
     }
 
     @Override
@@ -109,7 +101,8 @@ public class NewsHome extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            LaunchManager.showSignInScreen(this);
+            if(user!=null)
+            LaunchManager.exitApp(this);
         }
     }
 
@@ -136,7 +129,7 @@ public class NewsHome extends AppCompatActivity
     and sends the item id and category string value along with setting the toolbar title
     and inflating list of each category in the fragment*/
 
-    //Requiresapi checks the user's android api
+    //Requires api checks the user's android api
     //It is required to change the app's status bar color
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void displaySelectedScreen(int id, String child, int color) {
@@ -210,7 +203,6 @@ public class NewsHome extends AppCompatActivity
 
         //Default fragment with the aforementioned category is inflated
         fragmentInflate();
-
     }
 
     //Shows a Dialog box for user prompt on whether he wants to log out or continue using the app
@@ -220,7 +212,10 @@ public class NewsHome extends AppCompatActivity
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(activity);
-                        firebaseAuthentication.logoutUser();
+                        String user =firebaseAuthentication.getCurrentUser();
+                        if(user!=null){
+                            firebaseAuthentication.logoutUser();
+                        }
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -249,4 +244,23 @@ public class NewsHome extends AppCompatActivity
         return true;
     }
 
+    @Override
+    protected int getLayoutResourceId() {
+        return 0;
+    }
+
+    @Override
+    protected int getToolbarID() {
+        return 0;
+    }
+
+    @Override
+    protected String getToolbarTitle() {
+        return null;
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+    }
 }

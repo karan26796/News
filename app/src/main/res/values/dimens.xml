@@ -33,6 +33,7 @@
 
     <!--Width and Height dimensions for xml icons in drawables-->
     <dimen name="icon_parameter">24dp</dimen>
+    <dimen name="toolbar_height">50sp</dimen>
 
     <!--Corner radii to be used universally across views and layouts-->
     <dimen name="corner_radius">15sp</dimen>
@@ -42,12 +43,13 @@
     <!--Custom values for various views-->
     <dimen name="image_view_height">180sp</dimen>
 
+    <!--Custom card view attributes-->
+    <dimen name="cardview_elevation">5sp</dimen>
+    <dimen name="card_view_max_elevation">15sp</dimen>
+
+    <!--Custom dimensions to be used as view parameters-->
+    <dimen name="relative_layout_height">340sp</dimen>
     <dimen name="button_elevation">5sp</dimen>
 
-    <dimen name="cardview_elevation">5sp</dimen>
-    <dimen name="cardview_margin_top">2sp</dimen>
-    <dimen name="cardview_margin_right">1sp</dimen>
-    <dimen name="relative_layout_height">330sp</dimen>
-    <dimen name="toolbar_height">50sp</dimen>
 
 </resources>

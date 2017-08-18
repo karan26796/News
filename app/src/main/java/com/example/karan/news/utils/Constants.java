@@ -38,5 +38,6 @@ public class Constants {
     public static final String USERS_KEY ="Users";
     public static final String NEWS_DETAILS ="news_details" ;
     public static final String READ_ARTICLES_STATUS_SHARED_PREFERENCES = "MyPrefs";
+    public static final String KEY_APP_THEME = "app_theme";
 
 }
