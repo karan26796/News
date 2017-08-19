@@ -101,10 +101,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // set app theme
         if (theme.equals(getString(R.string.theme_light))) {
-
             setTheme(R.style.AppFullScreenTheme);
         } else if (theme.equals(getString(R.string.theme_dark))) {
-
             setTheme(R.style.AppFullScreenDarkTheme);
         }
     }
@@ -120,7 +118,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         loadPreferences();
 
         // set font size
-       /* if (textSize.equals(getString(R.string.text_size_small))) {
+       if (textSize.equals(getString(R.string.text_size_small))) {
 
             setTheme(R.style.TextSizeSmall);
         } else if (textSize.equals(getString(R.string.text_size_medium))) {
@@ -129,7 +127,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         } else if (textSize.equals(getString(R.string.text_size_large))) {
 
             setTheme(R.style.TextSizeLarge);
-        }*/
+        }
     }
 
     /**
@@ -139,7 +137,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-       // textSize = sharedPreferences.getString(Constants.KEY_TEXT_SIZE, getString(R.string.text_size_medium));
+        textSize = sharedPreferences.getString(Constants.KEY_TEXT_SIZE, getString(R.string.text_size_medium));
 
         theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
 

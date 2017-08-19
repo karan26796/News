@@ -10,6 +10,7 @@
     <dimen name="layout_parameter_small">100sp</dimen>
     <dimen name="layout_parameter_medium">150sp</dimen>
     <dimen name="layout_parameter_large">200sp</dimen>
+    <dimen name="layout_parameter_extra_large">250sp</dimen>
 
     <!--Dimensions for edit text views in login and sign up screens-->
     <dimen name="edit_text_width">350sp</dimen>

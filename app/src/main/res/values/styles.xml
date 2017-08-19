@@ -4,10 +4,11 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-
+        <item name="android:textColorSecondary">@color/white</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="AppFullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">true</item>
@@ -16,13 +17,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="text_color">@color/white</item>
-        <item name="text_color_light">@color/light_gray</item>
-        <item name="text_color_dark">@color/black</item>
+
+        <item name="category_sports">@color/category_sports_light</item>
+        <item name="category_politics">@color/category_politics_light</item>
+        <item name="category_world">@color/category_world_light</item>
+        <item name="category_top_stories">@color/category_top_stories_light</item>
+        <item name="category_bookmarks">@color/category_bookmark_light</item>
+
+        <item name="text_color_primary">@color/black</item>
+        <item name="text_color_secondary">@color/light_gray</item>
+        <item name="text_color_tertiary">@color/gray_dark</item>
+
+        <item name="bg_color">@color/white</item>
+
         <item name="cardview_bg_color">@color/white</item>
         <item name="cardview_read_bg_color">@color/off_white</item>
-        <item name="toolbar_tint">@color/white</item>
-        <item name="icon_color">@color/white</item>
     </style>
 
     <style name="AppFullScreenDarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -30,13 +39,25 @@
         <item name="android:windowActionBar">true</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowContentOverlay">@null</item>
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="text_color">@color/white</item>
-        <item name="cardview_bg_color">@color/white</item>
-        <item name="cardview_read_bg_color">@color/off_white</item>
-        <item name="toolbar_tint">@color/white</item>
-        <item name="icon_color">@color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="category_sports">@color/category_sports_dark</item>
+        <item name="category_politics">@color/category_politics_dark</item>
+        <item name="category_world">@color/category_world_dark</item>
+        <item name="category_top_stories">@color/category_top_stories_dark</item>
+        <item name="category_bookmarks">@color/category_bookmark_dark</item>
+
+        <item name="text_color_primary">@color/white</item>
+        <item name="text_color_secondary">@color/off_white</item>
+        <item name="text_color_tertiary">@color/off_white</item>
+
+        <item name="bg_color">@color/gray_darker</item>
+
+        <item name="cardview_bg_color">@color/gray_dark</item>
+        <item name="cardview_read_bg_color">@color/lighter_gray</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -44,35 +65,30 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!-- Small text size styles -->
-    <style name="SmallTitleText">
-        <item name="android:textSize">24sp</item>
-    </style>
+
     <style name="SmallBodyText">
         <item name="android:textSize">16sp</item>
     </style>
-    <style name="SmallTailText">
-        <item name="android:textSize">12sp</item>
-    </style>
 
     <!-- Medium text size styles -->
-    <style name="MediumTitleText">
-        <item name="android:textSize">30sp</item>
-    </style>
     <style name="MediumBodyText">
         <item name="android:textSize">20sp</item>
     </style>
-    <style name="MediumTailText">
-        <item name="android:textSize">16sp</item>
-    </style>
 
     <!-- Large text size styles -->
-    <style name="LargeTitleText">
-        <item name="android:textSize">34sp</item>
-    </style>
     <style name="LargeBodyText">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">30sp</item>
     </style>
-    <style name="LargeTailText">
-        <item name="android:textSize">18sp</item>
+
+    <style name="TextSizeSmall">
+        <item name="text_size">@style/SmallBodyText</item>
+    </style>
+
+    <style name="TextSizeMedium">
+        <item name="text_size">@style/MediumBodyText</item>
+    </style>
+
+    <style name="TextSizeLarge">
+        <item name="text_size">@style/LargeBodyText</item>
     </style>
 </resources>

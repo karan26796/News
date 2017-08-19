@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.preference.PreferenceActivity;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Build;
@@ -23,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.karan.news.R;
 import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
@@ -65,9 +67,7 @@ public class NewsHome extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
 
         defaultFragment();
-//        new NewsDetails().getBookmarkCount();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View header=navigationView.inflateHeaderView(R.layout.nav_header_main);
 
         firebaseAuthentication=new FirebaseAuthentication(this);
         user=firebaseAuthentication.getCurrentUser();
@@ -246,17 +246,17 @@ public class NewsHome extends BaseActivity
 
     @Override
     protected int getLayoutResourceId() {
-        return 0;
+        return R.layout.news_page;
     }
 
     @Override
     protected int getToolbarID() {
-        return 0;
+        return R.id.toolbar;
     }
 
     @Override
     protected String getToolbarTitle() {
-        return null;
+        return category;
     }
 
     @Override

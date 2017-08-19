@@ -12,7 +12,8 @@
         android:id="@+id/tool"
         layout="@layout/toolbar"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/cardview_default_elevation" />
+        android:layout_height="wrap_content"
+        android:visibility="visible" />
 
     <include layout="@layout/content_news_page" />
 
@@ -22,6 +23,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer"
+        app:headerLayout="@layout/nav_header_main"/>
 
 </android.support.v4.widget.DrawerLayout>

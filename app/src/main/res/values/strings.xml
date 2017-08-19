@@ -29,22 +29,6 @@
     <string name="bookmark_nav_drawer">Bookmark</string>
     <string name="sports_nav_drawer">Sports</string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-
-    <string-array name="multi_select_list_preference_default_value" />
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-
-    <string name="pref_title_vibrate">Vibrate</string>
-    <string name="action_settings">Settings</string>
-
     <!-- Strings used as hints in Edit Text views -->
     <string name="hint_username">123@xyz.com</string>
     <string name="new_user">New user?Sign Up</string>
@@ -63,5 +47,13 @@
     <string name="text_size_small">Small</string>
     <string name="text_size_medium">Medium</string>
     <string name="text_size_large">Large</string>
+    <string name="theme_summary">changes theme of the app</string>
+    <string name="theme_dialog">Select app theme</string>
+    <string name="select_theme">Select theme</string>
+    <string name="text_summary">Select a suitable text size</string>
+    <string name="text_size">Text Size</string>
+    <string name="select_text">Select text size</string>
+    <string name="download">Download</string>
+    <string name="download_summary">Download images from the internet?</string>
 
 </resources>

@@ -22,17 +22,17 @@ public class AppPreferences extends BaseActivity {
 
     @Override
     protected int getLayoutResourceId() {
-        return 0;
+        return R.layout.settings;
     }
 
     @Override
     protected int getToolbarID() {
-        return 0;
+        return 0 ;
     }
 
     @Override
     protected String getToolbarTitle() {
-        return null;
+        return "";
     }
 
     public static class SettingsFragment extends PreferenceFragment{

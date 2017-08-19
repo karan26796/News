@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="icon_color" format="reference"> </attr>
-    <attr name="toolbar_tint" format="reference"> </attr>
     <attr name="cardview_bg_color" format="reference"> </attr>
     <attr name="cardview_read_bg_color" format="reference"> </attr>
-    <attr name="text_color" format="reference"> </attr>
-    <attr name="text_color_light" format="reference"> </attr>
-    <attr name="text_color_dark" format="reference"> </attr>
+
+    <attr name="bg_color" format="reference"> </attr>
+
+    <attr name="text_size" format="reference" />
+
+    <attr name="text_color_primary" format="reference"> </attr>
+    <attr name="text_color_secondary" format="reference"> </attr>
+    <attr name="text_color_tertiary" format="reference"> </attr>
+    
+    <attr name="category_sports" format="reference"> </attr>
+    <attr name="category_world" format="reference"> </attr>
+    <attr name="category_politics" format="reference"> </attr>
+    <attr name="category_top_stories" format="reference"> </attr>
+    <attr name="category_bookmarks" format="reference"></attr>
 </resources>

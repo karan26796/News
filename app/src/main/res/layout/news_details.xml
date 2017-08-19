@@ -8,13 +8,13 @@
         android:id="@+id/category_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"
         android:elevation="@dimen/default_elevation"
         android:paddingLeft="@dimen/padding_large"
         app:title="@string/category"
-        app:titleTextColor="@color/white"></android.support.v7.widget.Toolbar>
+        app:titleTextColor="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
 
     <ImageButton
         android:id="@+id/bookmark"
@@ -24,8 +24,8 @@
         android:layout_alignParentTop="true"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
+        android:tint="@color/white"
         android:elevation="@dimen/button_elevation"
-        android:tint="?icon_color"
         app:srcCompat="@drawable/dots_vertical" />
 
     <ImageButton
@@ -36,37 +36,43 @@
         android:clickable="true"
         android:elevation="@dimen/button_elevation"
         android:focusable="true"
-        android:tint="?icon_color"
+        android:tint="@color/white"
         app:srcCompat="?attr/actionModeCloseDrawable"
         android:layout_alignParentTop="true" />
 
-    <ImageView
-        android:id="@+id/detail_image"
-        android:layout_width="match_parent"
-        android:layout_height="250sp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/category_toolbar"
-        android:padding="@dimen/padding_smaller" />
 
     <ScrollView
         style="@android:style/Widget.DeviceDefault.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/detail_image"
+        android:background="?attr/bg_color"
         android:padding="@dimen/padding_smaller"
-        android:scrollbarStyle="outsideOverlay">
+        android:scrollbarStyle="outsideOverlay"
+        android:layout_below="@+id/category_toolbar">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="?attr/bg_color">
+
+            <ImageView
+                android:id="@+id/detail_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_parameter_extra_large"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="?bg_color"
+                android:padding="@dimen/padding_smaller" />
 
             <TextView
                 android:id="@+id/details"
+                style="?text_size"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:textSize="16sp" />
+                android:layout_below="@+id/detail_image"
+                android:textColor="?text_color_primary" />
         </RelativeLayout>
     </ScrollView>
 

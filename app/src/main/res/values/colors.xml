@@ -5,8 +5,24 @@
     <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="category_sports_light">#ad1457</color>
+    <color name="category_politics_light">#4527a0</color>
+    <color name="category_world_light">#00796b</color>
+    <color name="category_top_stories_light">#fb8c00</color>
+    <color name="category_bookmark_light">#ff6e40</color>
+
+    <color name="category_sports_dark">#40001c</color>
+    <color name="category_politics_dark">#090025</color>
+    <color name="category_world_dark">#012622</color>
+    <color name="category_top_stories_dark">#1b0f00</color>
+    <color name="category_bookmark_dark">#280a00</color>
+
     <color name="gray">#232323</color>
+    <color name="gray_dark">#1d1d1d</color>
+    <color name="lighter_gray">#bebebe</color>
     <color name="black">#000</color>
+    <color name="gray_darker">#212121</color>
     <color name="white">#efefef</color>
 
     <!--Custom colors to be used across views and layouts-->
@@ -19,4 +35,6 @@
     <color name="light_gray">#363636</color>
     <color name="button_gradient_color_1">#0091ea</color>
     <color name="button_gradient_color_2">#304ffe</color>
+    <color name="purple">#9e12ff</color>
+    <color name="drawer_blue">#35c1fe</color>
 </resources>

@@ -2,25 +2,28 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
         android:title="General">
-        <EditTextPreference
-            android:defaultValue="@string/app_name"
-            android:key="title"
-            android:summary="This will change title on toolbar"
-            android:title="Notebook Title"></EditTextPreference>
+        <CheckBoxPreference
+            android:key="image_download"
+            android:summary="@string/download_summary"
+            android:title="@string/download" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Color">
+    <PreferenceCategory android:title="Look and feel">
 
         <ListPreference
-            android:key="bg_color"
-            android:summary="Color dark"
+            android:key="app_theme"
+            android:summary="@string/theme_summary"
             android:entryValues="@array/theme"
-            android:title="Dark Background"></ListPreference>
+            android:entries="@array/theme"
+            android:dialogTitle="@string/theme_dialog"
+            android:title="@string/select_theme"/>
         <ListPreference
-            android:entryValues="@array/text_size"
             android:key="text_size"
-            android:summary="Select a suitable text size"
-            android:title="Text Size"></ListPreference>
+            android:dialogTitle="@string/select_text"
+            android:entries="@array/text_size"
+            android:entryValues="@array/text_size"
+            android:summary="@string/text_summary"
+            android:title="@string/text_size"/>
 
     </PreferenceCategory>
 

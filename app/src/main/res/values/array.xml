@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Text size array -->
-    <array name="text_size">
+    <string-array name="text_size">
         <item>Small</item>
         <item>Medium</item>
         <item>Large</item>
-    </array>
+    </string-array>
 
     <!-- App theme array -->
-    <array name="theme">
+    <string-array name="theme">
         <item>Light</item>
         <item>Dark</item>
-    </array>
+    </string-array>
 </resources>

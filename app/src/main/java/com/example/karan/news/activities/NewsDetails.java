@@ -82,7 +82,8 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         imageView=(ImageView)findViewById(R.id.detail_image);
 
         toolbar=(Toolbar)findViewById(R.id.category_toolbar);
-
+        toolbar.setBackgroundColor(color);
+        window.setStatusBarColor(color);
         imageButton=(ImageButton)findViewById(R.id.imageButton);
         bookmark=(ImageButton)findViewById(R.id.bookmark);
 
@@ -291,12 +292,12 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected int getLayoutResourceId() {
-        return 0;
+        return R.layout.news_details;
     }
 
     @Override
     protected int getToolbarID() {
-        return 0;
+        return R.id.category_toolbar;
     }
 
     @Override

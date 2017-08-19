@@ -47,7 +47,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
     private RecyclerView recyclerView;
 
     private DatabaseReference databaseReference;
-    private String child;
+    private String child,theme;
     private int color;
     Context context;
 
@@ -146,8 +146,9 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
     protected void loadPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-        boolean color  = sharedPreferences.getBoolean("bg_color", true);
-        Toast.makeText(getActivity(), String.valueOf(color), Toast.LENGTH_LONG).show();
+        theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
+        boolean color  = sharedPreferences.getBoolean("image_download", true);
+        Toast.makeText(getActivity(), String.valueOf(color)+ theme, Toast.LENGTH_LONG).show();
     }
 }
 
