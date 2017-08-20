@@ -6,7 +6,10 @@ public class Item implements Serializable{
 
     private String detail,image,title,date,description;
 
-    public Item() {
+    public Item(){
+
+    }
+    public Item(String detail, String date, String description, String image) {
         // Default constructor required for calls to DataSnapshot.getValue(Item.class)
     }
 
@@ -17,6 +20,7 @@ public class Item implements Serializable{
         this.date=date;
         this.description=description;
     }
+
 
     public String getDetail() {
         return detail;

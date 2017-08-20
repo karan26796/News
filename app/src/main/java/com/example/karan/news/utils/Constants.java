@@ -40,4 +40,5 @@ public class Constants {
     public static final String READ_ARTICLES_STATUS_SHARED_PREFERENCES = "MyPrefs";
     public static final String KEY_APP_THEME = "app_theme";
     public static final String KEY_TEXT_SIZE ="text_size" ;
+    public static final String KEY_DOWNLOAD_IMAGES ="image_download" ;
 }

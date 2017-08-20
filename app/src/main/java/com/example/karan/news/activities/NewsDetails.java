@@ -1,16 +1,13 @@
 package com.example.karan.news.activities;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
@@ -21,7 +18,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.karan.news.R;
 import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 import com.example.karan.news.models.Item;
@@ -38,7 +34,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by karan on 8/9/2017.
@@ -52,18 +47,19 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
     private int color;
     private TextView details;
     private Window window;
-    private PopupMenu popup;
+
     private ImageView imageView;
     private Toolbar toolbar;
-    private ImageButton imageButton,bookmark;
-    
-    private ArrayList<Item> newsData;
-    
-    private int count=0;
+    private ImageButton back_button,bookmark;
+
 
     private DatabaseReference databaseReference;
     private Item newsItem = new Item();
     private int position;
+
+    private ArrayList<Item> newsData;
+    private PopupMenu popup;
+    private int count=0;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -84,15 +80,16 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         toolbar=(Toolbar)findViewById(R.id.category_toolbar);
         toolbar.setBackgroundColor(color);
         window.setStatusBarColor(color);
-        imageButton=(ImageButton)findViewById(R.id.imageButton);
+        back_button=(ImageButton)findViewById(R.id.back_button);
         bookmark=(ImageButton)findViewById(R.id.bookmark);
 
         databaseReference= FirebaseDatabase.getInstance().getReference().child(category+position);
 
         getData();
         loadData();
+        getBookmarkCount();
 
-        imageButton.setOnClickListener(this);
+        back_button.setOnClickListener(this);
         bookmark.setOnClickListener(this);
     }
 
@@ -107,36 +104,48 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         toolbar.setBackgroundColor(color);
         window.setStatusBarColor(color);
         details.setText(news_details);
-
-        Picasso.with(getApplicationContext())
-                .load(imageUrl1)
-                .fit()
-                .into(imageView);
     }
 
     protected void getData() {
 
         newsItem = (Item) getIntent().getSerializableExtra(Constants.NEWS_DETAILS);
-
         this.imageUrl1=newsItem.getImage();
         this.news_details=newsItem.getDetail();
-        getBookmarkCount();
-        Toast.makeText(NewsDetails.this, "\n" + imageUrl1 + "\n", Toast.LENGTH_LONG).show();
+        loadPreferences(imageView);
     }
 
     @Override
     public void onClick(View v) {
         int id =v.getId();
         switch (id){
-            case R.id.imageButton:
+            case R.id.back_button:
                 LaunchManager.launchHome(this);
                 break;
             case R.id.bookmark:
                 showPopup(v,position);
-
+                break;
         }
     }
 
+    protected void loadPreferences(final ImageView imageView) {
+        this.imageView=imageView;
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
+        boolean image_download = sharedPreferences.getBoolean("image_download", true);
+        if(image_download){
+            Picasso.with(getApplicationContext())
+                    .load(imageUrl1)
+                    .fit()
+                    .into(imageView);
+        }
+        else
+        {
+            imageView.setImageResource(R.drawable.image_broken_variant);
+        }
+        Toast.makeText(this, String.valueOf(color)+ theme, Toast.LENGTH_LONG).show();
+    }
 
     private void showPopup(View view, final int position) {
 
@@ -220,18 +229,11 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
                     String currentUser = firebaseAuthentication.getCurrentUser();
 
                     // firebase database reference
-                    DatabaseReference bookmarkReference = databaseReference.child(getApplicationContext().getString(R.string.users))
-                            .child(currentUser).child(getApplicationContext().getString(R.string.bookmark_nav_drawer))
-                            .child(getApplicationContext().getString(R.string.bookmark_nav_drawer) + "_0" + String.valueOf(bookmarkCount + 1));
+                    DatabaseReference bookmarkReference = FirebaseDatabase.getInstance().getReference().child(Constants.USERS_KEY).child(currentUser);
 
+                    Item item1 =new Item(newsData.get(bookmarkCount).getDetail(),newsData.get(position).getDate(),newsData.get(position).getDescription(),newsData.get(position).getImage());
 
-                    HashMap<String, String> userMap = new HashMap<>();
-                    userMap.put("date", newsData.get(position).getDate());
-                    userMap.put("image", newsData.get(position).getImage());
-                    userMap.put("description",newsData.get(position).getDescription());
-                    userMap.put("detail",newsData.get(position).getDetail());
-                    // firebase database onComplete listener
-                    bookmarkReference.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    bookmarkReference.setValue(item1).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
@@ -262,11 +264,9 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         editor.apply();
 
         // firebase database reference
-        DatabaseReference removeDataReference = databaseReference.child(getApplicationContext().getString(R.string.users))
-                .child(currentUser).child(getApplicationContext().getString(R.string.bookmark_nav_drawer))
-                .child(getApplicationContext().getString(R.string.bookmark_nav_drawer) + "_0" + String.valueOf(newsPosition));
+        DatabaseReference bookmarkReference = FirebaseDatabase.getInstance().getReference().child(Constants.USERS_KEY).child(currentUser);
         // remove data item
-        removeDataReference.removeValue();
+        bookmarkReference.removeValue();
 
         //-------------------------------------------------------------------------------------
         // update index of news items following deleted news item
@@ -274,7 +274,7 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         // decrease index of following news items by 1.
         for (int i = newsPosition + 1 ; i <= newsData.size() ; i++) {
 
-            DatabaseReference bookmarkReference = databaseReference.child(getApplicationContext().getString(R.string.users))
+            DatabaseReference bookmarkReference1 = databaseReference.child(getApplicationContext().getString(R.string.users))
                     .child(currentUser).child(getApplicationContext().getString(R.string.bookmark_nav_drawer))
                     .child(getApplicationContext().getString(R.string.bookmark_nav_drawer) + "_0" + String.valueOf(i - 1));
 
@@ -289,7 +289,6 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
                 .child(getApplicationContext().getString(R.string.bookmark_nav_drawer) + "_0" + String.valueOf(newsData.size()));
         removeDatabaseFinalValueReference.removeValue();
     }
-
     @Override
     protected int getLayoutResourceId() {
         return R.layout.news_details;

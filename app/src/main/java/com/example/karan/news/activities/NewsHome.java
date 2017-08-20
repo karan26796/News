@@ -1,13 +1,8 @@
 package com.example.karan.news.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.preference.PreferenceActivity;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Build;
@@ -18,20 +13,15 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.example.karan.news.R;
 import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 import com.example.karan.news.fragment.NewsHomeFragment;
 import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
-import com.example.karan.news.utils.NetworkChangeReceiver;
 
 public class NewsHome extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -43,7 +33,6 @@ public class NewsHome extends BaseActivity
     private FirebaseAuthentication firebaseAuthentication;
     private Toolbar toolbar;
 
-    NetworkChangeReceiver networkChangeReceiver;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -51,9 +40,10 @@ public class NewsHome extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_page);
 
-
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
+
+        //sets the toolbar specified as the action bar
         setSupportActionBar(toolbar);
 
         //method used to change status bar color
@@ -80,8 +70,6 @@ public class NewsHome extends BaseActivity
         // launch animation
         overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_right);
         defaultFragment();
-        // register broadcast receiver which listens for change in network state
-        registerReceiver(networkChangeReceiver, new IntentFilter(Constants.CONNECTIVITY_CHANGE_ACTION));
     }
 
     @Override
@@ -151,7 +139,7 @@ public class NewsHome extends BaseActivity
         switch (id){
             case R.id.sports:
                 child=Constants.SPORTS_NEWS_CATEGORY ;
-                color=resources.getColor(R.color.colorAccent);
+                color=resources.getColor(R.color.colorPrimary);
                 break;
             case R.id.politics:
                 child=Constants.POLITICS_NEWS_CATEGORY ;
@@ -159,15 +147,17 @@ public class NewsHome extends BaseActivity
                 break;
             case R.id.world:
                 child=Constants.WORLD_NEWS_CATEGORY ;
-                color=resources.getColor(R.color.colorAccent);
+                color=resources.getColor(R.color.colorPrimary);
                 break;
-            case R.id.bookmarks:
-                child=Constants.BOOKMARK_CATEGORY;
+
+            case R.id.top_stories:
+                child=Constants.TOP_STORIES_NEWS_CATEGORY;
                 color=resources.getColor(R.color.gray);
                 break;
-            case R.id.top_stories:
-                child=Constants.SPORTS_NEWS_CATEGORY ;
-                color=resources.getColor(R.color.colorAccent);
+
+            case R.id.bookmarks:
+                child=Constants.BOOKMARK_CATEGORY;
+                color=resources.getColor(R.color.colorPrimary);
                 break;
         }
 
@@ -251,12 +241,12 @@ public class NewsHome extends BaseActivity
 
     @Override
     protected int getToolbarID() {
-        return R.id.toolbar;
+        return 0;
     }
 
     @Override
     protected String getToolbarTitle() {
-        return category;
+        return "";
     }
 
     @Override

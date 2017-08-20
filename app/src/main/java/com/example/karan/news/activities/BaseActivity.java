@@ -14,11 +14,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     String textSize;
     String theme;
     boolean downloadImages;
-
     Toolbar mToolbar;
-
     SharedPreferences sharedPreferences;
-
     SharedPreferences.OnSharedPreferenceChangeListener prefListener;
 
     @Override
@@ -38,7 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         sharedPreferencesListener();
 
         // set up activity layout
-//      setContentView(getLayoutResourceId());
+        setContentView(getLayoutResourceId());
 
         // set up activity toolbar
         configureToolbar();
@@ -119,7 +116,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // set font size
        if (textSize.equals(getString(R.string.text_size_small))) {
-
             setTheme(R.style.TextSizeSmall);
         } else if (textSize.equals(getString(R.string.text_size_medium))) {
 
@@ -137,11 +133,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        textSize = sharedPreferences.getString(Constants.KEY_TEXT_SIZE, getString(R.string.text_size_medium));
+        textSize = sharedPreferences.getString(Constants.KEY_TEXT_SIZE, getString(R.string.text_size_small));
 
         theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
 
-       // downloadImages  = sharedPreferences.getBoolean(Constants.KEY_DOWNLOAD_IMAGES, true);
+        downloadImages  = sharedPreferences.getBoolean(Constants.KEY_DOWNLOAD_IMAGES, true);
     }
 
     //-----------------------------------------------------------------------------------

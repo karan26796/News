@@ -6,18 +6,7 @@
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="category_sports_light">#ad1457</color>
-    <color name="category_politics_light">#4527a0</color>
-    <color name="category_world_light">#00796b</color>
-    <color name="category_top_stories_light">#fb8c00</color>
-    <color name="category_bookmark_light">#ff6e40</color>
-
-    <color name="category_sports_dark">#40001c</color>
-    <color name="category_politics_dark">#090025</color>
-    <color name="category_world_dark">#012622</color>
-    <color name="category_top_stories_dark">#1b0f00</color>
-    <color name="category_bookmark_dark">#280a00</color>
-
+    <!--Dark colors-->
     <color name="gray">#232323</color>
     <color name="gray_dark">#1d1d1d</color>
     <color name="lighter_gray">#bebebe</color>

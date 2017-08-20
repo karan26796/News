@@ -9,8 +9,6 @@ import com.example.karan.news.activities.NewsHome;
 import com.example.karan.news.activities.SignUp;
 import com.example.karan.news.models.Item;
 
-import java.util.ArrayList;
-
 /**
  * Handle launching different activities in launch scenario
  * All the intents for activity launch are defined here to clean corresponding

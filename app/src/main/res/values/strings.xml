@@ -42,12 +42,17 @@
     <string name="users">Users</string>
     <string name="remove_bookmark_alert_dialog_message">Sure to remove article from bookmarks?</string>
 
+    <!-- Theme options-->
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
+
+    <!-- Text size options-->
     <string name="text_size_small">Small</string>
     <string name="text_size_medium">Medium</string>
     <string name="text_size_large">Large</string>
-    <string name="theme_summary">changes theme of the app</string>
+
+    <!--Settings activity strings-->
+    <string name="theme_summary">Changes theme of the app</string>
     <string name="theme_dialog">Select app theme</string>
     <string name="select_theme">Select theme</string>
     <string name="text_summary">Select a suitable text size</string>
@@ -55,5 +60,7 @@
     <string name="select_text">Select text size</string>
     <string name="download">Download</string>
     <string name="download_summary">Download images from the internet?</string>
+    <string name="action_settings">Settings</string>
+    <string name="hi">Hi there!</string>
 
 </resources>

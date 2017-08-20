@@ -14,7 +14,7 @@
         app:title="@string/category"
         app:titleTextColor="@color/white"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:id="@+id/bookmark"
@@ -29,7 +29,7 @@
         app:srcCompat="@drawable/dots_vertical" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/back_button"
         android:layout_width="@dimen/square_button_parameter"
         android:layout_height="@dimen/square_button_parameter"
         android:background="?selectableItemBackgroundBorderless"

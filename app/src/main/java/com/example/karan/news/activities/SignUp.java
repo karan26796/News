@@ -1,7 +1,6 @@
 package com.example.karan.news.activities;
 
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.karan.news.R;
 import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
-import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 
 /**

@@ -26,7 +26,7 @@
             android:name=".activities.AppPreferences"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".activities.NewsHome"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppFullScreenTheme"/>
         <activity
             android:name=".activities.NewsDetails"
             android:parentActivityName=".activities.NewsHome" />
