@@ -9,6 +9,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Light theme. -->
     <style name="AppFullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">true</item>
@@ -28,6 +29,7 @@
         <item name="cardview_read_bg_color">@color/off_white</item>
     </style>
 
+    <!-- Dark theme. -->
     <style name="AppFullScreenDarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">true</item>
@@ -48,22 +50,26 @@
         <item name="cardview_read_bg_color">@color/lighter_gray</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <!-- Splash Screen theme. -->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textColor">@color/gray_dark</item>
+        <item name="android:textSize">30sp</item>
+    </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- Small text size styles -->
-
+    <!--Text Styles-->
     <style name="SmallBodyText">
         <item name="android:textSize">16sp</item>
     </style>
 
-    <!-- Medium text size styles -->
     <style name="MediumBodyText">
         <item name="android:textSize">20sp</item>
     </style>
 
-    <!-- Large text size styles -->
     <style name="LargeBodyText">
         <item name="android:textSize">30sp</item>
     </style>
