@@ -30,17 +30,12 @@ public class AppPreferences extends BaseActivity {
 
     @Override
     protected int getToolbarID() {
-        return 0 ;
+        return 0;
     }
 
     @Override
     protected String getToolbarTitle() {
         return "";
-    }
-
-    protected void loadPreferences() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
     }
 
     public static class SettingsFragment extends PreferenceFragment{

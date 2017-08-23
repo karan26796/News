@@ -11,8 +11,6 @@ package com.example.karan.news.utils;
 
 public class Constants {
 
-    public static final String CONNECTIVITY_CHANGE_ACTION ="android.net.conn.CONNECTIVITY_CHANGE" ;
-
 /*---------------------------------------------------------------------------------------------------------------------------------*/
 //Mentioned below are some of the common parameters that are required to be sent at different times in different activities
 /*---------------------------------------------------------------------------------------------------------------------------------*/
@@ -29,7 +27,7 @@ public class Constants {
     public static final String POLITICS_NEWS_CATEGORY ="Politics";
     public static final String WORLD_NEWS_CATEGORY ="World";
     public static final String TOP_STORIES_NEWS_CATEGORY ="Top Stories";
-    public static final String BOOKMARK_CATEGORY ="Bookmark";
+    public static final String BOOKMARK_CATEGORY ="Bookmarks";
 
 /*------------------------------------------------------------------------------------------------------------------*/
 //Mentioned below are some custom constant fields used across the code.
@@ -38,6 +36,7 @@ public class Constants {
     public static final String USERS_KEY ="Users";
     public static final String NEWS_DETAILS ="news_details" ;
     public static final String READ_ARTICLES_STATUS_SHARED_PREFERENCES = "MyPrefs";
+    public static final String READ_ARTICLE = "read";
     public static final String KEY_APP_THEME = "app_theme";
     public static final String KEY_TEXT_SIZE ="text_size" ;
     public static final String KEY_DOWNLOAD_IMAGES ="image_download" ;

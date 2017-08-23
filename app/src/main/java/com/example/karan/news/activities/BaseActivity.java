@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import com.example.karan.news.R;
 import com.example.karan.news.utils.Constants;
 
@@ -105,7 +104,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * PURPOSE: Set up app font size.
+     * PURPOSE: Set up details activity font size.
      *
      * Retrieves font size from the preference manager shared preferences and sets up font size.
      */
@@ -117,11 +116,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         // set font size
        if (textSize.equals(getString(R.string.text_size_small))) {
             setTheme(R.style.TextSizeSmall);
-        } else if (textSize.equals(getString(R.string.text_size_medium))) {
-
+        }
+        else if (textSize.equals(getString(R.string.text_size_medium))) {
             setTheme(R.style.TextSizeMedium);
-        } else if (textSize.equals(getString(R.string.text_size_large))) {
-
+        }
+        else if (textSize.equals(getString(R.string.text_size_large))) {
             setTheme(R.style.TextSizeLarge);
         }
     }

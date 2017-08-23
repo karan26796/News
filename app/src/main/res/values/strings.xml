@@ -55,7 +55,7 @@
     <string name="theme_summary">Changes theme of the app</string>
     <string name="theme_dialog">Select app theme</string>
     <string name="select_theme">Select theme</string>
-    <string name="text_summary">Select a suitable text size</string>
+    <string name="text_summary">Changes text size in news detail page</string>
     <string name="text_size">Text Size</string>
     <string name="select_text">Select text size</string>
     <string name="download">Download</string>

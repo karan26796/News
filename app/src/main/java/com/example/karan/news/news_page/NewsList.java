@@ -13,8 +13,7 @@ public class NewsList {
     private String image;
     private String date;
 
-    
-    //Defined for predefined cities
+
     public NewsList(String title, String image, String date,String description)
     {
         this.title=title;
@@ -22,7 +21,6 @@ public class NewsList {
         this.date=date;
         this.description=description;
     }
-    //Defined for user entered title
 
     public String getTitle() {
         return title;

@@ -15,5 +15,5 @@
     <attr name="category_world" format="reference"> </attr>
     <attr name="category_politics" format="reference"> </attr>
     <attr name="category_top_stories" format="reference"> </attr>
-    <attr name="category_bookmarks" format="reference"></attr>
+    <attr name="category_bookmarks" format="reference"> </attr>
 </resources>

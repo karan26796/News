@@ -10,6 +10,7 @@
     <PreferenceCategory android:title="Look and feel">
 
         <ListPreference
+            android:defaultValue="@style/AppFullScreenTheme"
             android:dialogTitle="@string/theme_dialog"
             android:entries="@array/theme"
             android:entryValues="@array/theme"
@@ -17,6 +18,7 @@
             android:summary="@string/theme_summary"
             android:title="@string/select_theme" />
         <ListPreference
+            android:defaultValue="@string/text_size_small"
             android:dialogTitle="@string/select_text"
             android:entries="@array/text_size"
             android:entryValues="@array/text_size"

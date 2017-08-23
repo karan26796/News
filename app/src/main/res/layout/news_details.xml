@@ -58,7 +58,7 @@
             <ImageView
                 android:id="@+id/detail_image"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/layout_parameter_extra_large"
+                android:layout_height="@dimen/layout_parameter_large"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:background="?bg_color"

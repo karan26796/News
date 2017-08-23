@@ -24,9 +24,10 @@ public class LaunchManager {
     }
 
     //Home activity is launched with the news category selected by the user previously
-    public static void categoryFragment(Activity activity,String category) {
+    public static void categoryFragment(Activity activity,String category,boolean status) {
         Intent intent = new Intent(activity, NewsHome.class);
         intent.putExtra(Constants.CATEGORY_NAME,category);
+        intent.putExtra(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES,status);
         activity.startActivity(intent);
     }
 

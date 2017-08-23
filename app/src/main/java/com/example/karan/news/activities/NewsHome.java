@@ -30,6 +30,8 @@ public class NewsHome extends BaseActivity
     private int toolbarColor;
     private NewsHomeFragment newsHomeFragment;
     private Window window;
+    boolean status;
+    private NavigationView navigationView;
     private FirebaseAuthentication firebaseAuthentication;
     private Toolbar toolbar;
 
@@ -39,6 +41,8 @@ public class NewsHome extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_page);
+
+        status=getIntent().getBooleanExtra(Constants.READ_ARTICLE,true);
 
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
@@ -57,19 +61,11 @@ public class NewsHome extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
 
         defaultFragment();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         firebaseAuthentication=new FirebaseAuthentication(this);
         user=firebaseAuthentication.getCurrentUser();
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // launch animation
-        overridePendingTransition(R.anim.enter_from_left, R.anim.exit_out_right);
-        defaultFragment();
     }
 
     @Override
@@ -79,6 +75,7 @@ public class NewsHome extends BaseActivity
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     //This method handle the back button action from the user
     @Override
     public void onBackPressed() {
@@ -175,6 +172,7 @@ public class NewsHome extends BaseActivity
 
         fragmentInflate();
 
+        //Once a category is selected from the Navigation drawer it closed without user prompt to ease app usage
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }

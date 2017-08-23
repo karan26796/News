@@ -9,9 +9,6 @@ public class Item implements Serializable{
     public Item(){
 
     }
-    public Item(String detail, String date, String description, String image) {
-        // Default constructor required for calls to DataSnapshot.getValue(Item.class)
-    }
 
     public Item(String detail, String image,String title,String date,String description) {
         this.detail=detail;

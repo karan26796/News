@@ -13,12 +13,11 @@
         android:theme="@style/AppFullScreenTheme">
         <activity
             android:name=".activities.LoginActivity"
-            android:theme="@style/AppFullScreenTheme"></activity>
-        <activity android:name=".activities.NewsHome">
-        </activity>
+            android:theme="@style/AppFullScreenTheme"/>
+        <activity android:name=".activities.NewsHome"/>
         <activity
             android:name=".activities.SignUp"
-            android:label="user"></activity>
+            android:label="user"/>
         <activity
             android:name=".activities.AppPreferences"
             android:parentActivityName=".activities.NewsHome"
@@ -26,7 +25,8 @@
         <activity
             android:name=".activities.NewsDetails"
             android:parentActivityName=".activities.NewsHome" />
-        <activity android:name=".activities.SplashScreenActivity">
+        <activity android:name=".activities.SplashScreenActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
