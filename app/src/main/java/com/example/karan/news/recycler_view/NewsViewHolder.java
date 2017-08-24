@@ -22,18 +22,12 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     private TextView date;
     private TextView filler;
     private String theme;
-    Context context;
+    private Context context;
     private ImageView imageView;
+    private SharedPreferences preferences,sharedPreferences;
 
-
-    public CardView getCardView() {
-        return cardView;
-    }
-
-    CardView cardView;
+    private CardView cardView;
     private boolean status=false;
-    SharedPreferences sharedPreferences;
-
 
 
     public NewsViewHolder(View itemView) {
@@ -44,7 +38,9 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         date=(TextView) itemView.findViewById(R.id.date);
         filler=(TextView) itemView.findViewById(R.id.filler);
         imageView=(ImageView) itemView.findViewById(R.id.image);
-
+        preferences=context.getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES,Context.MODE_PRIVATE);
+        sharedPreferences=context.getSharedPreferences("sharedPreferences",Context.MODE_PRIVATE);
+        setCardView();
     }
 
     public void setHeadLine(String title) {
@@ -62,9 +58,9 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
                 .into(imageView);
     }
 
-    public void setCardView(CardView cardView) {
-        this.cardView = cardView;
-        theme=sharedPreferences.getString(Constants.KEY_APP_THEME, String.valueOf(R.string.theme_light));
+    public void setCardView() {
+
+        theme=preferences.getString(Constants.KEY_APP_THEME, String.valueOf(R.string.theme_light));
         status=sharedPreferences.getBoolean("read_status",false);
         if(theme.equals(String.valueOf(R.string.theme_light))){
             if(status)

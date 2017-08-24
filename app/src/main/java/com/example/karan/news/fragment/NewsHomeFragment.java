@@ -75,7 +75,6 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
                 viewHolder.setDescription(model.getDescription());
                 viewHolder.setDate(model.getDate());
                 viewHolder.setImage(model.getImage());
-
             }
         };
         adapter.getItemCount();
