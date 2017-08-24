@@ -1,4 +1,4 @@
-package com.example.karan.news.news_page;
+package com.example.karan.news.recycler_view;
 
 /**
  * Created by karan on 7/3/2017.

@@ -4,18 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.karan.news.R;
 import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 import com.example.karan.news.models.Item;
-import com.example.karan.news.news_page.NewsList;
-import com.example.karan.news.news_page.NewsViewHolder;
+import com.example.karan.news.recycler_view.NewsList;
+import com.example.karan.news.recycler_view.NewsViewHolder;
 import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 import com.example.karan.news.utils.RecyclerViewClickListener;
@@ -40,7 +40,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class NewsHomeFragment extends Fragment implements RecyclerViewClickListener{
 
     private RecyclerView recyclerView;
-
+    CardView cardView;
     private String child,user_key;
     private int color;
     Context context;
@@ -54,7 +54,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         //Recycler view contains the list of news articles foe different categories
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        cardView= (CardView) view.findViewById(R.id.card_view);
         child = this.getArguments().getString(Constants.CATEGORY_NAME);
         color = this.getArguments().getInt(Constants.TOOLBAR_COLOR);
 
@@ -75,6 +75,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
                 viewHolder.setDescription(model.getDescription());
                 viewHolder.setDate(model.getDate());
                 viewHolder.setImage(model.getImage());
+
             }
         };
         adapter.getItemCount();
@@ -131,7 +132,6 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
                 .getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES, MODE_PRIVATE).edit();
         editor.putBoolean("read_status", true);
         editor.apply();
-
         LaunchManager.showDetailsPage(getActivity(),position,child,color, newsItem.get(position));
     }
 
