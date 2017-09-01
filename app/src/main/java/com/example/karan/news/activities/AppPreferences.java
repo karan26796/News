@@ -2,12 +2,9 @@ package com.example.karan.news.activities;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.SharedPreferences;
 import android.preference.PreferenceFragment;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import com.example.karan.news.R;
-import com.example.karan.news.utils.Constants;
 
 public class AppPreferences extends BaseActivity {
 

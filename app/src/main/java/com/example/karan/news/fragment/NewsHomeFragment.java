@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.karan.news.R;
 import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 import com.example.karan.news.models.Item;
@@ -34,7 +33,11 @@ import static android.content.Context.MODE_PRIVATE;
 /**
  * Created by karan on 7/19/2017.
  * A common fragment is defined on home page which
- * is inflated on different scenarios in rhe app.
+ * is inflated on different scenarios in the app.
+ *
+ * This class takes care of inflating the right
+ * fragment on user prompt or in this case, category
+ * selection from navigation drawer
  */
 
 public class NewsHomeFragment extends Fragment implements RecyclerViewClickListener{
@@ -54,6 +57,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         //Recycler view contains the list of news articles foe different categories
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         cardView= (CardView) view.findViewById(R.id.card_view);
         child = this.getArguments().getString(Constants.CATEGORY_NAME);
         color = this.getArguments().getInt(Constants.TOOLBAR_COLOR);
@@ -85,6 +89,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         return view;
     }
 
+    /*This method takes care of reading data from firebase database for the desired category*/
     public void readData(final FirebaseRecyclerAdapter adapter) {
 
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -125,8 +130,6 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
 
     @Override
     public void onClick(View view, int position) {
-        FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(getContext());
-        String currentUser=firebaseAuthentication.getCurrentUser();
         SharedPreferences.Editor editor = getActivity()
                 .getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES, MODE_PRIVATE).edit();
         editor.putBoolean("read_status", true);

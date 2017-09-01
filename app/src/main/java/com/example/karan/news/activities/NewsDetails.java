@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -67,7 +69,6 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
 
         //Used to set color of status bar
         window=getWindow();
-
         details=(TextView) findViewById(R.id.details);
         imageView=(ImageView)findViewById(R.id.detail_image);
 
@@ -140,6 +141,7 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         else
         {
             imageView.setImageResource(R.drawable.image_broken_variant);
+
         }
     }
 
@@ -159,7 +161,7 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         String currentUser = firebaseAuthentication.getCurrentUser();
 
         databaseReference.child(this.getString(R.string.users)).child(currentUser)
-                .child(this.getString(R.string.bookmark_nav_drawer)).addValueEventListener(new ValueEventListener() {
+                .child(Constants.BOOKMARK_CATEGORY).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -214,6 +216,8 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
             }
         });
     }
+
+
 
     @Override
     protected int getLayoutResourceId() {

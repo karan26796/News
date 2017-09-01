@@ -2,6 +2,10 @@ package com.example.karan.news.models;
 
 import java.io.Serializable;
 
+/**This model class is used to upload or send user's data to the firebase database via Serializable
+ * interface. It is used at the time of storing user's bookmarks to the firebase database and retrieve
+ * them when they are logged into the app*/
+
 public class Item implements Serializable{
 
     private String detail,image,title,date,description;
@@ -10,6 +14,7 @@ public class Item implements Serializable{
 
     }
 
+    //This constructor is used to take values from the news article like detail, description etc
     public Item(String detail, String image,String title,String date,String description) {
         this.detail=detail;
         this.image=image;

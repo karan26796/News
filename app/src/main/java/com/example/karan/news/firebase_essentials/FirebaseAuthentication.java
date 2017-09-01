@@ -35,6 +35,8 @@ public class FirebaseAuthentication {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
+    /*If a new user wants to log in to the app, they need to create an account which requires an email and a
+    * password which is handled by this method*/
     public void newUser(final String email, final String password, final ProgressDialog progressDialog){
 
         //checking if email and passwords are empty
@@ -56,7 +58,9 @@ public class FirebaseAuthentication {
                         Toast.makeText(mContext, R.string.auth_failed, Toast.LENGTH_SHORT).show();
                     } else {
 
-                        // get current user UID
+                        /*get current user UID ie. User's ID which is a unique key given by firebase
+                        to every user registered with the app*/
+
                         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                         String UID = currentUser.getUid();
 
@@ -128,6 +132,7 @@ public class FirebaseAuthentication {
         });
     }
 
+    /*This method returns unique user id or UID given by firebase to each user registered with the app*/
     public String getCurrentUser() {
 
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();

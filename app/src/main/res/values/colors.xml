@@ -4,7 +4,7 @@
     <!--General purpose colors-->
     <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303f9f</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ea80fc</color>
 
     <!--Dark colors-->
     <color name="gray">#232323</color>

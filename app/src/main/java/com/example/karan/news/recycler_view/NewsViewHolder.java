@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 /**
  * Created by karan on 7/3/2017.
+ *
+ * Holder class defined to hold the views used in recycler view
  */
 /*News article views are defined here*/
 public class NewsViewHolder extends RecyclerView.ViewHolder {
@@ -33,14 +35,13 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     public NewsViewHolder(View itemView) {
         super(itemView);
 
-        cardView=(CardView) itemView.findViewById(R.id.card_view);
+        //cardView=(CardView) itemView.findViewById(R.id.card_view);
         head= (TextView) itemView.findViewById(R.id.headline);
         date=(TextView) itemView.findViewById(R.id.date);
         filler=(TextView) itemView.findViewById(R.id.filler);
         imageView=(ImageView) itemView.findViewById(R.id.image);
-        preferences=context.getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES,Context.MODE_PRIVATE);
-        sharedPreferences=context.getSharedPreferences("sharedPreferences",Context.MODE_PRIVATE);
-        setCardView();
+        /*preferences=context.getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES,Context.MODE_PRIVATE);
+        sharedPreferences=context.getSharedPreferences("sharedPreferences",Context.MODE_PRIVATE);*/
     }
 
     public void setHeadLine(String title) {

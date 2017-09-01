@@ -2,11 +2,11 @@ package com.example.karan.news.recycler_view;
 
 /**
  * Created by karan on 7/3/2017.
+ *
+ * News list gets and sets the data for recycler view.
  */
 
 public class NewsList {
-    public NewsList() {
-    }
 
     private String title;
     private String description;
@@ -20,6 +20,9 @@ public class NewsList {
         this.image=image;
         this.date=date;
         this.description=description;
+    }
+
+    public NewsList() {
     }
 
     public String getTitle() {

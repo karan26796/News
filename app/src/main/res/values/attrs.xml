@@ -4,6 +4,7 @@
     <attr name="cardview_read_bg_color" format="reference"> </attr>
 
     <attr name="bg_color" format="reference"> </attr>
+    <attr name="bg_color_1" format="reference"> </attr>
 
     <attr name="text_size" format="reference" />
 

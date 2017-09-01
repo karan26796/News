@@ -20,13 +20,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         window=getWindow();
-        window.setStatusBarColor(getColor(R.color.button_gradient_color_1));
+        window.setStatusBarColor(getColor(R.color.off_white));
         launchActivity();
     }
 
     /**
-     * Check firebase Authentication for current user UID.
-     * If it returns null, launch LoginActivity. Else launch HomeScreenActivity.
+     * Checks firebase Authentication for current user UID.
+     *
+     * If the user is found to be null, the app opens to the login screen where the user can login
+     * or create a new account in case of a new user.
      */
     private void launchActivity() {
 

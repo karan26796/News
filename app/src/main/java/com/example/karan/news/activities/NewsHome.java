@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -22,6 +23,13 @@ import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 import com.example.karan.news.fragment.NewsHomeFragment;
 import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
+
+/**News home activity.
+ *
+ * This is the first page/ home page of the app, a user is opened to
+ * this activity after login, this activity contains all the necessary
+ * views for smooth user interaction, all news categories can be
+ * accessed from the home page of the app.*/
 
 public class NewsHome extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -93,12 +101,11 @@ public class NewsHome extends BaseActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        /* Handle action bar item clicks here.*/
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        //no inspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             LaunchManager.launchSettings(this);
             return true;
@@ -112,10 +119,10 @@ public class NewsHome extends BaseActivity
 
     /*This method communicates with the Navigation drawer fragment click Listener
     and sends the item id and category string value along with setting the toolbar title
-    and inflating list of each category in the fragment*/
+    and inflating list of the desired category in the fragment*/
 
-    //Requires api checks the user's android api
-    //It is required to change the app's status bar color
+    //Requires api checks the user's android api.
+    //It is required to change the app's status bar color among other things.
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void displaySelectedScreen(int id, String child, int color) {
 
@@ -162,6 +169,7 @@ public class NewsHome extends BaseActivity
         toolbar.setTitle(child);
         window.setStatusBarColor(color);
         toolbar.setBackgroundColor(color);
+
         //New fragment is inflated on item click in Navigation drawer
         newsHomeFragment = new NewsHomeFragment();
 
