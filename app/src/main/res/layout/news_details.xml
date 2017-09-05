@@ -20,13 +20,12 @@
         android:id="@+id/bookmark"
         android:layout_width="@dimen/square_button_parameter"
         android:layout_height="@dimen/square_button_parameter"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
-        android:tint="@color/white"
         android:elevation="@dimen/button_elevation"
-        app:srcCompat="@drawable/dots_vertical" />
+        app:srcCompat="@drawable/dots_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:id="@+id/back_button"
@@ -36,9 +35,9 @@
         android:clickable="true"
         android:elevation="@dimen/button_elevation"
         android:focusable="true"
-        android:tint="@color/white"
-        app:srcCompat="?attr/actionModeCloseDrawable"
-        android:layout_alignParentTop="true" />
+        app:srcCompat="@drawable/back_arrow"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 
     <ScrollView

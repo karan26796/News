@@ -14,7 +14,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -79,7 +78,7 @@ public class NewsHome extends BaseActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.toolbar_options, menu);
         return true;
     }
 
@@ -143,7 +142,7 @@ public class NewsHome extends BaseActivity
         switch (id){
             case R.id.sports:
                 child=Constants.SPORTS_NEWS_CATEGORY ;
-                color=resources.getColor(R.color.colorPrimary);
+                color=resources.getColor(R.color.colorPrimaryDark);
                 break;
             case R.id.politics:
                 child=Constants.POLITICS_NEWS_CATEGORY ;
@@ -151,17 +150,17 @@ public class NewsHome extends BaseActivity
                 break;
             case R.id.world:
                 child=Constants.WORLD_NEWS_CATEGORY ;
-                color=resources.getColor(R.color.colorPrimary);
+                color=resources.getColor(R.color.green);
                 break;
 
             case R.id.top_stories:
                 child=Constants.TOP_STORIES_NEWS_CATEGORY;
-                color=resources.getColor(R.color.gray);
+                color=resources.getColor(R.color.dark_blue);
                 break;
 
             case R.id.bookmarks:
                 child=Constants.BOOKMARK_CATEGORY;
-                color=resources.getColor(R.color.colorPrimary);
+                color=resources.getColor(R.color.purple_dark);
                 break;
         }
 

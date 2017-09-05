@@ -5,7 +5,7 @@
         <CheckBoxPreference
             android:key="image_download"
             android:summary="@string/download_summary"
-            android:title="@string/download" />
+            android:title="@string/save_data" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Look and feel">

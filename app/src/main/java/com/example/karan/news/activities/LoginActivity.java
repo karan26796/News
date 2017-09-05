@@ -17,7 +17,6 @@ import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 
-
 /**
  * Created by karan on 7/8/2017.
  *
@@ -38,6 +37,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.login_activity);
 
         user=(Button) findViewById(R.id.sign_up);
+
+        //window of the app screen is accessed to change color of status bar
         window=getWindow();
 
         pass=(EditText) findViewById(R.id.pass);

@@ -2,7 +2,7 @@
 <resources>
 
     <!--General purpose colors-->
-    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimary">#03a9f4</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#ea80fc</color>
 
@@ -10,15 +10,16 @@
     <color name="gray">#232323</color>
     <color name="gray_dark">#1d1d1d</color>
     <color name="lighter_gray">#bebebe</color>
+    <color name="green">#216462</color>
+    <color name="purple_dark">#180039</color>
     <color name="black">#000</color>
+    <color name="dark_blue">#212D64</color>
     <color name="gray_darker">#212121</color>
-    <color name="white">#efefef</color>
+
 
     <!--Custom colors to be used across views and layouts-->
     <color name="hintColor">#9e9e9e</color>
     <color name="filler">#2e2e2e</color>
-    <color name="primary_material_light">#333</color>
-    <color name="primary_dark_material_light">#323</color>
     <color name="gradient_blue">#0091ea</color>
     <color name="off_white">#c1c1c1</color>
     <color name="light_gray">#363636</color>
@@ -26,4 +27,5 @@
     <color name="button_gradient_color_2">#304ffe</color>
     <color name="purple">#9e12ff</color>
     <color name="drawer_blue">#35c1fe</color>
+    <color name="white">#efefef</color>
 </resources>

@@ -4,10 +4,9 @@
 <group>
         <item
             android:id="@+id/action_settings"
-            android:title="@string/action_settings"
-            />
-</group>
+            android:title="@string/action_settings" />
         <item
             android:id="@+id/log_out"
-            android:title="@string/logout" />
+            android:title="@string/logout"/>
+</group>
 </menu>

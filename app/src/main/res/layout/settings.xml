@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,4 +7,35 @@
     android:orientation="vertical"
     app:layout_behavior="@string/action_settings">
 
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/settings_back_button"
+        android:layout_width="@dimen/square_button_parameter"
+        android:layout_height="@dimen/square_button_parameter"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:elevation="@dimen/button_elevation"
+        android:focusable="true"
+        app:srcCompat="@drawable/back_arrow" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@color/green"
+        android:elevation="@dimen/default_elevation"
+        android:paddingLeft="@dimen/padding_large"
+        android:theme="@style/AppFullScreenTheme"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <FrameLayout
+        android:id="@+id/settings_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/settings_back_button" />
+
+</RelativeLayout>

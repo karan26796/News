@@ -13,7 +13,7 @@ import com.example.karan.news.utils.Constants;
  * This activity is used/extended by all the activities in the app to use its
  * methods.
  *
- * its method help implement features like changing font size, theme etc. across
+ * its methods help implement features like changing font size, theme etc. across
  * all activities.*/
 
 public abstract class BaseActivity extends AppCompatActivity {

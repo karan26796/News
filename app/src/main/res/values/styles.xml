@@ -26,6 +26,8 @@
         <item name="bg_color">@color/white</item>
         <item name="bg_color_1">@color/off_white</item>
 
+        <item name="toolbar_color">@color/colorPrimaryDark</item>
+
         <item name="cardview_bg_color">@color/white</item>
         <item name="cardview_read_bg_color">@color/off_white</item>
     </style>
@@ -45,8 +47,10 @@
         <item name="text_color_secondary">@color/off_white</item>
         <item name="text_color_tertiary">@color/off_white</item>
 
-        <item name="bg_color">@color/gray_darker</item>
+        <item name="bg_color">@color/light_gray</item>
         <item name="bg_color_1">@color/gray</item>
+
+        <item name="toolbar_color">@color/gray_dark</item>
 
         <item name="cardview_bg_color">@color/gray_dark</item>
         <item name="cardview_read_bg_color">@color/lighter_gray</item>
