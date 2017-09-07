@@ -13,29 +13,31 @@
         android:layout_height="@dimen/square_button_parameter"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="?selectableItemBackgroundBorderless"
+        android:background="?android:selectableItemBackground"
         android:clickable="true"
         android:elevation="@dimen/button_elevation"
         android:focusable="true"
         app:srcCompat="@drawable/back_arrow" />
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@color/green"
         android:elevation="@dimen/default_elevation"
         android:paddingLeft="@dimen/padding_large"
         android:theme="@style/AppFullScreenTheme"
         app:title="@string/app_name"
-        app:titleTextColor="@color/white"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        app:titleTextColor="@color/white" />
 
     <FrameLayout
         android:id="@+id/settings_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/settings_back_button" />
 
 </RelativeLayout>

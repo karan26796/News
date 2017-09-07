@@ -2,11 +2,11 @@ package com.example.karan.news.utils;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.example.karan.news.activities.AppPreferences;
+import com.example.karan.news.activities.SettingsActivity;
 import com.example.karan.news.activities.LoginActivity;
 import com.example.karan.news.activities.NewsDetails;
 import com.example.karan.news.activities.NewsHome;
-import com.example.karan.news.activities.SignUp;
+import com.example.karan.news.activities.SignUpActivity;
 import com.example.karan.news.models.Item;
 
 /**
@@ -24,22 +24,23 @@ public class LaunchManager {
     }
 
     //Home activity is launched with the news category selected by the user previously
-    public static void categoryFragment(Activity activity,String category,boolean status) {
+    public static void categoryFragment(Activity activity,String category,boolean status,int position) {
         Intent intent = new Intent(activity, NewsHome.class);
         intent.putExtra(Constants.CATEGORY_NAME,category);
+        intent.putExtra(Constants.POSITION,position);
         intent.putExtra(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES,status);
         activity.startActivity(intent);
     }
 
     //Settings activity is launched via intent wherever this method is called
     public static void launchSettings(Activity activity) {
-        Intent intent = new Intent(activity, AppPreferences.class);
+        Intent intent = new Intent(activity, SettingsActivity.class);
         activity.startActivity(intent);
     }
 
     //User sign up screen is launched via intent wherever this method is called
     public static void showSignUpScreen(Activity activity) {
-        Intent intent = new Intent(activity, SignUp.class);
+        Intent intent = new Intent(activity, SignUpActivity.class);
         activity.startActivity(intent);
         activity.finish();
     }

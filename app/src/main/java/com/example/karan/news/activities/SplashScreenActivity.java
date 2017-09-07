@@ -11,6 +11,7 @@ import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 
 
 public class SplashScreenActivity extends AppCompatActivity {
+
     private Window window;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -20,7 +21,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         window=getWindow();
-        window.setStatusBarColor(getColor(R.color.off_white));
+        window.setStatusBarColor(getResources().getColor(R.color.off_white));
         launchActivity();
     }
 

@@ -3,6 +3,7 @@ package com.example.karan.news.activities;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Build;
@@ -53,6 +54,7 @@ public class NewsHome extends BaseActivity
 
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
+        setTheme(toolbar);
 
         //sets the toolbar specified as the action bar
         setSupportActionBar(toolbar);
@@ -95,6 +97,25 @@ public class NewsHome extends BaseActivity
             super.onBackPressed();
             if(user!=null)
             LaunchManager.exitApp(this);
+        }
+    }
+
+    //App theme is fetched using shared preference from settings activity
+    private void loadPreference() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
+    }
+
+    //change the popup theme of the toolbar items for change in theme
+    private void setTheme(Toolbar toolbar) {
+        this.toolbar=toolbar;
+        // fetches shared preferences for value of 'theme' set by the user
+        loadPreference();
+        // set toolbar popup theme
+        if (theme.equals(getString(R.string.theme_light))) {
+            toolbar.setPopupTheme(R.style.AppFullScreenTheme);
+        } else if (theme.equals(getString(R.string.theme_dark))) {
+            toolbar.setPopupTheme(R.style.AppFullScreenDarkTheme);
         }
     }
 

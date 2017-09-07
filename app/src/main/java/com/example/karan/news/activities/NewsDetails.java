@@ -8,8 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
-import android.transition.Fade;
-import android.transition.Slide;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -61,25 +59,19 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_details);
 
-        //Values fetched from newsFragment Bundle
-        position =getIntent().getIntExtra(Constants.POSITION,0);
-        category=getIntent().getStringExtra(Constants.CATEGORY_NAME);
-        color=getIntent().getIntExtra(Constants.COLOR_VALUE,R.color.colorAccent);
-
+        valuesFetch();
         //Used to set color of status bar
         window=getWindow();
+
         details=(TextView) findViewById(R.id.details);
         imageView=(ImageView)findViewById(R.id.detail_image);
-
         toolbar=(Toolbar)findViewById(R.id.category_toolbar);
-        toolbar.setBackgroundColor(color);
-        window.setStatusBarColor(color);
         back_button=(ImageButton)findViewById(R.id.back_button);
         bookmark=(ImageButton)findViewById(R.id.bookmark);
 
         databaseReference= FirebaseDatabase.getInstance().getReference();
         sharedPreferences=getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES,MODE_PRIVATE);
-        status =sharedPreferences.getBoolean("read_status",true);
+        status =sharedPreferences.getBoolean(newsItem.getTitle(),true);
 
         getData();
         loadData();
@@ -89,13 +81,22 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         bookmark.setOnClickListener(this);
     }
 
+    private void valuesFetch(){
+        //Values fetched from newsFragment Bundle
+        position =getIntent().getIntExtra(Constants.POSITION,0);
+        category=getIntent().getStringExtra(Constants.CATEGORY_NAME);
+        color=getIntent().getIntExtra(Constants.COLOR_VALUE,R.color.colorAccent);
+    }
+
     @Override
     public void onBackPressed() {
-        LaunchManager.categoryFragment(this,category,status);
-        super.onBackPressed();}
+        LaunchManager.categoryFragment(this,category,status,position);
+        super.onBackPressed();
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void loadData(){
+
         toolbar.setTitle(category);
         toolbar.setBackgroundColor(color);
         window.setStatusBarColor(color);
@@ -128,9 +129,9 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         this.imageView=imageView;
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
         theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
-        boolean image_download = sharedPreferences.getBoolean("image_download", true);
+        boolean image_download = sharedPreferences.getBoolean(Constants.KEY_DOWNLOAD_IMAGES, true);
+
         if(image_download){
             Picasso.with(getApplicationContext())
                     .load(imageUrl1)
@@ -139,7 +140,12 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         }
         else
         {
-            imageView.setImageResource(R.drawable.image_broken_variant);
+            if(theme.equals(getResources().getString(R.string.theme_light))) {
+                imageView.setImageResource(R.drawable.image_broken_variant_black);
+            }
+            else{
+                imageView.setImageResource(R.drawable.image_broken_variant_white);
+            }
 
         }
     }
@@ -194,7 +200,7 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
                             .child(Constants.BOOKMARK_CATEGORY).child(Constants.BOOKMARK_CATEGORY + String.valueOf(bookmarkCount + 1));
 
                     Item item1 = new Item(newsItem.getDetail(),newsItem.getImage(),newsItem.getTitle(),newsItem.getDate(),newsItem.getDescription());
-                    Toast.makeText(NewsDetails.this, String.valueOf(bookmarkCount), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(NewsDetails.this, String.valueOf(bookmarkCount), Toast.LENGTH_SHORT).show();
 
                     bookmarkReference.setValue(item1).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

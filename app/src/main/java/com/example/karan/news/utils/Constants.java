@@ -20,23 +20,27 @@ public class Constants {
     public static final String TOOLBAR_COLOR = "toolbar_color";
     public static final String USERNAME = "username";
 
-/*------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------*/
 //Mentioned below are the news categories that'll be displayed in Navigation drawer
-/*------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------*/
     public static final String SPORTS_NEWS_CATEGORY ="Sports";
     public static final String POLITICS_NEWS_CATEGORY ="Politics";
     public static final String WORLD_NEWS_CATEGORY ="World";
     public static final String TOP_STORIES_NEWS_CATEGORY ="Top Stories";
     public static final String BOOKMARK_CATEGORY ="Bookmarks";
 
-/*------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------*/
 //Mentioned below are some custom constant fields used across the code.
-/*------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------*/
     public static final String PREFERENCES ="my_preferences" ;
     public static final String USERS_KEY ="Users";
     public static final String NEWS_DETAILS ="news_details" ;
     public static final String READ_ARTICLES_STATUS_SHARED_PREFERENCES = "MyPrefs";
     public static final String READ_ARTICLE = "read";
+
+/*---------------------------------------------------------------------------------------------------------------------------------*/
+//Mentioned below are the keys used in the settings activity.
+/*---------------------------------------------------------------------------------------------------------------------------------*/
     public static final String KEY_APP_THEME = "app_theme";
     public static final String KEY_TEXT_SIZE ="text_size" ;
     public static final String KEY_DOWNLOAD_IMAGES ="image_download" ;

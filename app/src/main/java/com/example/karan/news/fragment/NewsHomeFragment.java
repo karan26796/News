@@ -3,6 +3,7 @@ package com.example.karan.news.fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -61,7 +62,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         cardView= (CardView) view.findViewById(R.id.card_view);
         child = this.getArguments().getString(Constants.CATEGORY_NAME);
         color = this.getArguments().getInt(Constants.TOOLBAR_COLOR);
-
+        //checkStatus();
         FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(context);
         //User key stores the String value of user's key to distinguish b/w users and show bookmarks accordingly
         user_key=firebaseAuthentication.getCurrentUser();
@@ -89,6 +90,12 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         return view;
     }
 
+    /*private void checkStatus(){
+        status =PreferenceManager.getDefaultSharedPreferences(context).getBoolean(newsItem.get(position).getTitle(),false);
+        if(status){
+            cardView.setBackgroundColor(getResources().getColor(R.color.lighter_gray));
+        }
+    }*/
     /*This method takes care of reading data from firebase database for the desired category*/
     public void readData(final FirebaseRecyclerAdapter adapter) {
 
@@ -132,15 +139,13 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
     public void onClick(View view, int position) {
         SharedPreferences.Editor editor = getActivity()
                 .getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES, MODE_PRIVATE).edit();
-        editor.putBoolean("read_status", true);
+        editor.putBoolean(newsItem.get(position).getTitle(), true);
         editor.apply();
         LaunchManager.showDetailsPage(getActivity(),position,child,color, newsItem.get(position));
     }
 
     @Override
     public void onLongClick(View view, int position) {
-
         }
-
 }
 

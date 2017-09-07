@@ -8,22 +8,23 @@
         android:id="@+id/category_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"
         android:elevation="@dimen/default_elevation"
         android:paddingLeft="@dimen/padding_large"
+        android:textAlignment="center"
         app:title="@string/category"
-        app:titleTextColor="@color/white"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        app:titleTextColor="@color/white" />
 
     <ImageButton
         android:id="@+id/bookmark"
         android:layout_width="@dimen/square_button_parameter"
         android:layout_height="@dimen/square_button_parameter"
-        android:background="?selectableItemBackgroundBorderless"
+        android:background="?android:selectableItemBackground"
         android:clickable="true"
         android:elevation="@dimen/button_elevation"
-        app:srcCompat="@drawable/dots_vertical"
+        app:srcCompat="@drawable/bookmark_check"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
@@ -31,7 +32,7 @@
         android:id="@+id/back_button"
         android:layout_width="@dimen/square_button_parameter"
         android:layout_height="@dimen/square_button_parameter"
-        android:background="?selectableItemBackgroundBorderless"
+        android:background="?android:selectableItemBackground"
         android:clickable="true"
         android:elevation="@dimen/button_elevation"
         android:focusable="true"
@@ -71,7 +72,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/detail_image"
-                android:textColor="?text_color_primary" />
+                android:selectAllOnFocus="true"
+                android:textColor="?text_color_primary"/>
         </RelativeLayout>
     </ScrollView>
 

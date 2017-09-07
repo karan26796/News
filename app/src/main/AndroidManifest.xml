@@ -16,10 +16,10 @@
             android:theme="@style/AppFullScreenTheme"/>
         <activity android:name=".activities.NewsHome"/>
         <activity
-            android:name=".activities.SignUp"
+            android:name=".activities.SignUpActivity"
             android:label="user"/>
         <activity
-            android:name=".activities.AppPreferences"
+            android:name=".activities.SettingsActivity"
             android:parentActivityName=".activities.NewsHome"
             android:theme="@style/AppFullScreenTheme"/>
         <activity

@@ -20,7 +20,7 @@ import com.example.karan.news.utils.LaunchManager;
  * Activity lets user enter details and add to the app's user list.
  */
 
-public class SignUp extends AppCompatActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText newUser,newPass,conPass;
     private Button submit;
@@ -46,7 +46,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private void registerUser() {
 
         // setup progress dialog
-        ProgressDialog mProgressDialog = new ProgressDialog(SignUp.this);
+        ProgressDialog mProgressDialog = new ProgressDialog(SignUpActivity.this);
         mProgressDialog.setCanceledOnTouchOutside(false);
 
         String email = newUser.getText().toString().trim();
@@ -70,7 +70,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
             // register user to firebase authentication
             // store name and email to firebase database
-            FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(SignUp.this);
+            FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(SignUpActivity.this);
             firebaseAuthentication.newUser(email,password,mProgressDialog);
 
         }
