@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         login=(Button) findViewById(R.id.sign_in);
 
-        window.setStatusBarColor(getResources().getColor(R.color.gray));
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.gray));
         login.setOnClickListener(this);
         user.setOnClickListener(this);
     }
@@ -82,7 +83,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             SharedPreferences sharedPreferences=getSharedPreferences(Constants.PREFERENCES,MODE_PRIVATE);
             SharedPreferences.Editor edit = sharedPreferences.edit();
             sharedPreferences.getString(Constants.USERNAME,mEmail);
-            edit.commit();
+            edit.apply();
 
         } else {
             Toast.makeText(LoginActivity.this, R.string.start_error_message, Toast.LENGTH_LONG).show();

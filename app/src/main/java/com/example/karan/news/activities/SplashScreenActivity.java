@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import com.example.karan.news.R;
@@ -21,7 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         window=getWindow();
-        window.setStatusBarColor(getResources().getColor(R.color.off_white));
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.off_white));
         launchActivity();
     }
 

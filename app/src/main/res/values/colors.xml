@@ -12,10 +12,11 @@
     <!--Dark colors-->
     <color name="gray">#232323</color>
     <color name="gray_dark">#1d1d1d</color>
-    <color name="lighter_gray">#bebebe</color>
+    <color name="lighter_gray">#cecece</color>
     <color name="green">#00695c</color>
     <color name="purple_dark">#180039</color>
     <color name="black">#000</color>
+    <color name="black_1">#de1b1b1b</color>
     <color name="dark_blue">#212D64</color>
     <color name="gray_darker">#212121</color>
 
@@ -24,11 +25,11 @@
     <color name="filler">#2e2e2e</color>
     <color name="gradient_blue">#0091ea</color>
     <color name="off_white">#c1c1c1</color>
-    <color name="light_gray">#404040</color>
+    <color name="light_gray">#424242</color>
     <color name="button_gradient_color_1">#0091ea</color>
     <color name="button_gradient_color_2">#304ffe</color>
     <color name="purple">#9e12ff</color>
     <color name="drawer_blue">#35c1fe</color>
     <color name="white">#eeeeee</color>
-    <color name="background_material_dark">#1f1f1f</color>
+    <color name="background_material">#1f1f1f</color>
 </resources>

@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -65,7 +66,7 @@ public class NewsHome extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
         drawer.closeDrawer(GravityCompat.START);
 
@@ -150,12 +151,11 @@ public class NewsHome extends BaseActivity
 
         //the values of category and toolbarColor are set here
 
-        /**this keyword sets the value of category and toolbar color
+        /*this keyword sets the value of category and toolbar color
          to child and color defined in the method respectively*/
 
         this.category=child;
         this.toolbarColor=color;
-        Resources resources=getResources();
 
         /*Values of status bar color and category are sent using
         switch case statement for corresponding button clicks*/
@@ -163,25 +163,25 @@ public class NewsHome extends BaseActivity
         switch (id){
             case R.id.sports:
                 child=Constants.SPORTS_NEWS_CATEGORY ;
-                color=resources.getColor(R.color.colorPrimaryDark);
+                color=ContextCompat.getColor(this,R.color.colorPrimaryDark);
                 break;
             case R.id.politics:
                 child=Constants.POLITICS_NEWS_CATEGORY ;
-                color=resources.getColor(R.color.gray);
+                color= ContextCompat.getColor(this,R.color.gray);
                 break;
             case R.id.world:
                 child=Constants.WORLD_NEWS_CATEGORY ;
-                color=resources.getColor(R.color.green);
+                color=ContextCompat.getColor(this,R.color.green);
                 break;
 
             case R.id.top_stories:
                 child=Constants.TOP_STORIES_NEWS_CATEGORY;
-                color=resources.getColor(R.color.dark_blue);
+                color=ContextCompat.getColor(this,R.color.dark_blue);
                 break;
 
             case R.id.bookmarks:
                 child=Constants.BOOKMARK_CATEGORY;
-                color=resources.getColor(R.color.purple_dark);
+                color=ContextCompat.getColor(this,R.color.purple_dark);
                 break;
         }
 
@@ -236,7 +236,6 @@ public class NewsHome extends BaseActivity
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        return;
                     }
                 })
                 .show();
@@ -253,7 +252,7 @@ public class NewsHome extends BaseActivity
     //It is required to change the app's status bar color
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 
-    /**Handles the onClick method for Navigation drawer items*/
+    /*Handles the onClick method for Navigation drawer items*/
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         displaySelectedScreen(item.getItemId(),category,toolbarColor);

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -37,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         newPass=(EditText) findViewById(R.id.new_pass);
         conPass=(EditText) findViewById(R.id.con_pass);
 
-        window.setStatusBarColor(getResources().getColor(R.color.gray));
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.gray));
         submit=(Button) findViewById(R.id.submit);
         submit.setOnClickListener(this);
     }

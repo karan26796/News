@@ -56,7 +56,7 @@
         <item name="cardview_read_bg_color">@color/lighter_gray</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondaryInverse">@color/common_google_signin_btn_text_dark_default</item>
-        <item name="android:colorBackground">@color/background_material_dark</item>
+        <item name="android:colorBackground">@color/background_material</item>
     </style>
 
     <!-- Splash Screen theme. -->

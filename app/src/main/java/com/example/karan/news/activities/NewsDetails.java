@@ -109,7 +109,6 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         this.imageUrl1=newsItem.getImage();
         this.news_details=newsItem.getDetail();
         loadImage(imageView);
-        Toast.makeText(this,String.valueOf(status),Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -200,7 +199,6 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
                             .child(Constants.BOOKMARK_CATEGORY).child(Constants.BOOKMARK_CATEGORY + String.valueOf(bookmarkCount + 1));
 
                     Item item1 = new Item(newsItem.getDetail(),newsItem.getImage(),newsItem.getTitle(),newsItem.getDate(),newsItem.getDescription());
-                    //Toast.makeText(NewsDetails.this, String.valueOf(bookmarkCount), Toast.LENGTH_SHORT).show();
 
                     bookmarkReference.setValue(item1).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

@@ -7,6 +7,7 @@ import android.preference.PreferenceFragment;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
@@ -58,11 +59,11 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         loadPreference();
         // set toolbar popup theme
         if (theme.equals(getString(R.string.theme_light))) {
-            toolbar.setBackgroundColor(getResources().getColor(R.color.green));
-            window.setStatusBarColor(getResources().getColor(R.color.green));
+            toolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.green));
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.green));
         } else if (theme.equals(getString(R.string.theme_dark))) {
-            toolbar.setBackgroundColor(getResources().getColor(R.color.dark_blue));
-            window.setStatusBarColor(getResources().getColor(R.color.dark_blue));
+            toolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.dark_blue));
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.dark_blue));
         }
     }
 

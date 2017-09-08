@@ -12,21 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppFullScreenTheme">
         <activity
+            android:screenOrientation="portrait"
             android:name=".activities.LoginActivity"
             android:theme="@style/AppFullScreenTheme"/>
         <activity android:name=".activities.NewsHome"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".activities.SignUpActivity"
             android:label="user"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".activities.SettingsActivity"
             android:parentActivityName=".activities.NewsHome"
             android:theme="@style/AppFullScreenTheme"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".activities.NewsDetails"
             android:parentActivityName=".activities.NewsHome" />
         <activity android:name=".activities.SplashScreenActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

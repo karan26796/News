@@ -4,14 +4,14 @@
     <!--Strings used across activities and layouts to avoid hard coding of strings-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="wait_message">Registering,Please Wait"..."</string>
+    <string name="wait_message">Registering,Please Wait&#8230;</string>
     <string name="title_activity_settings">Settings</string>
     <string name="user_registered">Successfully registered</string>
     <string name="registration_error">Registration Error</string>
     <string name="password_error">Please enter password</string>
     <string name="email_error">Please enter email</string>
     <string name="auth_failed">Registration failed</string>
-    <string name="start_progress_dialog_title">Logging user in"..."</string>
+    <string name="start_progress_dialog_title">Logging user in&#8230;</string>
     <string name="start_progress_dialog_message">Almost done</string>
     <string name="start_error_message">Either username or password isn\'t correct</string>
     <string name="passwords_differ">Passwords do not match</string>
@@ -62,5 +62,12 @@
     <string name="download_summary">Download images from the internet?</string>
     <string name="action_settings">Settings</string>
     <string name="hi">Hi there!</string>
+    <string name="image_download_key">image_download</string>
+    <string name="theme_key">app_theme</string>
+    <string name="text_key">text_size</string>
+    <string name="look_and_feel">Look and feel</string>
+    <string name="general">General</string>
+    <string name="dummy_date">12/12/12</string>
+    <string name="desc">Image View</string>
 
 </resources>

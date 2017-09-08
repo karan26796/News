@@ -50,6 +50,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
     Context context;
     private ArrayList<Item> newsItem = new ArrayList<>();
     private DatabaseReference mDatabase;
+    boolean status;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         cardView= (CardView) view.findViewById(R.id.card_view);
         child = this.getArguments().getString(Constants.CATEGORY_NAME);
         color = this.getArguments().getInt(Constants.TOOLBAR_COLOR);
-        //checkStatus();
+
         FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(context);
         //User key stores the String value of user's key to distinguish b/w users and show bookmarks accordingly
         user_key=firebaseAuthentication.getCurrentUser();
@@ -80,6 +81,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
                 viewHolder.setDescription(model.getDescription());
                 viewHolder.setDate(model.getDate());
                 viewHolder.setImage(model.getImage());
+                viewHolder.checkStatus(model.getTitle(), getActivity());
             }
         };
         adapter.getItemCount();
@@ -90,12 +92,6 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         return view;
     }
 
-    /*private void checkStatus(){
-        status =PreferenceManager.getDefaultSharedPreferences(context).getBoolean(newsItem.get(position).getTitle(),false);
-        if(status){
-            cardView.setBackgroundColor(getResources().getColor(R.color.lighter_gray));
-        }
-    }*/
     /*This method takes care of reading data from firebase database for the desired category*/
     public void readData(final FirebaseRecyclerAdapter adapter) {
 
