@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
+        android:contentDescription="@string/desc"
         android:layout_width="@dimen/layout_parameter_medium"
         android:layout_height="@dimen/layout_parameter_medium"
         android:layout_marginTop="86sp"
@@ -23,43 +24,48 @@
         android:layout_below="@+id/pass"
         android:layout_marginTop="41dp"
         android:background="@drawable/button_gradient_blue"
-        android:text="Sign in"
-        android:textColor="#fff"
+        android:text="@string/sign_in"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="@dimen/edit_text_width"
         android:layout_height="@dimen/edit_text_height"
-        android:layout_marginTop="81sp"
+        android:layout_below="@+id/img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp"
         android:background="@drawable/button_gradient_gray"
         android:hint="@string/hint_username"
+        android:inputType="text|textEmailAddress"
         android:lines="1"
         android:maxLength="30"
-        android:singleLine="true"
-        android:paddingLeft="@dimen/padding_small"
+        android:maxLines="1"
+        android:minLines="1"
+        android:paddingStart="@dimen/padding_small"
+        android:paddingEnd="@dimen/padding_small"
         android:textColor="@color/filler"
         android:textColorHint="@color/hintColor"
-        android:layout_below="@+id/img"
-        android:layout_centerHorizontal="true" />
+        app:paddingEnd="@dimen/padding_smaller" />
 
     <EditText
         android:id="@+id/pass"
         android:layout_width="@dimen/edit_text_width"
         android:layout_height="@dimen/edit_text_height"
+        android:layout_alignStart="@+id/email"
+        android:layout_below="@+id/email"
         android:layout_marginTop="@dimen/edit_text_height"
         android:background="@drawable/button_gradient_gray"
         android:hint="@string/password"
-        android:inputType="none"
+        android:inputType="textPassword|numberPassword"
         android:lines="1"
         android:maxLength="12"
-        android:paddingLeft="@dimen/padding_small"
-        android:password="true"
-        android:singleLine="true"
+        android:maxLines="1"
+        android:minLines="1"
+        android:paddingEnd="@dimen/padding_smaller"
+        android:paddingStart="@dimen/padding_small"
         android:textColor="@color/filler"
-        android:textColorHint="@color/hintColor"
-        android:layout_below="@+id/email"
-        android:layout_alignStart="@+id/email" />
+        android:textColorHint="@color/hintColor" />
 
     <Button
         android:id="@+id/sign_up"

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
@@ -12,13 +11,15 @@
         android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"
         android:elevation="@dimen/default_elevation"
-        android:paddingLeft="@dimen/padding_large"
+        android:paddingStart="@dimen/padding_large"
+        android:paddingEnd="@dimen/padding_large"
         android:textAlignment="center"
         app:title="@string/category"
         app:titleTextColor="@color/white" />
 
     <ImageButton
         android:id="@+id/bookmark"
+        android:contentDescription="@string/desc"
         android:layout_width="@dimen/square_button_parameter"
         android:layout_height="@dimen/square_button_parameter"
         android:background="?android:selectableItemBackground"
@@ -30,6 +31,7 @@
 
     <ImageButton
         android:id="@+id/back_button"
+        android:contentDescription="@string/desc"
         android:layout_width="@dimen/square_button_parameter"
         android:layout_height="@dimen/square_button_parameter"
         android:background="?android:selectableItemBackground"
@@ -57,6 +59,7 @@
 
             <ImageView
                 android:id="@+id/detail_image"
+                android:contentDescription="@string/desc"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_parameter_large"
                 android:layout_alignParentStart="true"
