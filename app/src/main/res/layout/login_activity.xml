@@ -57,13 +57,13 @@
         android:layout_marginTop="@dimen/edit_text_height"
         android:background="@drawable/button_gradient_gray"
         android:hint="@string/password"
-        android:inputType="textPassword|numberPassword"
         android:lines="1"
         android:maxLength="12"
         android:maxLines="1"
         android:minLines="1"
         android:paddingEnd="@dimen/padding_smaller"
         android:paddingStart="@dimen/padding_small"
+        android:password="true"
         android:textColor="@color/filler"
         android:textColorHint="@color/hintColor" />
 

@@ -70,5 +70,6 @@
     <string name="dummy_date">12/12/12</string>
     <string name="desc">Image View</string>
     <string name="sign_in">Sign in</string>
+    <string name="submit">Submit</string>
 
 </resources>
