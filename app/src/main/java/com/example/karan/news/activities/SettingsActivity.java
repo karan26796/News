@@ -18,7 +18,8 @@ import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 
 /**This Activity is used as the Settings Activity for the app with
- * options to tweak the app theme, text size and download images or not*/
+ * options to tweak the app theme, text size and download images from
+ * the internet.*/
 
 public class SettingsActivity extends BaseActivity implements View.OnClickListener {
     private Window window;
@@ -57,7 +58,8 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         this.window=window;
         // fetches shared preferences for value of 'theme' set by the user
         loadPreference();
-        // set toolbar popup theme
+
+        // set toolbar popup them for different themes.
         if (theme.equals(getString(R.string.theme_light))) {
             toolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.green));
             window.setStatusBarColor(ContextCompat.getColor(this,R.color.green));

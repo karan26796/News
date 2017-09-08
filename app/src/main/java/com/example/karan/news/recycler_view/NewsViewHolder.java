@@ -4,28 +4,21 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
-
 import com.example.karan.news.R;
-import com.example.karan.news.models.Item;
 import com.example.karan.news.utils.Constants;
 import com.squareup.picasso.Picasso;
-
-import static android.content.Context.MODE_PRIVATE;
-
 /**
  * Created by karan on 7/3/2017.
  *
  * Holder class defined to hold the views used in recycler view
  */
 /*News article views are defined here*/
+@SuppressWarnings("FieldCanBeLocal")
 public class NewsViewHolder extends RecyclerView.ViewHolder {
     private TextView head;
     private TextView date;
@@ -64,6 +57,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
                 .into(imageView);
     }
 
+    //This method checks whether a news article has been read and changes the bg color of the article accordingly
     public void checkStatus(String title, Context context) {
 
         sharedPreferences = context.getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES, Context.MODE_PRIVATE);

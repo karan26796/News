@@ -14,7 +14,7 @@ import com.example.karan.news.utils.Constants;
  * methods.
  *
  * its methods help implement features like changing font size, theme etc. across
- * all activities.*/
+ * activities.*/
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -28,23 +28,23 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // set up app theme
-        // declare before onCreate to apply theme
+        // sets up app theme
+        // declared before onCreate to apply theme
         setUpTheme();
 
-        // set up app font size based on shared preferences listener
-        // declare before onCreate to apply theme
+        // set up app font size based on user selection
+        // declared before onCreate to apply theme
         setUpFont();
 
         super.onCreate(savedInstanceState);
 
-        // preference manager shared preferences listener from settings activity
+        // preference manager shared preferences listener from settings activity for app customisation.
         sharedPreferencesListener();
 
         // set up activity layout
         setContentView(getLayoutResourceId());
 
-        // set up activity toolbar
+        // sets up activity toolbar if any
         configureToolbar();
     }
 
@@ -67,16 +67,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     // get layout resource ID
     protected abstract int getLayoutResourceId();
 
-    //get toolbar ID
+    //get toolbar ID if any
     protected abstract int getToolbarID();
 
-    // get toolbar title
+    // get toolbar title if any
     protected abstract String getToolbarTitle();
 
     /**
-     * PURPOSE: Set up activity toolbar.
+     * Sets up activity toolbar.
      *
-     * Retrieves the toolbar ID and title using abstract methods and sets up activity toolbar.
+     * Retrieves the toolbar ID along with title if any.
      */
     protected void configureToolbar() {
 
@@ -86,7 +86,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             setSupportActionBar(mToolbar);
 
-            // set activity title
+            // sets activity title
             // handle NullPointerException
             if (getSupportActionBar() != null)
                 getSupportActionBar().setTitle(getToolbarTitle());
@@ -94,13 +94,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * PURPOSE: Set up app theme.
+     * Sets up app theme.
      *
-     * Retrieves user selected option of the app theme from the shared preferences and sets up app theme.
+     * The app theme selected by the user is retrieved using the method below.
      */
     protected void setUpTheme() {
 
-        // fetches shared preferences for value of 'theme' set by the user
+        // fetches shared preferences for user selected app theme
         loadPreferences();
 
         // set app theme
@@ -118,10 +118,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void setUpFont() {
 
-        // fetches shared preferences for value of 'textSize' set by the user
+        // fetches shared preferences for text size selected by user
         loadPreferences();
 
-        // set font size
+        // set font size from app styles
        if (textSize.equals(getString(R.string.text_size_small))) {
             setTheme(R.style.TextSizeSmall);
         }
@@ -147,20 +147,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         downloadImages  = sharedPreferences.getBoolean(Constants.KEY_DOWNLOAD_IMAGES, true);
     }
 
-    //-----------------------------------------------------------------------------------
     // preference manager shared preferences listener
-    //-----------------------------------------------------------------------------------
     protected void sharedPreferencesListener() {
 
         prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-                // since theme is to be applied to the settings activity as well,
-                // recreate base activity to apply app theme.
-                // for downloadImages and fontSize, no changes are required in settings activity
-                // these changes take place in respective activities' onResume
+                /*The settings activity too is given the app theme, therefore it is recreated
+                in case of change in app theme*/
+                /*In case of other two customisations, they are to be applied in the details page only.*/
                 if (key.equals(Constants.KEY_APP_THEME)) {
-
                     recreate();
                 }
             }

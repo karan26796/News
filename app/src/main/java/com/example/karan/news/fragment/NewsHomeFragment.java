@@ -50,7 +50,6 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
     Context context;
     private ArrayList<Item> newsItem = new ArrayList<>();
     private DatabaseReference mDatabase;
-    boolean status;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -106,7 +105,6 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
                     if (userDataSnapshot != null) {
                         // add values fetched from firebase database to 'Item' newsItem
                         newsItem.add(userDataSnapshot.getValue(Item.class));
-
                         // update recycler view adapter
                         adapter.notifyDataSetChanged();
                     }
@@ -115,7 +113,6 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
                 adapter.notifyDataSetChanged();
             }
         });

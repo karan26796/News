@@ -26,8 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FirebaseAuthentication {
 
-    Context mContext;
-    FirebaseAuth firebaseAuth;
+    private Context mContext;
+    private FirebaseAuth firebaseAuth;
 
     //Constructor for the class.
     public FirebaseAuthentication(Context context) {
@@ -126,7 +126,6 @@ public class FirebaseAuthentication {
                     // display error message
                     mProgressDialog.dismiss();
                     Toast.makeText(mContext, R.string.auth_failed, Toast.LENGTH_SHORT).show();
-                    return;
                 }
             }
         });
