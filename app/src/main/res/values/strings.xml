@@ -19,8 +19,13 @@
     <string name="logout">Logout?</string>
     <string name="bookmark">Bookmark this article?</string>
     <string name="home">Home</string>
+    <string name="hi">Hi there!</string>
     <string name="enter_details">Enter user details</string>
     <string name="category">Category</string>
+    <string name="dummy_date">12/12/12</string>
+    <string name="desc">Image View</string>
+    <string name="sign_in">Sign in</string>
+    <string name="submit">Submit</string>
 
     <!-- Strings related to Navigation drawer items/categories -->
     <string name="politics_nav_drawer">Politics</string>
@@ -61,15 +66,11 @@
     <string name="save_data">Download images?</string>
     <string name="download_summary">Download images from the internet?</string>
     <string name="action_settings">Settings</string>
-    <string name="hi">Hi there!</string>
     <string name="image_download_key">image_download</string>
     <string name="theme_key">app_theme</string>
     <string name="text_key">text_size</string>
     <string name="look_and_feel">Look and feel</string>
     <string name="general">General</string>
-    <string name="dummy_date">12/12/12</string>
-    <string name="desc">Image View</string>
-    <string name="sign_in">Sign in</string>
-    <string name="submit">Submit</string>
+
 
 </resources>
