@@ -38,13 +38,13 @@ import com.squareup.picasso.Picasso;
 
 public class NewsDetails extends BaseActivity implements View.OnClickListener{
 
-    private String category, imageUrl1, news_details;
+    private String category, imageUrl1, newsDetails;
     private int color;
     private TextView details;
     private Window window;
     private ImageView imageView;
     private Toolbar toolbar;
-    private ImageButton back_button,bookmark;
+    private ImageButton backButton,bookmark;
     private DatabaseReference databaseReference;
     private Item newsItem = new Item();
     private int position;
@@ -66,7 +66,7 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         details=(TextView) findViewById(R.id.details);
         imageView=(ImageView)findViewById(R.id.detail_image);
         toolbar=(Toolbar)findViewById(R.id.category_toolbar);
-        back_button=(ImageButton)findViewById(R.id.back_button);
+        backButton=(ImageButton)findViewById(R.id.back_button);
         bookmark=(ImageButton)findViewById(R.id.bookmark);
 
         databaseReference= FirebaseDatabase.getInstance().getReference();
@@ -77,7 +77,7 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         loadData();
         getBookmarkCount();
 
-        back_button.setOnClickListener(this);
+        backButton.setOnClickListener(this);
         bookmark.setOnClickListener(this);
     }
 
@@ -100,14 +100,14 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         toolbar.setTitle(category);
         toolbar.setBackgroundColor(color);
         window.setStatusBarColor(color);
-        details.setText(news_details);
+        details.setText(newsDetails);
     }
 
     protected void getData() {
 
         newsItem = (Item) getIntent().getSerializableExtra(Constants.NEWS_DETAILS);
         this.imageUrl1=newsItem.getImage();
-        this.news_details=newsItem.getDetail();
+        this.newsDetails=newsItem.getDetail();
         loadImage(imageView);
     }
 

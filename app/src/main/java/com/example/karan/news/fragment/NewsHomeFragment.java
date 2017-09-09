@@ -44,7 +44,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
 
     private RecyclerView recyclerView;
     CardView cardView;
-    private String child,user_key;
+    private String child,userKey;
     private int color;
     Context context;
     private ArrayList<Item> newsItem = new ArrayList<>();
@@ -64,7 +64,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
 
         FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(context);
         //User key stores the String value of user's key to distinguish b/w users and show bookmarks accordingly
-        user_key=firebaseAuthentication.getCurrentUser();
+        userKey=firebaseAuthentication.getCurrentUser();
 
         checkCategory();
         //Firebase Recycler adapter method fetches details from firebase database
@@ -120,7 +120,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
     //Method defined to check the incoming category from news home page to inflate the respective fragment.
     private void checkCategory(){
         if (child.equals(Constants.BOOKMARK_CATEGORY)){
-            mDatabase =FirebaseDatabase.getInstance().getReference().child(Constants.USERS_KEY).child(user_key).child(Constants.BOOKMARK_CATEGORY);
+            mDatabase =FirebaseDatabase.getInstance().getReference().child(Constants.USERS_KEY).child(userKey).child(Constants.BOOKMARK_CATEGORY);
         }
         else{
             mDatabase = FirebaseDatabase.getInstance().getReference().child(child);

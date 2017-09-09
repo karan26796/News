@@ -23,7 +23,7 @@ import com.example.karan.news.utils.LaunchManager;
 
 public class SettingsActivity extends BaseActivity implements View.OnClickListener {
     private Window window;
-    private ImageButton back_button;
+    private ImageButton backButton;
     private Toolbar toolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -36,8 +36,8 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         toolbar=(Toolbar) findViewById(R.id.settings_toolbar);
         setTheme(toolbar,window);
 
-        back_button=(ImageButton)findViewById(R.id.settings_back_button);
-        back_button.setOnClickListener(this);
+        backButton=(ImageButton)findViewById(R.id.settings_back_button);
+        backButton.setOnClickListener(this);
 
         FragmentManager mFragmentManager = getFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
