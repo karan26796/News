@@ -22,19 +22,19 @@ import com.example.karan.news.utils.LaunchManager;
  * the internet.*/
 
 public class SettingsActivity extends BaseActivity implements View.OnClickListener {
-    private Window window;
+    private Window mWindow;
     private ImageButton backButton;
-    private Toolbar toolbar;
+    private Toolbar mToolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings);
+        setContentView(R.layout.activity_settings);
 
-        window=getWindow();
-        toolbar=(Toolbar) findViewById(R.id.settings_toolbar);
-        setTheme(toolbar,window);
+        mWindow=getWindow();
+        mToolbar=(Toolbar) findViewById(R.id.settings_toolbar);
+        setTheme(mToolbar,mWindow);
 
         backButton=(ImageButton)findViewById(R.id.settings_back_button);
         backButton.setOnClickListener(this);
@@ -42,11 +42,11 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         FragmentManager mFragmentManager = getFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
         SettingsFragment mPrefsFragment = new SettingsFragment();
-        mFragmentTransaction.replace(R.id.settings_frame, mPrefsFragment);
+        mFragmentTransaction.replace(R.id.settings_frame_layout, mPrefsFragment);
         mFragmentTransaction.commit();
     }
 
-    //App theme is fetched using shared preference from settings activity
+    //App theme is fetched using shared preference from activity_settings activity
     private void loadPreference() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
@@ -54,12 +54,12 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void setTheme(Toolbar toolbar, Window window) {
-        this.toolbar=toolbar;
-        this.window=window;
+        this.mToolbar=toolbar;
+        this.mWindow=window;
         // fetches shared preferences for value of 'theme' set by the user
         loadPreference();
 
-        // set toolbar popup them for different themes.
+        // set layout_actionbar popup them for different themes.
         if (theme.equals(getString(R.string.theme_light))) {
             toolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.green));
             window.setStatusBarColor(ContextCompat.getColor(this,R.color.green));
@@ -71,7 +71,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.settings;
+        return R.layout.activity_settings;
     }
 
     @Override

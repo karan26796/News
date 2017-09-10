@@ -18,7 +18,7 @@
         android:clickable="true"
         android:elevation="@dimen/button_elevation"
         android:focusable="true"
-        app:srcCompat="@drawable/back_arrow" />
+        app:srcCompat="@drawable/ic_back_arrow" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/settings_toolbar"
@@ -35,7 +35,7 @@
         app:titleTextColor="@color/white" />
 
     <FrameLayout
-        android:id="@+id/settings_frame"
+        android:id="@+id/settings_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"

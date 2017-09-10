@@ -34,12 +34,12 @@ public class Constants {
 /*---------------------------------------------------------------------------------------------------------------------------------*/
     public static final String PREFERENCES ="my_preferences" ;
     public static final String USERS_KEY ="Users";
-    public static final String NEWS_DETAILS ="news_details" ;
+    public static final String NEWS_DETAILS ="activity_news_details" ;
     public static final String READ_ARTICLES_STATUS_SHARED_PREFERENCES = "MyPrefs";
     public static final String READ_ARTICLE = "read";
 
 /*---------------------------------------------------------------------------------------------------------------------------------*/
-//Mentioned below are the keys used in the settings activity.
+//Mentioned below are the keys used in the activity_settings activity.
 /*---------------------------------------------------------------------------------------------------------------------------------*/
     public static final String KEY_APP_THEME = "app_theme";
     public static final String KEY_TEXT_SIZE ="text_size" ;

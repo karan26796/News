@@ -14,33 +14,33 @@
         android:paddingStart="@dimen/padding_large"
         android:paddingEnd="@dimen/padding_large"
         android:textAlignment="center"
-        app:title="@string/category"
+        app:title="@string/news_category"
         app:titleTextColor="@color/white" />
 
     <ImageButton
-        android:id="@+id/bookmark"
-        android:contentDescription="@string/desc"
+        android:id="@+id/img_btn_bookmark"
         android:layout_width="@dimen/square_button_parameter"
         android:layout_height="@dimen/square_button_parameter"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
         android:background="?android:selectableItemBackground"
         android:clickable="true"
+        android:contentDescription="@string/desc"
         android:elevation="@dimen/button_elevation"
-        app:srcCompat="@drawable/bookmark_check"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        app:srcCompat="@drawable/ic_bookmark_check" />
 
     <ImageButton
-        android:id="@+id/back_button"
-        android:contentDescription="@string/desc"
+        android:id="@+id/img_back_button"
         android:layout_width="@dimen/square_button_parameter"
         android:layout_height="@dimen/square_button_parameter"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="?android:selectableItemBackground"
         android:clickable="true"
+        android:contentDescription="@string/desc"
         android:elevation="@dimen/button_elevation"
         android:focusable="true"
-        app:srcCompat="@drawable/back_arrow"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        app:srcCompat="@drawable/ic_back_arrow" />
 
 
     <ScrollView
@@ -68,7 +68,7 @@
                 android:padding="@dimen/padding_smaller" />
 
             <TextView
-                android:id="@+id/details"
+                android:id="@+id/news_details"
                 style="?text_size"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -76,7 +76,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/detail_image"
                 android:selectAllOnFocus="true"
-                android:textColor="?text_color_primary"/>
+                android:textColor="?text_color_primary" />
         </RelativeLayout>
     </ScrollView>
 

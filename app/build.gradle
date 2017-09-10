@@ -19,7 +19,7 @@ android {
         }
     }
     sourceSets {
-        main { assets.srcDirs = ['src/toolbar_options/assets', 'src/toolbar_options/assets/fonts'] }
+        main { assets.srcDirs = ['src/actionbar_news_activity/assets', 'src/actionbar_news_activity/assets/fonts'] }
     }
     productFlavors {
     }

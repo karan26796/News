@@ -21,7 +21,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     String textSize;
     String theme;
     boolean downloadImages;
-    Toolbar mToolbar;
+    Toolbar toolbar;
     SharedPreferences sharedPreferences;
     SharedPreferences.OnSharedPreferenceChangeListener prefListener;
 
@@ -38,13 +38,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        // preference manager shared preferences listener from settings activity for app customisation.
+        // preference manager shared preferences listener from activity_settings activity for app customisation.
         sharedPreferencesListener();
 
         // set up activity layout
         setContentView(getLayoutResourceId());
 
-        // sets up activity toolbar if any
+        // sets up activity layout_actionbar if any
         configureToolbar();
     }
 
@@ -67,24 +67,24 @@ public abstract class BaseActivity extends AppCompatActivity {
     // get layout resource ID
     protected abstract int getLayoutResourceId();
 
-    //get toolbar ID if any
+    //get layout_actionbar ID if any
     protected abstract int getToolbarID();
 
-    // get toolbar title if any
+    // get layout_actionbar title if any
     protected abstract String getToolbarTitle();
 
     /**
-     * Sets up activity toolbar.
+     * Sets up activity layout_actionbar.
      *
-     * Retrieves the toolbar ID along with title if any.
+     * Retrieves the layout_actionbar ID along with title if any.
      */
     protected void configureToolbar() {
 
-        mToolbar = (Toolbar) findViewById(getToolbarID());
+        toolbar = (Toolbar) findViewById(getToolbarID());
 
-        if (mToolbar != null) {
+        if (toolbar != null) {
 
-            setSupportActionBar(mToolbar);
+            setSupportActionBar(toolbar);
 
             // sets activity title
             // handle NullPointerException
@@ -134,7 +134,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * Loads preference manager shared preferences from settings activity.
+     * Loads preference manager shared preferences from activity_settings activity.
      */
     protected void loadPreferences() {
 
@@ -153,7 +153,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-                /*The settings activity too is given the app theme, therefore it is recreated
+                /*The activity_settings activity too is given the app theme, therefore it is recreated
                 in case of change in app theme*/
                 /*In case of other two customisations, they are to be applied in the details page only.*/
                 if (key.equals(Constants.KEY_APP_THEME)) {

@@ -13,7 +13,7 @@ import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private Window window;
+    private Window mWindow;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -21,8 +21,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         super.onCreate(savedInstanceState);
 
-        window=getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.off_white));
+        mWindow=getWindow();
+        mWindow.setStatusBarColor(ContextCompat.getColor(this,R.color.off_white));
         launchActivity();
     }
 
@@ -40,7 +40,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         if (currentUser != null) {
             // launch HomeScreenActivity
-            startActivity(new Intent(SplashScreenActivity.this, NewsHome.class));
+            startActivity(new Intent(SplashScreenActivity.this, NewsHomeActivity.class));
         } else {
             // launch LoginActivity
             startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));

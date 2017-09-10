@@ -27,29 +27,29 @@ import com.example.karan.news.utils.LaunchManager;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText pass,email;
-    private Button login,user;
-    private Window window;
+    private EditText mPassword,mEmail;
+    private Button mLoginButton,mSignUpButton;
+    Window mWindow;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.activity_login);
 
-        user=(Button) findViewById(R.id.sign_up);
+        mSignUpButton=(Button) findViewById(R.id.btn_sign_up);
 
         //window of the app screen is accessed to change color of status bar
-        window=getWindow();
+        mWindow=getWindow();
 
-        pass=(EditText) findViewById(R.id.pass);
-        email=(EditText)findViewById(R.id.email);
+        mPassword=(EditText) findViewById(R.id.edit_text_password);
+        mEmail=(EditText)findViewById(R.id.edit_text_email);
 
-        login=(Button) findViewById(R.id.sign_in);
+        mLoginButton=(Button) findViewById(R.id.btn_sign_in);
 
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.gray));
-        login.setOnClickListener(this);
-        user.setOnClickListener(this);
+        mWindow.setStatusBarColor(ContextCompat.getColor(this,R.color.gray));
+        mLoginButton.setOnClickListener(this);
+        mSignUpButton.setOnClickListener(this);
     }
 
 
@@ -69,20 +69,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mProgressDialog.setMessage(getString(R.string.start_progress_dialog_message));
         mProgressDialog.setCanceledOnTouchOutside(false);
 
-        String mEmail = email.getText().toString().trim();
-        String mPass = pass.getText().toString().trim();
+        String email = mEmail.getText().toString().trim();
+        String password = mPassword.getText().toString().trim();
 
-        if (!(TextUtils.isEmpty(mEmail) || TextUtils.isEmpty(mPass))) {
+        if (!(TextUtils.isEmpty(email) || TextUtils.isEmpty(password))) {
 
             // show progress dialog
             mProgressDialog.show();
             // login registered user
             FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(this);
-            firebaseAuthentication.loginUser(mEmail, mPass, mProgressDialog);
+            firebaseAuthentication.loginUser(email, password, mProgressDialog);
 
             SharedPreferences sharedPreferences=getSharedPreferences(Constants.PREFERENCES,MODE_PRIVATE);
             SharedPreferences.Editor edit = sharedPreferences.edit();
-            sharedPreferences.getString(Constants.USERNAME,mEmail);
+            sharedPreferences.getString(Constants.USERNAME,email);
             edit.apply();
 
         } else {
@@ -94,11 +94,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.sign_in:
+            case R.id.btn_sign_in:
                 loginUser();
                 break;
 
-            case R.id.sign_up:
+            case R.id.btn_sign_up:
                LaunchManager.showSignUpScreen(this);
                 break;
         }

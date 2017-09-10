@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     android:paddingTop="57sp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.karan.news.activities.NewsHome">
+    tools:context="com.example.karan.news.activities.NewsHomeActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/news_activity_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/bg_color"

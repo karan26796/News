@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import android.widget.Toast;
 import com.example.karan.news.R;
 import com.example.karan.news.activities.LoginActivity;
-import com.example.karan.news.activities.NewsHome;
+import com.example.karan.news.activities.NewsHomeActivity;
 import com.example.karan.news.models.User;
 import com.example.karan.news.utils.Constants;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,7 +42,7 @@ public class FirebaseAuthentication {
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
 
-            Toast.makeText(mContext,R.string.email_error,Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext,R.string.toast_email_error,Toast.LENGTH_LONG).show();
         } else {
 
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -55,7 +55,7 @@ public class FirebaseAuthentication {
                     if (!task.isSuccessful()) {
 
                         progressDialog.hide();
-                        Toast.makeText(mContext, R.string.auth_failed, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, R.string.toast_auth_failed, Toast.LENGTH_SHORT).show();
                     } else {
 
                         /*get current user UID ie. User's ID which is a unique key given by firebase
@@ -83,7 +83,7 @@ public class FirebaseAuthentication {
                                     progressDialog.dismiss();
 
                                     // launch HomeScreenActivity when user registration is complete
-                                    Intent mainActivity = new Intent(mContext, NewsHome.class);
+                                    Intent mainActivity = new Intent(mContext, NewsHomeActivity.class);
                                     mainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     mContext.startActivity(mainActivity);
 
@@ -94,7 +94,7 @@ public class FirebaseAuthentication {
 
                                     // display error message
                                     progressDialog.dismiss();
-                                    Toast.makeText(mContext, R.string.auth_failed, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(mContext, R.string.toast_auth_failed, Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -116,7 +116,7 @@ public class FirebaseAuthentication {
                     // dismiss progress dialog
                     mProgressDialog.dismiss();
                     // launch HomeScreenActivity when user registration is complete
-                    Intent mainActivity = new Intent(mContext, NewsHome.class);
+                    Intent mainActivity = new Intent(mContext, NewsHomeActivity.class);
                     mainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     mContext.startActivity(mainActivity);
                     // finish current activity
@@ -125,7 +125,7 @@ public class FirebaseAuthentication {
 
                     // display error message
                     mProgressDialog.dismiss();
-                    Toast.makeText(mContext, R.string.auth_failed, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, R.string.toast_auth_failed, Toast.LENGTH_SHORT).show();
                 }
             }
         });

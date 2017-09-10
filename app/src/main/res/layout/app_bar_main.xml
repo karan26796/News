@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@null"
-    tools:context="com.example.karan.news.activities.NewsHome">
+    tools:context="com.example.karan.news.activities.NewsHomeActivity">
 
-    <include layout="@layout/fragment" />
+    <include layout="@layout/fragment_news_activity" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-<!-- drawable/fire.xml -->
+<!-- drawable/ic_fire.xmlxml -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:height="@dimen/icon_parameter"
     android:width="@dimen/icon_parameter"

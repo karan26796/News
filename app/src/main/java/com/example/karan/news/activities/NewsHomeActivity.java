@@ -31,40 +31,39 @@ import com.example.karan.news.utils.LaunchManager;
  * views for smooth user interaction, all news categories can be
  * accessed from the home page of the app.*/
 
-public class NewsHome extends BaseActivity
+public class NewsHomeActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     private String category,user;
     private int toolbarColor;
     private NewsHomeFragment newsHomeFragment;
-    private Window window;
+    private Window mWindow;
     boolean status;
+    private Toolbar mToolbar;
     private NavigationView navigationView;
     private FirebaseAuthentication firebaseAuthentication;
-    private Toolbar toolbar;
-
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.news_page);
+        setContentView(R.layout.activity_news_list);
 
         status=getIntent().getBooleanExtra(Constants.READ_ARTICLE,true);
 
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-        toolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
-        setTheme(toolbar);
+        mToolbar=(Toolbar)findViewById(R.id.all_toolbar);
+        mToolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
+        setTheme(mToolbar);
 
-        //sets the toolbar specified as the action bar
-        setSupportActionBar(toolbar);
+        //sets the layout_actionbar specified as the action bar
+        setSupportActionBar(mToolbar);
 
         //method used to change status bar color
-        window= getWindow();
+        mWindow= getWindow();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         drawer.closeDrawer(GravityCompat.START);
@@ -80,7 +79,7 @@ public class NewsHome extends BaseActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.toolbar_options, menu);
+        getMenuInflater().inflate(R.menu.actionbar_news_activity, menu);
         return true;
     }
 
@@ -100,18 +99,18 @@ public class NewsHome extends BaseActivity
         }
     }
 
-    //App theme is fetched using shared preference from settings activity
+    //App theme is fetched using shared preference from activity_settings activity
     private void loadPreference() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
     }
 
-    //change the popup theme of the toolbar items for change in theme
+    //change the popup theme of the layout_actionbar items for change in theme
     private void setTheme(Toolbar toolbar) {
-        this.toolbar=toolbar;
+        this.mToolbar=toolbar;
         // fetches shared preferences for value of 'theme' set by the user
         loadPreference();
-        // set toolbar popup theme
+        // set layout_actionbar popup theme
         if (theme.equals(getString(R.string.theme_light))) {
             toolbar.setPopupTheme(R.style.AppFullScreenTheme);
         } else if (theme.equals(getString(R.string.theme_dark))) {
@@ -137,9 +136,9 @@ public class NewsHome extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
-    /*This method communicates with the Navigation drawer fragment click Listener
-    and sends the item id and category string value along with setting the toolbar title
-    and inflating list of the desired category in the fragment*/
+    /*This method communicates with the Navigation drawer fragment_news_activity click Listener
+    and sends the item id and category string value along with setting the layout_actionbar title
+    and inflating list of the desired category in the fragment_news_activity*/
 
     //Requires api checks the user's android api.
     //It is required to change the app's status bar color among other things.
@@ -150,7 +149,7 @@ public class NewsHome extends BaseActivity
 
         //the values of category and toolbarColor are set here
 
-        /*this keyword sets the value of category and toolbar color
+        /*this keyword sets the value of category and layout_actionbar color
          to child and color defined in the method respectively*/
 
         this.category=child;
@@ -184,10 +183,10 @@ public class NewsHome extends BaseActivity
                 break;
         }
 
-        //Action bar toolbar's title is changed on item click
-        toolbar.setTitle(child);
-        window.setStatusBarColor(color);
-        toolbar.setBackgroundColor(color);
+        //Action bar layout_actionbar's title is changed on item click
+        mToolbar.setTitle(child);
+        mWindow.setStatusBarColor(color);
+        mToolbar.setBackgroundColor(color);
 
         //New fragment is inflated on item click in Navigation drawer
         newsHomeFragment = new NewsHomeFragment();
@@ -205,7 +204,7 @@ public class NewsHome extends BaseActivity
     }
 
     /**
-     * Default fragment method inflates the home fragment
+     * Default fragment_news_activity method inflates the home fragment_news_activity
      * with a predefined category.
      */
 
@@ -223,7 +222,7 @@ public class NewsHome extends BaseActivity
     //Shows a Dialog box for user prompt on whether he wants to log out or continue using the app
     public static void showDialog(final Activity activity) {
         AlertDialog alertbox = new AlertDialog.Builder(activity)
-                .setMessage(R.string.logout_out)
+                .setMessage(R.string.action_logout)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(activity);
@@ -243,7 +242,7 @@ public class NewsHome extends BaseActivity
     //Common method to inflate fragment every time it is called in the activity
     public void fragmentInflate(){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, newsHomeFragment);
+        fragmentTransaction.replace(R.id.news_activity_content_frame, newsHomeFragment);
         fragmentTransaction.commit();
     }
 
@@ -260,7 +259,7 @@ public class NewsHome extends BaseActivity
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.news_page;
+        return R.layout.activity_news_list;
     }
 
     @Override

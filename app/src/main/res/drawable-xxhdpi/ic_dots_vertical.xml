@@ -1,4 +1,4 @@
-<!-- drawable/dots_vertical.xml -->
+<!-- drawable/ic_dots_verticalcal.xml -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:height="@dimen/icon_parameter"
     android:width="@dimen/icon_parameter"

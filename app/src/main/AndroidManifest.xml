@@ -15,7 +15,7 @@
             android:screenOrientation="portrait"
             android:name=".activities.LoginActivity"
             android:theme="@style/AppFullScreenTheme"/>
-        <activity android:name=".activities.NewsHome"/>
+        <activity android:name=".activities.NewsHomeActivity"/>
         <activity
             android:screenOrientation="portrait"
             android:name=".activities.SignUpActivity"
@@ -23,12 +23,12 @@
         <activity
             android:screenOrientation="portrait"
             android:name=".activities.SettingsActivity"
-            android:parentActivityName=".activities.NewsHome"
+            android:parentActivityName=".activities.NewsHomeActivity"
             android:theme="@style/AppFullScreenTheme"/>
         <activity
             android:screenOrientation="portrait"
-            android:name=".activities.NewsDetails"
-            android:parentActivityName=".activities.NewsHome" />
+            android:name=".activities.NewsDetailsActivity"
+            android:parentActivityName=".activities.NewsHomeActivity" />
         <activity android:name=".activities.SplashScreenActivity"
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">

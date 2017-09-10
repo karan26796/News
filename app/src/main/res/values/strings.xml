@@ -4,24 +4,24 @@
     <!--Strings used across activities and layouts to avoid hard coding of strings-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="wait_message">Registering,Please Wait&#8230;</string>
+    <string name="progress_bar_wait_message">Registering,Please Wait&#8230;</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="user_registered">Successfully registered</string>
-    <string name="registration_error">Registration Error</string>
-    <string name="password_error">Please enter password</string>
-    <string name="email_error">Please enter email</string>
-    <string name="auth_failed">Registration failed</string>
+    <string name="toast_user_registered">Successfully registered</string>
+    <string name="toast_registration_error">Registration Error</string>
+    <string name="toast_password_error">Please enter password</string>
+    <string name="toast_email_error">Please enter email</string>
+    <string name="action_settings">Settings</string>
+    <string name="toast_auth_failed">Registration failed</string>
     <string name="start_progress_dialog_title">Logging user in&#8230;</string>
     <string name="start_progress_dialog_message">Almost done</string>
     <string name="start_error_message">Either username or password isn\'t correct</string>
-    <string name="passwords_differ">Passwords do not match</string>
-    <string name="logout_out">Logout user?</string>
-    <string name="logout">Logout?</string>
-    <string name="bookmark">Bookmark this article?</string>
+    <string name="dialog_logout_out">Logout user?</string>
+    <string name="action_logout">Logout?</string>
+    <string name="dialog_bookmark">Bookmark this article?</string>
     <string name="home">Home</string>
-    <string name="hi">Hi there!</string>
-    <string name="enter_details">Enter user details</string>
-    <string name="category">Category</string>
+    <string name="nav_drawer_text">Hi there!</string>
+    <string name="toast_enter_details">Enter user details</string>
+    <string name="news_category">Category</string>
     <string name="dummy_date">12/12/12</string>
     <string name="desc">Image View</string>
     <string name="sign_in">Sign in</string>
@@ -37,13 +37,12 @@
     <!-- Strings used as hints in Edit Text views -->
     <string name="hint_username">123@xyz.com</string>
     <string name="new_user">New user?Sign Up</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Confirm Password</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
 
     <!-- Add/Remove bookmark strings-->
-    <string name="remove_bookmark">Remove Bookmark?</string>
-    <string name="add_bookmark">Bookmark?</string>
-    <string name="bookmark_added">Bookmark added</string>
+    <string name="add_bookmark">Add Bookmark?</string>
+    <string name="toast_bookmark_added">Bookmark added</string>
     <string name="users">Users</string>
     <string name="remove_bookmark_alert_dialog_message">Sure to remove article from bookmarks?</string>
 
@@ -62,15 +61,17 @@
     <string name="select_theme">Select theme</string>
     <string name="text_summary">Change text size in news detail page</string>
     <string name="text_size">Text Size</string>
-    <string name="select_text">Select text size</string>
-    <string name="save_data">Download images?</string>
-    <string name="download_summary">Download images from the internet?</string>
-    <string name="action_settings">Settings</string>
+    <string name="settings_select_text">Select text size</string>
+    <string name="settings_save_data">Download images?</string>
+    <string name="settings_download_summary">Download images from the internet?</string>
+    <string name="settings_look_and_feel">Look and feel</string>
+    <string name="settings_general">General</string>
+
+    <!--keys for settings-->
     <string name="image_download_key">image_download</string>
     <string name="theme_key">app_theme</string>
     <string name="text_key">text_size</string>
-    <string name="look_and_feel">Look and feel</string>
-    <string name="general">General</string>
+
 
 
 </resources>

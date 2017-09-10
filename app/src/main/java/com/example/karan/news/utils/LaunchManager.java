@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import com.example.karan.news.activities.SettingsActivity;
 import com.example.karan.news.activities.LoginActivity;
-import com.example.karan.news.activities.NewsDetails;
-import com.example.karan.news.activities.NewsHome;
+import com.example.karan.news.activities.NewsDetailsActivity;
+import com.example.karan.news.activities.NewsHomeActivity;
 import com.example.karan.news.activities.SignUpActivity;
 import com.example.karan.news.models.Item;
 
@@ -19,13 +19,13 @@ public class LaunchManager {
 
     //Home activity is launched via intent wherever this method is called
     public static void launchHome(Activity activity) {
-        Intent intent = new Intent(activity, NewsHome.class);
+        Intent intent = new Intent(activity, NewsHomeActivity.class);
         activity.startActivity(intent);
     }
 
     //Home activity is launched with the news category selected by the user previously
     public static void categoryFragment(Activity activity,String category,boolean status,int position) {
-        Intent intent = new Intent(activity, NewsHome.class);
+        Intent intent = new Intent(activity, NewsHomeActivity.class);
         intent.putExtra(Constants.CATEGORY_NAME,category);
         intent.putExtra(Constants.POSITION,position);
         intent.putExtra(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES,status);
@@ -54,12 +54,12 @@ public class LaunchManager {
         activity.finish();
     }
 
-    /**Valuable resources like position,color of toolbar and news category are sent to the
+    /**Valuable resources like position,color of layout_actionbar and news category are sent to the
     Details activity using this method via Intent and later fetched in the details activity*/
 
     //News details page is opened from click of news article on News list
     public static void showDetailsPage(Activity activity, int position, String category , int color, Item newsItem){
-        Intent intent = new Intent(activity,NewsDetails.class);
+        Intent intent = new Intent(activity,NewsDetailsActivity.class);
         intent.putExtra(Constants.POSITION,position);
         intent.putExtra(Constants.CATEGORY_NAME,category);
         intent.putExtra(Constants.COLOR_VALUE,color);

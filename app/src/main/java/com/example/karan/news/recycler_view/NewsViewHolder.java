@@ -20,35 +20,33 @@ import com.squareup.picasso.Picasso;
 /*News article views are defined here*/
 @SuppressWarnings("FieldCanBeLocal")
 public class NewsViewHolder extends RecyclerView.ViewHolder {
-    private TextView head;
-    private TextView date;
-    private TextView filler;
-    private String theme;
-    private SharedPreferences sharedPreferences,preferences;
+    private TextView mTextViewHeadline,mTextViewDate,mTextViewFiller;
+    private String mTheme;
+    private SharedPreferences sharedPreferences,mPreferences;
     private ImageView imageView;
     private RelativeLayout relativeLayout;
-    private boolean status=false;
+    private boolean mStatus=false;
 
 
     public NewsViewHolder(View itemView) {
         super(itemView);
 
-        head= (TextView) itemView.findViewById(R.id.headline);
-        date=(TextView) itemView.findViewById(R.id.date);
-        filler=(TextView) itemView.findViewById(R.id.filler);
-        imageView=(ImageView) itemView.findViewById(R.id.image);
+        mTextViewHeadline= (TextView) itemView.findViewById(R.id.card_view_headline);
+        mTextViewDate=(TextView) itemView.findViewById(R.id.card_view_date);
+        mTextViewFiller=(TextView) itemView.findViewById(R.id.card_view_filler);
+        imageView=(ImageView) itemView.findViewById(R.id.card_view_image);
         relativeLayout=(RelativeLayout) itemView.findViewById(R.id.card_relative_layout);
 
     }
 
     public void setHeadLine(String title) {
-    head.setText(title);
+    mTextViewHeadline.setText(title);
     }
 
-    public void setDescription(String description) {filler.setText(description);}
+    public void setDescription(String description) {mTextViewFiller.setText(description);}
 
     public void setDate(String updated){
-        date.setText(updated);}
+        mTextViewDate.setText(updated);}
 
     public void setImage(String image) {
         Picasso.with(itemView.getContext())
@@ -61,14 +59,14 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     public void checkStatus(String title, Context context) {
 
         sharedPreferences = context.getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES, Context.MODE_PRIVATE);
-        status = sharedPreferences.getBoolean(title, false);
-        preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        theme=preferences.getString(Constants.KEY_APP_THEME, context.getString(R.string.theme_light));
-        if (status) {
-                if(theme.equals(context.getString(R.string.theme_light))){
+        mStatus = sharedPreferences.getBoolean(title, false);
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        mTheme=mPreferences.getString(Constants.KEY_APP_THEME, context.getString(R.string.theme_light));
+        if (mStatus) {
+                if(mTheme.equals(context.getString(R.string.theme_light))){
                      relativeLayout.setBackgroundColor(ContextCompat.getColor(context, R.color.lighter_gray));
                 }
-                else if(theme.equals(context.getString(R.string.theme_dark)))
+                else if(mTheme.equals(context.getString(R.string.theme_dark)))
                     relativeLayout.setBackgroundColor(ContextCompat.getColor(context,R.color.black_1));
         }
     }

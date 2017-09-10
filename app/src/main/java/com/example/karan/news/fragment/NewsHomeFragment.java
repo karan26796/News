@@ -32,11 +32,11 @@ import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by karan on 7/19/2017.
- * A common fragment is defined on home page which
+ * A common fragment_news_activity is defined on home page which
  * is inflated on different scenarios in the app.
  *
  * This class takes care of inflating the right
- * fragment on user prompt or in this case, category
+ * fragment_news_activity on user prompt or in this case, category
  * selection from navigation drawer
  */
 
@@ -52,10 +52,10 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_news_activity, container, false);
 
         //Recycler view contains the list of news articles foe different categories
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+        recyclerView = (RecyclerView) view.findViewById(R.id.news_activity_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         cardView= (CardView) view.findViewById(R.id.card_view);
@@ -117,7 +117,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         });
     }
 
-    //Method defined to check the incoming category from news home page to inflate the respective fragment.
+    //Method defined to check the incoming category from news home page to inflate the respective fragment_news_activity.
     private void checkCategory(){
         if (child.equals(Constants.BOOKMARK_CATEGORY)){
             mDatabase =FirebaseDatabase.getInstance().getReference().child(Constants.USERS_KEY).child(userKey).child(Constants.BOOKMARK_CATEGORY);

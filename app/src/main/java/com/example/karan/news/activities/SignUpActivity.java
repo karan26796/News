@@ -23,24 +23,24 @@ import com.example.karan.news.utils.LaunchManager;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText newUser,newPass,conPass;
-    private Button submit;
+    private EditText mNewUser,mNewPass,mConPass;
+    private Button mSubmitButton;
     private Window window;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up);
+        setContentView(R.layout.activity_sign_up);
 
         window=getWindow();
-        newUser=(EditText) findViewById(R.id.new_email);
-        newPass=(EditText) findViewById(R.id.new_pass);
-        conPass=(EditText) findViewById(R.id.con_pass);
+        mNewUser=(EditText) findViewById(R.id.sign_up_new_email);
+        mNewPass=(EditText) findViewById(R.id.sign_up_new_pass);
+        mConPass=(EditText) findViewById(R.id.sign_up_con_pass);
 
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.gray));
-        submit=(Button) findViewById(R.id.submit);
-        submit.setOnClickListener(this);
+        mSubmitButton=(Button) findViewById(R.id.btn_submit);
+        mSubmitButton.setOnClickListener(this);
     }
 
     //Method to register user to the app's user list
@@ -50,22 +50,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         ProgressDialog mProgressDialog = new ProgressDialog(SignUpActivity.this);
         mProgressDialog.setCanceledOnTouchOutside(false);
 
-        String email = newUser.getText().toString().trim();
-        String password = newPass.getText().toString().trim();
-        String pass_con=conPass.getText().toString().trim();
-
-        if(!newPass.equals(conPass))
-        {
-            Toast.makeText(this,R.string.passwords_differ,Toast.LENGTH_SHORT);
-        }
+        String email = mNewUser.getText().toString().trim();
+        String password = mNewPass.getText().toString().trim();
+        String pass_con= mConPass.getText().toString().trim();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            Toast.makeText(this,R.string.enter_details,Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,R.string.toast_enter_details,Toast.LENGTH_SHORT).show();
         }
 
         if (!(TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(pass_con))) {
 
-            mProgressDialog.setMessage(getString(R.string.wait_message));
+            mProgressDialog.setMessage(getString(R.string.progress_bar_wait_message));
             mProgressDialog.setCanceledOnTouchOutside(false);
             mProgressDialog.show();
 
@@ -87,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.submit:
+            case R.id.btn_submit:
                 //method call to check user credentials
                 registerUser();
             break;

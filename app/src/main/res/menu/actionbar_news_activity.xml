@@ -6,6 +6,6 @@
                     android:title="@string/action_settings" />
                 <item
                     android:id="@+id/log_out"
-                    android:title="@string/logout" />
+                    android:title="@string/action_logout" />
         </group>
 </menu>

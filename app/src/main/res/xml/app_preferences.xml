@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/general">
+    <PreferenceCategory android:title="@string/settings_general">
         <CheckBoxPreference
             android:key="@string/image_download_key"
-            android:summary="@string/download_summary"
-            android:title="@string/save_data" />
+            android:summary="@string/settings_download_summary"
+            android:title="@string/settings_save_data" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/look_and_feel">
+    <PreferenceCategory android:title="@string/settings_look_and_feel">
 
         <ListPreference
             android:defaultValue="@style/AppFullScreenTheme"
@@ -20,7 +20,7 @@
             android:title="@string/select_theme" />
         <ListPreference
             android:defaultValue="@string/text_size_small"
-            android:dialogTitle="@string/select_text"
+            android:dialogTitle="@string/settings_select_text"
             android:entries="@array/text_size"
             android:entryValues="@array/text_size"
             android:key="@string/text_key"

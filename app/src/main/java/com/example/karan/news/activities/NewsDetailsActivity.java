@@ -36,38 +36,38 @@ import com.squareup.picasso.Picasso;
  * clicked from the list on Home page
  */
 
-public class NewsDetails extends BaseActivity implements View.OnClickListener{
+public class NewsDetailsActivity extends BaseActivity implements View.OnClickListener{
 
-    private String category, imageUrl1, newsDetails;
+    private String newsCategory, imageUrl1, newsDetails;
     private int color;
-    private TextView details;
-    private Window window;
+    private TextView mTextViewDetails;
+    private Window mWindow;
     private ImageView imageView;
-    private Toolbar toolbar;
-    private ImageButton backButton,bookmark;
+    private Toolbar mToolbar;
+    private ImageButton backButton,bookmarkButton;
     private DatabaseReference databaseReference;
     private Item newsItem = new Item();
     private int position;
     private PopupMenu popup;
     private boolean status;
     private int count;
-    private SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.news_details);
+        setContentView(R.layout.activity_news_details);
 
         valuesFetch();
         //Used to set color of status bar
-        window=getWindow();
+        mWindow=getWindow();
 
-        details=(TextView) findViewById(R.id.details);
+        mTextViewDetails=(TextView) findViewById(R.id.news_details);
         imageView=(ImageView)findViewById(R.id.detail_image);
-        toolbar=(Toolbar)findViewById(R.id.category_toolbar);
-        backButton=(ImageButton)findViewById(R.id.back_button);
-        bookmark=(ImageButton)findViewById(R.id.bookmark);
+        mToolbar=(Toolbar)findViewById(R.id.category_toolbar);
+        backButton=(ImageButton)findViewById(R.id.img_back_button);
+        bookmarkButton=(ImageButton)findViewById(R.id.img_btn_bookmark);
 
         databaseReference= FirebaseDatabase.getInstance().getReference();
         sharedPreferences=getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES,MODE_PRIVATE);
@@ -78,29 +78,29 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         getBookmarkCount();
 
         backButton.setOnClickListener(this);
-        bookmark.setOnClickListener(this);
+        bookmarkButton.setOnClickListener(this);
     }
 
     private void valuesFetch(){
         //Values fetched from newsFragment Bundle
         position =getIntent().getIntExtra(Constants.POSITION,0);
-        category=getIntent().getStringExtra(Constants.CATEGORY_NAME);
+        newsCategory=getIntent().getStringExtra(Constants.CATEGORY_NAME);
         color=getIntent().getIntExtra(Constants.COLOR_VALUE,R.color.colorAccent);
     }
 
     @Override
     public void onBackPressed() {
-        LaunchManager.categoryFragment(this,category,status,position);
+        LaunchManager.categoryFragment(this,newsCategory,status,position);
         super.onBackPressed();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void loadData(){
 
-        toolbar.setTitle(category);
-        toolbar.setBackgroundColor(color);
-        window.setStatusBarColor(color);
-        details.setText(newsDetails);
+        mToolbar.setTitle(newsCategory);
+        mToolbar.setBackgroundColor(color);
+        mWindow.setStatusBarColor(color);
+        mTextViewDetails.setText(newsDetails);
     }
 
     protected void getData() {
@@ -115,10 +115,10 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
     public void onClick(View v) {
         int id =v.getId();
         switch (id){
-            case R.id.back_button:
+            case R.id.img_back_button:
                 LaunchManager.launchHome(this);
                 break;
-            case R.id.bookmark:
+            case R.id.img_btn_bookmark:
                 showPopup(v, position);
                 break;
         }
@@ -140,10 +140,10 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
         else
         {
             if(theme.equals(getResources().getString(R.string.theme_light))) {
-                imageView.setImageResource(R.drawable.image_broken_variant_black);
+                imageView.setImageResource(R.drawable.ic_image_broken_variant_black);
             }
             else{
-                imageView.setImageResource(R.drawable.image_broken_variant_white);
+                imageView.setImageResource(R.drawable.ic_image_broken_variant_white);
             }
 
         }
@@ -206,10 +206,10 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
 
                             if (task.isSuccessful()) {
 
-                                Toast.makeText(getApplicationContext(), R.string.bookmark_added, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.toast_bookmark_added, Toast.LENGTH_SHORT).show();
                             } else {
 
-                                Toast.makeText(NewsDetails.this, newsItem.getDetail(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(NewsDetailsActivity.this, newsItem.getDetail(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -224,7 +224,7 @@ public class NewsDetails extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.news_details;
+        return R.layout.activity_news_details;
     }
 
     @Override
