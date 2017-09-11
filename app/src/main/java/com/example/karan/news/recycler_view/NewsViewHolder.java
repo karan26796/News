@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.karan.news.R;
+import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
 import com.example.karan.news.utils.Constants;
 import com.squareup.picasso.Picasso;
 /**
@@ -21,7 +22,7 @@ import com.squareup.picasso.Picasso;
 @SuppressWarnings("FieldCanBeLocal")
 public class NewsViewHolder extends RecyclerView.ViewHolder {
     private TextView mTextViewHeadline,mTextViewDate,mTextViewFiller;
-    private String mTheme;
+    private String mTheme,userKey;
     private SharedPreferences sharedPreferences,mPreferences;
     private ImageView imageView;
     private RelativeLayout relativeLayout;
@@ -36,7 +37,6 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         mTextViewFiller=(TextView) itemView.findViewById(R.id.card_view_filler);
         imageView=(ImageView) itemView.findViewById(R.id.card_view_image);
         relativeLayout=(RelativeLayout) itemView.findViewById(R.id.card_relative_layout);
-
     }
 
     public void setHeadLine(String title) {
@@ -58,8 +58,11 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     //This method checks whether a news article has been read and changes the bg color of the article accordingly
     public void checkStatus(String title, Context context) {
 
+        FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(context);
+        userKey=firebaseAuthentication.getCurrentUser();
+
         sharedPreferences = context.getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES, Context.MODE_PRIVATE);
-        mStatus = sharedPreferences.getBoolean(title, false);
+        mStatus = sharedPreferences.getBoolean(userKey+title, false);
         mPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         mTheme=mPreferences.getString(Constants.KEY_APP_THEME, context.getString(R.string.theme_light));
         if (mStatus) {

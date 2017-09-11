@@ -38,7 +38,7 @@ import com.squareup.picasso.Picasso;
 
 public class NewsDetailsActivity extends BaseActivity implements View.OnClickListener{
 
-    private String newsCategory, imageUrl1, newsDetails;
+    private String newsCategory, imageUrl1, newsDetails,userName;
     private int color;
     private TextView mTextViewDetails;
     private Window mWindow;
@@ -62,6 +62,8 @@ public class NewsDetailsActivity extends BaseActivity implements View.OnClickLis
         valuesFetch();
         //Used to set color of status bar
         mWindow=getWindow();
+        FirebaseAuthentication firebaseAuthentication =new FirebaseAuthentication(this);
+        userName=firebaseAuthentication.getCurrentUser();
 
         mTextViewDetails=(TextView) findViewById(R.id.news_details);
         imageView=(ImageView)findViewById(R.id.detail_image);
@@ -71,7 +73,7 @@ public class NewsDetailsActivity extends BaseActivity implements View.OnClickLis
 
         databaseReference= FirebaseDatabase.getInstance().getReference();
         sharedPreferences=getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES,MODE_PRIVATE);
-        status =sharedPreferences.getBoolean(newsItem.getTitle(),true);
+        status =sharedPreferences.getBoolean(userName+newsItem.getTitle(),true);
 
         getData();
         loadData();

@@ -62,6 +62,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
         child = this.getArguments().getString(Constants.CATEGORY_NAME);
         color = this.getArguments().getInt(Constants.TOOLBAR_COLOR);
 
+
         FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(context);
         //User key stores the String value of user's key to distinguish b/w users and show bookmarks accordingly
         userKey=firebaseAuthentication.getCurrentUser();
@@ -131,7 +132,7 @@ public class NewsHomeFragment extends Fragment implements RecyclerViewClickListe
     public void onClick(View view, int position) {
         SharedPreferences.Editor editor = getActivity()
                 .getSharedPreferences(Constants.READ_ARTICLES_STATUS_SHARED_PREFERENCES, MODE_PRIVATE).edit();
-        editor.putBoolean(newsItem.get(position).getTitle(), true);
+        editor.putBoolean(userKey+newsItem.get(position).getTitle(), true);
         editor.apply();
         LaunchManager.showDetailsPage(getActivity(),position,child,color, newsItem.get(position));
     }
