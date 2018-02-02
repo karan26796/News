@@ -1,5 +1,6 @@
 package com.example.karan.news.activities;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -45,7 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutResourceId());
 
         // sets up activity layout_actionbar if any
-        configureToolbar();
+        configureToolbar(this);
     }
 
     @Override
@@ -78,7 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * Retrieves the layout_actionbar ID along with title if any.
      */
-    protected void configureToolbar() {
+    protected void configureToolbar(Activity activity) {
 
         toolbar = (Toolbar) findViewById(getToolbarID());
 
@@ -89,6 +90,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             // sets activity title
             // handle NullPointerException
             if (getSupportActionBar() != null)
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setTitle(getToolbarTitle());
         }
     }

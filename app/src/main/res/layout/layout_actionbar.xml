@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="56sp">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/all_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimaryDark"
-        android:elevation="@dimen/default_elevation"
-        android:foregroundTint="@color/white"
-        android:theme="@style/AppTheme"
-        android:title="@string/home"
-        app:popupTheme="@style/AppFullScreenDarkTheme"
-        app:titleTextColor="@color/white"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-</RelativeLayout>
+<android.support.v7.widget.Toolbar android:id="@+id/all_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimaryDark"
+    android:foregroundTint="@color/white"
+    android:theme="@style/AppTheme"
+    android:title="@string/home"
+    app:titleTextColor="@android:color/white"
+    app:popupTheme="@style/AppFullScreenDarkTheme"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />

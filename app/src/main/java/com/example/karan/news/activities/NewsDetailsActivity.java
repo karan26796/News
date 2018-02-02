@@ -59,6 +59,8 @@ public class NewsDetailsActivity extends BaseActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_details);
 
+        configureToolbar(this);
+
         valuesFetch();
         //Used to set color of status bar
         mWindow=getWindow();
@@ -68,7 +70,6 @@ public class NewsDetailsActivity extends BaseActivity implements View.OnClickLis
         mTextViewDetails=(TextView) findViewById(R.id.news_details);
         imageView=(ImageView)findViewById(R.id.detail_image);
         mToolbar=(Toolbar)findViewById(R.id.category_toolbar);
-        backButton=(ImageButton)findViewById(R.id.img_back_button);
         bookmarkButton=(ImageButton)findViewById(R.id.img_btn_bookmark);
 
         databaseReference= FirebaseDatabase.getInstance().getReference();
@@ -79,7 +80,6 @@ public class NewsDetailsActivity extends BaseActivity implements View.OnClickLis
         loadData();
         getBookmarkCount();
 
-        backButton.setOnClickListener(this);
         bookmarkButton.setOnClickListener(this);
     }
 
@@ -92,7 +92,6 @@ public class NewsDetailsActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void onBackPressed() {
-        LaunchManager.categoryFragment(this,newsCategory,status,position);
         super.onBackPressed();
     }
 
@@ -114,12 +113,22 @@ public class NewsDetailsActivity extends BaseActivity implements View.OnClickLis
     }
 
     @Override
-    public void onClick(View v) {
-        int id =v.getId();
-        switch (id){
-            case R.id.img_back_button:
-                LaunchManager.launchHome(this);
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case android.R.id.home:
+                onBackPressed();
                 break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
             case R.id.img_btn_bookmark:
                 showPopup(v, position);
                 break;

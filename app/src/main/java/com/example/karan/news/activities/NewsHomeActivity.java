@@ -39,7 +39,6 @@ public class NewsHomeActivity extends BaseActivity
     private NewsHomeFragment newsHomeFragment;
     private Window mWindow;
     boolean status;
-    private Toolbar mToolbar;
     private NavigationView navigationView;
     private FirebaseAuthentication firebaseAuthentication;
 
@@ -49,21 +48,20 @@ public class NewsHomeActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_list);
 
+        configureToolbar(this);
         status=getIntent().getBooleanExtra(Constants.READ_ARTICLE,true);
 
-        mToolbar=(Toolbar)findViewById(R.id.all_toolbar);
-        mToolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
-        setTheme(mToolbar);
+        toolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
+        setTheme();
 
         //sets the layout_actionbar specified as the action bar
-        setSupportActionBar(mToolbar);
 
         //method used to change status bar color
         mWindow= getWindow();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         drawer.closeDrawer(GravityCompat.START);
@@ -106,8 +104,7 @@ public class NewsHomeActivity extends BaseActivity
     }
 
     //change the popup theme of the layout_actionbar items for change in theme
-    private void setTheme(Toolbar toolbar) {
-        this.mToolbar=toolbar;
+    private void setTheme() {
         // fetches shared preferences for value of 'theme' set by the user
         loadPreference();
         // set layout_actionbar popup theme
@@ -184,9 +181,9 @@ public class NewsHomeActivity extends BaseActivity
         }
 
         //Action bar layout_actionbar's title is changed on item click
-        mToolbar.setTitle(child);
+        toolbar.setTitle(child);
         mWindow.setStatusBarColor(color);
-        mToolbar.setBackgroundColor(color);
+        toolbar.setBackgroundColor(color);
 
         //New fragment is inflated on item click in Navigation drawer
         newsHomeFragment = new NewsHomeFragment();
@@ -264,7 +261,7 @@ public class NewsHomeActivity extends BaseActivity
 
     @Override
     protected int getToolbarID() {
-        return 0;
+        return R.id.action_bar;
     }
 
     @Override

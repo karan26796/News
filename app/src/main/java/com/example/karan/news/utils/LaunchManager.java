@@ -65,7 +65,6 @@ public class LaunchManager {
         intent.putExtra(Constants.COLOR_VALUE,color);
         intent.putExtra(Constants.NEWS_DETAILS, newsItem);
         activity.startActivity(intent);
-        activity.finish();
     }
     //Exit app method used to exit app from homepage
     public static void exitApp(Activity activity){

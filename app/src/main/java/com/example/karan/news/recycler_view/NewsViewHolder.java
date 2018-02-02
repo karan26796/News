@@ -21,7 +21,7 @@ import com.squareup.picasso.Picasso;
 /*News article views are defined here*/
 @SuppressWarnings("FieldCanBeLocal")
 public class NewsViewHolder extends RecyclerView.ViewHolder {
-    private TextView mTextViewHeadline,mTextViewDate,mTextViewFiller;
+    private TextView mTextViewHeadline,mTextViewDate,mTextViewFiller,mTextViewStatus;
     private String mTheme,userKey;
     private SharedPreferences sharedPreferences,mPreferences;
     private ImageView imageView;
@@ -32,6 +32,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     public NewsViewHolder(View itemView) {
         super(itemView);
 
+        mTextViewStatus=(TextView) itemView.findViewById(R.id.textViewStatus);
         mTextViewHeadline= (TextView) itemView.findViewById(R.id.card_view_headline);
         mTextViewDate=(TextView) itemView.findViewById(R.id.card_view_date);
         mTextViewFiller=(TextView) itemView.findViewById(R.id.card_view_filler);
@@ -66,11 +67,12 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         mPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         mTheme=mPreferences.getString(Constants.KEY_APP_THEME, context.getString(R.string.theme_light));
         if (mStatus) {
-                if(mTheme.equals(context.getString(R.string.theme_light))){
+                mTextViewStatus.setText("Read");
+                /*if(mTheme.equals(context.getString(R.string.theme_light))){
                      relativeLayout.setBackgroundColor(ContextCompat.getColor(context, R.color.lighter_gray));
                 }
                 else if(mTheme.equals(context.getString(R.string.theme_dark)))
-                    relativeLayout.setBackgroundColor(ContextCompat.getColor(context,R.color.black_1));
+                    relativeLayout.setBackgroundColor(ContextCompat.getColor(context,R.color.black_1));*/
         }
     }
 }

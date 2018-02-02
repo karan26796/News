@@ -3,19 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/category_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"
-        android:elevation="@dimen/default_elevation"
-        android:paddingStart="@dimen/padding_large"
-        android:paddingEnd="@dimen/padding_large"
-        android:textAlignment="center"
-        app:title="@string/news_category"
-        app:titleTextColor="@color/white" />
+    <include
+        layout="@layout/layout_actionbar"
+        android:id="@+id/category_toolbar"/>
 
     <ImageButton
         android:id="@+id/img_btn_bookmark"
@@ -24,24 +14,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:background="?android:selectableItemBackground"
-        android:clickable="true"
         android:contentDescription="@string/desc"
         android:elevation="@dimen/button_elevation"
         app:srcCompat="@drawable/ic_bookmark_check" />
-
-    <ImageButton
-        android:id="@+id/img_back_button"
-        android:layout_width="@dimen/square_button_parameter"
-        android:layout_height="@dimen/square_button_parameter"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="?android:selectableItemBackground"
-        android:clickable="true"
-        android:contentDescription="@string/desc"
-        android:elevation="@dimen/button_elevation"
-        android:focusable="true"
-        app:srcCompat="@drawable/ic_back_arrow" />
-
 
     <ScrollView
         style="@android:style/Widget.DeviceDefault.ScrollView"
@@ -59,13 +34,12 @@
 
             <ImageView
                 android:id="@+id/detail_image"
-                android:contentDescription="@string/desc"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_parameter_large"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:background="?bg_color"
-                android:padding="@dimen/padding_smaller" />
+                android:contentDescription="@string/desc" />
 
             <TextView
                 android:id="@+id/news_details"
