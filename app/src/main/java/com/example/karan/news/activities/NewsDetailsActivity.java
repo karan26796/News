@@ -17,10 +17,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.karan.news.R;
-import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
+import com.example.karan.news.firebasemanager.FirebaseAuthentication;
 import com.example.karan.news.models.Item;
 import com.example.karan.news.utils.Constants;
-import com.example.karan.news.utils.LaunchManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -88,11 +87,6 @@ public class NewsDetailsActivity extends BaseActivity implements View.OnClickLis
         position =getIntent().getIntExtra(Constants.POSITION,0);
         newsCategory=getIntent().getStringExtra(Constants.CATEGORY_NAME);
         color=getIntent().getIntExtra(Constants.COLOR_VALUE,R.color.colorAccent);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

@@ -15,10 +15,10 @@ android {
 
     signingConfigs {
         newsReleaseConfig {
-            storeFile file("../config/releaseapkkey.jks");
-            storePassword("abc123");
-            keyAlias("releaseapkkey");
-            keyPassword("abc123");
+            storeFile file("../config/releaseapkkey.jks")
+            storePassword("abc123")
+            keyAlias("releaseapkkey")
+            keyPassword("abc123")
         }
     }
 

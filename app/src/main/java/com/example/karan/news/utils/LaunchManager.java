@@ -42,7 +42,6 @@ public class LaunchManager {
     public static void showSignUpScreen(Activity activity) {
         Intent intent = new Intent(activity, SignUpActivity.class);
         activity.startActivity(intent);
-        activity.finish();
     }
 
     //User sign in Screen is launched via intent wherever this method is called
@@ -51,7 +50,6 @@ public class LaunchManager {
         //clear activity stack while launching sign in screen
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         activity.startActivity(intent);
-        activity.finish();
     }
 
     /**Valuable resources like position,color of layout_actionbar and news category are sent to the
@@ -59,12 +57,12 @@ public class LaunchManager {
 
     //News details page is opened from click of news article on News list
     public static void showDetailsPage(Activity activity, int position, String category , int color, Item newsItem){
-        Intent intent = new Intent(activity,NewsDetailsActivity.class);
-        intent.putExtra(Constants.POSITION,position);
-        intent.putExtra(Constants.CATEGORY_NAME,category);
-        intent.putExtra(Constants.COLOR_VALUE,color);
-        intent.putExtra(Constants.NEWS_DETAILS, newsItem);
-        activity.startActivity(intent);
+
+        activity.startActivity(new Intent(activity,NewsDetailsActivity.class)
+                .putExtra(Constants.POSITION,position)
+                .putExtra(Constants.CATEGORY_NAME,category)
+                .putExtra(Constants.COLOR_VALUE,color)
+                .putExtra(Constants.NEWS_DETAILS, newsItem));
     }
     //Exit app method used to exit app from homepage
     public static void exitApp(Activity activity){

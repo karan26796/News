@@ -7,32 +7,9 @@
     android:orientation="vertical"
     app:layout_behavior="@string/action_settings">
 
-    <ImageButton
-        android:id="@+id/settings_back_button"
-        android:contentDescription="@string/desc"
-        android:layout_width="@dimen/square_button_parameter"
-        android:layout_height="@dimen/square_button_parameter"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="?android:selectableItemBackground"
-        android:clickable="true"
-        android:elevation="@dimen/button_elevation"
-        android:focusable="true"
-        app:srcCompat="@drawable/ic_back_arrow" />
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/settings_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/green"
-        android:elevation="@dimen/default_elevation"
-        android:paddingStart="@dimen/padding_large"
-        android:paddingEnd="@dimen/padding_large"
-        android:theme="@style/AppFullScreenTheme"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/white" />
+    <include
+        layout="@layout/layout_actionbar"
+        android:id="@+id/settings_toolbar"/>
 
     <FrameLayout
         android:id="@+id/settings_frame_layout"
@@ -40,6 +17,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/settings_back_button" />
+        android:layout_below="@+id/settings_toolbar" />
 
 </RelativeLayout>

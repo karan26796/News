@@ -1,4 +1,4 @@
-package com.example.karan.news.firebase_essentials;
+package com.example.karan.news.firebasemanager;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

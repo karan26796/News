@@ -1,4 +1,4 @@
-package com.example.karan.news.recycler_view;
+package com.example.karan.news.recyclerview;
 
 /**
  * Created by karan on 7/3/2017.

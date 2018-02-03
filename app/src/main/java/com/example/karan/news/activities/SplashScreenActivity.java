@@ -8,7 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import com.example.karan.news.R;
-import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
+import com.example.karan.news.firebasemanager.FirebaseAuthentication;
 
 
 public class SplashScreenActivity extends AppCompatActivity {

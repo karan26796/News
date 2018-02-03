@@ -14,12 +14,11 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import com.example.karan.news.R;
-import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
+import com.example.karan.news.firebasemanager.FirebaseAuthentication;
 import com.example.karan.news.fragment.NewsHomeFragment;
 import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
@@ -140,65 +139,6 @@ public class NewsHomeActivity extends BaseActivity
     //Requires api checks the user's android api.
     //It is required to change the app's status bar color among other things.
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void displaySelectedScreen(int id, String child, int color) {
-
-        Bundle bundle=new Bundle();
-
-        //the values of category and toolbarColor are set here
-
-        /*this keyword sets the value of category and layout_actionbar color
-         to child and color defined in the method respectively*/
-
-        this.category=child;
-        this.toolbarColor=color;
-
-        /*Values of status bar color and category are sent using
-        switch case statement for corresponding button clicks*/
-
-        switch (id){
-            case R.id.sports:
-                child=Constants.SPORTS_NEWS_CATEGORY ;
-                color=ContextCompat.getColor(this,R.color.colorPrimaryDark);
-                break;
-            case R.id.politics:
-                child=Constants.POLITICS_NEWS_CATEGORY ;
-                color= ContextCompat.getColor(this,R.color.gray);
-                break;
-            case R.id.world:
-                child=Constants.WORLD_NEWS_CATEGORY ;
-                color=ContextCompat.getColor(this,R.color.green);
-                break;
-
-            case R.id.top_stories:
-                child=Constants.TOP_STORIES_NEWS_CATEGORY;
-                color=ContextCompat.getColor(this,R.color.dark_blue);
-                break;
-
-            case R.id.bookmarks:
-                child=Constants.BOOKMARK_CATEGORY;
-                color=ContextCompat.getColor(this,R.color.purple_dark);
-                break;
-        }
-
-        //Action bar layout_actionbar's title is changed on item click
-        toolbar.setTitle(child);
-        mWindow.setStatusBarColor(color);
-        toolbar.setBackgroundColor(color);
-
-        //New fragment is inflated on item click in Navigation drawer
-        newsHomeFragment = new NewsHomeFragment();
-
-        //The category is sent to the fragment using bundle
-        bundle.putString(Constants.CATEGORY_NAME,child);
-        bundle.putInt(Constants.TOOLBAR_COLOR,color);
-        newsHomeFragment.setArguments(bundle);
-
-        fragmentInflate();
-
-        //Once a category is selected from the Navigation drawer it closed without user prompt to ease app usage
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-    }
 
     /**
      * Default fragment_news_activity method inflates the home fragment_news_activity
@@ -250,7 +190,48 @@ public class NewsHomeActivity extends BaseActivity
     /*Handles the onClick method for Navigation drawer items*/
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        displaySelectedScreen(item.getItemId(),category,toolbarColor);
+        Bundle bundle=new Bundle();
+
+        switch (item.getItemId()){
+            case R.id.sports:
+                category=Constants.SPORTS_NEWS_CATEGORY ;
+                toolbarColor=ContextCompat.getColor(this,R.color.colorPrimaryDark);
+                break;
+            case R.id.politics:
+                category=Constants.POLITICS_NEWS_CATEGORY ;
+                toolbarColor= ContextCompat.getColor(this,R.color.gray);
+                break;
+            case R.id.world:
+                category=Constants.WORLD_NEWS_CATEGORY ;
+                toolbarColor=ContextCompat.getColor(this,R.color.green);
+                break;
+
+            case R.id.top_stories:
+                category=Constants.TOP_STORIES_NEWS_CATEGORY;
+                toolbarColor=ContextCompat.getColor(this,R.color.dark_blue);
+                break;
+
+            case R.id.bookmarks:
+                category=Constants.BOOKMARK_CATEGORY;
+                toolbarColor=ContextCompat.getColor(this,R.color.purple_dark);
+                break;
+        }
+
+        toolbar.setTitle(category);
+        mWindow.setStatusBarColor(toolbarColor);
+        toolbar.setBackgroundColor(toolbarColor);
+
+        newsHomeFragment = new NewsHomeFragment();
+
+        bundle.putString(Constants.CATEGORY_NAME,category);
+        bundle.putInt(Constants.TOOLBAR_COLOR,toolbarColor);
+        newsHomeFragment.setArguments(bundle);
+
+        fragmentInflate();
+
+        //Once a category is selected from the Navigation drawer it closed without user prompt to ease app usage
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 

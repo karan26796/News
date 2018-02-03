@@ -21,9 +21,8 @@ import com.example.karan.news.utils.LaunchManager;
  * options to tweak the app theme, text size and download images from
  * the internet.*/
 
-public class SettingsActivity extends BaseActivity implements View.OnClickListener {
+public class SettingsActivity extends BaseActivity {
     private Window mWindow;
-    private ImageButton backButton;
     private Toolbar mToolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -32,20 +31,21 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        configureToolbar(this);
         mWindow=getWindow();
         mToolbar=(Toolbar) findViewById(R.id.settings_toolbar);
         setTheme(mToolbar,mWindow);
+        fragmentInflate();
 
-        backButton=(ImageButton)findViewById(R.id.settings_back_button);
-        backButton.setOnClickListener(this);
+    }
 
+    private void fragmentInflate(){
         FragmentManager mFragmentManager = getFragmentManager();
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
         SettingsFragment mPrefsFragment = new SettingsFragment();
         mFragmentTransaction.replace(R.id.settings_frame_layout, mPrefsFragment);
         mFragmentTransaction.commit();
     }
-
     //App theme is fetched using shared preference from activity_settings activity
     private void loadPreference() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -70,23 +70,24 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
+    public void setTitle(int titleId) {
+        super.setTitle(titleId);
+        toolbar.setTitle(SettingsActivity.class.getName());
+    }
+
+    @Override
     protected int getLayoutResourceId() {
         return R.layout.activity_settings;
     }
 
     @Override
     protected int getToolbarID() {
-        return 0;
+        return R.id.settings_toolbar;
     }
 
     @Override
     protected String getToolbarTitle() {
         return "";
-    }
-
-    @Override
-    public void onClick(View v) {
-        LaunchManager.launchHome(this);
     }
 
     public static class SettingsFragment extends PreferenceFragment{

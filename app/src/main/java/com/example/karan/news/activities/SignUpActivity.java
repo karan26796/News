@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.karan.news.R;
-import com.example.karan.news.firebase_essentials.FirebaseAuthentication;
+import com.example.karan.news.firebasemanager.FirebaseAuthentication;
 import com.example.karan.news.utils.LaunchManager;
 
 /**
