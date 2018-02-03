@@ -5,17 +5,33 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.example.karan.news"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
+    signingConfigs {
+        newsReleaseConfig {
+            storeFile file("../config/releaseapkkey.jks");
+            storePassword("abc123");
+            keyAlias("releaseapkkey");
+            keyPassword("abc123");
+        }
+    }
+
     buildTypes {
-        release {
+        debug{
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg', 'proguard_debug.cfg'
+        }
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
+            signingConfig signingConfigs.newsReleaseConfig
         }
     }
     sourceSets {
