@@ -16,9 +16,9 @@ android {
     signingConfigs {
         newsReleaseConfig {
             storeFile file("../config/releaseapkkey.jks")
-            storePassword("abc123")
+            storePassword("9654801363")
             keyAlias("releaseapkkey")
-            keyPassword("abc123")
+            keyPassword("9654801363")
         }
     }
 
@@ -31,6 +31,13 @@ android {
             minifyEnabled true
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
+            signingConfig signingConfigs.newsReleaseConfig
+        }
+        releaseDebug{
+            debuggable true
+            minifyEnabled true
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg','proguard_debug.cfg'
             signingConfig signingConfigs.newsReleaseConfig
         }
     }
