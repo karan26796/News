@@ -59,7 +59,7 @@ public class SettingsActivity extends BaseActivity {
         // fetches shared preferences for value of 'theme' set by the user
         loadPreference();
 
-        // set layout_actionbar popup them for different themes.
+        // set toolbar popup them for different themes.
         if (theme.equals(getString(R.string.theme_light))) {
             toolbar.setBackgroundColor(ContextCompat.getColor(this,R.color.green));
             window.setStatusBarColor(ContextCompat.getColor(this,R.color.green));

@@ -52,18 +52,10 @@ public class LaunchManager {
         activity.startActivity(intent);
     }
 
-    /**Valuable resources like position,color of layout_actionbar and news category are sent to the
+    /**Valuable resources like position,color of toolbar and news category are sent to the
     Details activity using this method via Intent and later fetched in the details activity*/
 
     //News details page is opened from click of news article on News list
-    public static void showDetailsPage(Activity activity, int position, String category , int color, Item newsItem){
-
-        activity.startActivity(new Intent(activity,NewsDetailsActivity.class)
-                .putExtra(Constants.POSITION,position)
-                .putExtra(Constants.CATEGORY_NAME,category)
-                .putExtra(Constants.COLOR_VALUE,color)
-                .putExtra(Constants.NEWS_DETAILS, newsItem));
-    }
     //Exit app method used to exit app from homepage
     public static void exitApp(Activity activity){
         Intent intent = new Intent(Intent.ACTION_MAIN);

@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
     <include
         android:id="@+id/action_bar"
-        layout="@layout/layout_actionbar" />
+        layout="@layout/toolbar" />
 
     <FrameLayout
         android:id="@+id/news_activity_content_frame"

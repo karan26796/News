@@ -13,6 +13,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.example.karan.news.R;
 import com.example.karan.news.firebasemanager.FirebaseAuthentication;
 import com.example.karan.news.utils.Constants;
@@ -20,15 +21,15 @@ import com.example.karan.news.utils.LaunchManager;
 
 /**
  * Created by karan on 7/8/2017.
- *
+ * <p>
  * User login activity takes existing user's details
  * and checks if they are already registered with the app.
  */
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText mPassword,mEmail;
-    private Button mLoginButton,mSignUpButton;
+    private EditText mPassword, mEmail;
+    private Button mLoginButton, mSignUpButton;
     Window mWindow;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -37,19 +38,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mSignUpButton=(Button) findViewById(R.id.btn_sign_up);
-
         //window of the app screen is accessed to change color of status bar
-        mWindow=getWindow();
+        mWindow = getWindow();
 
-        mPassword=(EditText) findViewById(R.id.edit_text_password);
-        mEmail=(EditText)findViewById(R.id.edit_text_email);
+        mPassword = (EditText) findViewById(R.id.edit_text_password);
+        mEmail = (EditText) findViewById(R.id.edit_text_email);
 
-        mLoginButton=(Button) findViewById(R.id.btn_sign_in);
-
-        mWindow.setStatusBarColor(ContextCompat.getColor(this,R.color.gray));
-        mLoginButton.setOnClickListener(this);
-        mSignUpButton.setOnClickListener(this);
+        mWindow.setStatusBarColor(ContextCompat.getColor(this, R.color.gray));
+        findViewById(R.id.btn_sign_in).setOnClickListener(this);
+        findViewById(R.id.btn_sign_up).setOnClickListener(this);
     }
 
 
@@ -80,9 +77,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(this);
             firebaseAuthentication.loginUser(email, password, mProgressDialog);
 
-            SharedPreferences sharedPreferences=getSharedPreferences(Constants.PREFERENCES,MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getSharedPreferences(Constants.PREFERENCES, MODE_PRIVATE);
             SharedPreferences.Editor edit = sharedPreferences.edit();
-            sharedPreferences.getString(Constants.USERNAME,email);
+            sharedPreferences.getString(Constants.USERNAME, email);
             edit.apply();
 
         } else {
@@ -99,7 +96,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.btn_sign_up:
-               LaunchManager.showSignUpScreen(this);
+                LaunchManager.showSignUpScreen(this);
                 break;
         }
     }

@@ -45,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         // set up activity layout
         setContentView(getLayoutResourceId());
 
-        // sets up activity layout_actionbar if any
+        // sets up activity toolbar if any
         configureToolbar(this);
     }
 
@@ -68,16 +68,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     // get layout resource ID
     protected abstract int getLayoutResourceId();
 
-    //get layout_actionbar ID if any
+    //get toolbar ID if any
     protected abstract int getToolbarID();
 
-    // get layout_actionbar title if any
+    // get toolbar title if any
     protected abstract String getToolbarTitle();
 
     /**
-     * Sets up activity layout_actionbar.
+     * Sets up activity toolbar.
      *
-     * Retrieves the layout_actionbar ID along with title if any.
+     * Retrieves the toolbar ID along with title if any.
      */
     protected void configureToolbar(Activity activity) {
 

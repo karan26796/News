@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.Toolbar android:id="@+id/all_toolbar"
+<android.support.v7.widget.Toolbar xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/all_toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/colorPrimaryDark"
     android:foregroundTint="@color/white"
     android:theme="@style/AppTheme"
     android:title="@string/home"
+    app:layout_scrollFlags="scroll|enterAlways"
     app:titleTextColor="@android:color/white"
     app:popupTheme="@style/AppFullScreenDarkTheme"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="UnusedAttribute" />

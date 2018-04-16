@@ -14,7 +14,6 @@
         android:contentDescription="@string/desc"
         app:srcCompat="@drawable/ic_fingerprint" />
 
-
     <EditText
         android:id="@+id/sign_up_new_email"
         android:layout_width="match_parent"

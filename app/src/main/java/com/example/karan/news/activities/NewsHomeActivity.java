@@ -2,13 +2,13 @@ package com.example.karan.news.activities;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,23 +17,26 @@ import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+
 import com.example.karan.news.R;
 import com.example.karan.news.firebasemanager.FirebaseAuthentication;
 import com.example.karan.news.fragment.NewsHomeFragment;
 import com.example.karan.news.utils.Constants;
 import com.example.karan.news.utils.LaunchManager;
 
-/**News home activity.
- *
+/**
+ * News home activity.
+ * <p>
  * This is the first page/ home page of the app, a user is opened to
  * this activity after login, this activity contains all the necessary
  * views for smooth user interaction, all news categories can be
- * accessed from the home page of the app.*/
+ * accessed from the home page of the app.
+ */
 
 public class NewsHomeActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-    private String category,user;
+    private String category, user;
     private int toolbarColor;
     private NewsHomeFragment newsHomeFragment;
     private Window mWindow;
@@ -48,15 +51,15 @@ public class NewsHomeActivity extends BaseActivity
         setContentView(R.layout.activity_news_list);
 
         configureToolbar(this);
-        status=getIntent().getBooleanExtra(Constants.READ_ARTICLE,true);
+        status = getIntent().getBooleanExtra(Constants.READ_ARTICLE, true);
 
         toolbar.setTitle(Constants.SPORTS_NEWS_CATEGORY);
         setTheme();
 
-        //sets the layout_actionbar specified as the action bar
+        //sets the toolbar specified as the action bar
 
         //method used to change status bar color
-        mWindow= getWindow();
+        mWindow = getWindow();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -64,12 +67,12 @@ public class NewsHomeActivity extends BaseActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         drawer.closeDrawer(GravityCompat.START);
-
-        defaultFragment();
+        if (savedInstanceState == null)
+            defaultFragment();
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        firebaseAuthentication=new FirebaseAuthentication(this);
-        user=firebaseAuthentication.getCurrentUser();
+        firebaseAuthentication = new FirebaseAuthentication(this);
+        user = firebaseAuthentication.getCurrentUser();
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -91,8 +94,8 @@ public class NewsHomeActivity extends BaseActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            if(user!=null)
-            LaunchManager.exitApp(this);
+            if (user != null)
+                LaunchManager.exitApp(this);
         }
     }
 
@@ -102,11 +105,11 @@ public class NewsHomeActivity extends BaseActivity
         theme = sharedPreferences.getString(Constants.KEY_APP_THEME, getString(R.string.theme_light));
     }
 
-    //change the popup theme of the layout_actionbar items for change in theme
+    //change the popup theme of the toolbar items for change in theme
     private void setTheme() {
         // fetches shared preferences for value of 'theme' set by the user
         loadPreference();
-        // set layout_actionbar popup theme
+        // set toolbar popup theme
         if (theme.equals(getString(R.string.theme_light))) {
             toolbar.setPopupTheme(R.style.AppFullScreenTheme);
         } else if (theme.equals(getString(R.string.theme_dark))) {
@@ -124,8 +127,7 @@ public class NewsHomeActivity extends BaseActivity
         if (id == R.id.action_settings) {
             LaunchManager.launchSettings(this);
             return true;
-        }
-        else if (id == R.id.log_out) {
+        } else if (id == R.id.log_out) {
             showDialog(this);
             return true;
         }
@@ -133,7 +135,7 @@ public class NewsHomeActivity extends BaseActivity
     }
 
     /*This method communicates with the Navigation drawer fragment_news_activity click Listener
-    and sends the item id and category string value along with setting the layout_actionbar title
+    and sends the item id and category string value along with setting the toolbar title
     and inflating list of the desired category in the fragment_news_activity*/
 
     //Requires api checks the user's android api.
@@ -145,11 +147,11 @@ public class NewsHomeActivity extends BaseActivity
      * with a predefined category.
      */
 
-    public void defaultFragment(){
+    public void defaultFragment() {
         newsHomeFragment = new NewsHomeFragment();
-        Bundle bundle=new Bundle();
-        bundle.putString(Constants.CATEGORY_NAME,Constants.SPORTS_NEWS_CATEGORY);
-        bundle.putInt(Constants.TOOLBAR_COLOR,R.color.colorPrimaryDark);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.CATEGORY_NAME, Constants.SPORTS_NEWS_CATEGORY);
+        bundle.putInt(Constants.TOOLBAR_COLOR, R.color.colorPrimaryDark);
         newsHomeFragment.setArguments(bundle);
 
         //Default fragment with the aforementioned category is inflated
@@ -162,9 +164,9 @@ public class NewsHomeActivity extends BaseActivity
                 .setMessage(R.string.action_logout)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        FirebaseAuthentication firebaseAuthentication=new FirebaseAuthentication(activity);
-                        String user =firebaseAuthentication.getCurrentUser();
-                        if(user!=null){
+                        FirebaseAuthentication firebaseAuthentication = new FirebaseAuthentication(activity);
+                        String user = firebaseAuthentication.getCurrentUser();
+                        if (user != null) {
                             firebaseAuthentication.logoutUser();
                         }
                     }
@@ -177,7 +179,7 @@ public class NewsHomeActivity extends BaseActivity
     }
 
     //Common method to inflate fragment every time it is called in the activity
-    public void fragmentInflate(){
+    public void fragmentInflate() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.news_activity_content_frame, newsHomeFragment);
         fragmentTransaction.commit();
@@ -190,30 +192,30 @@ public class NewsHomeActivity extends BaseActivity
     /*Handles the onClick method for Navigation drawer items*/
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Bundle bundle=new Bundle();
+        Bundle bundle = new Bundle();
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.sports:
-                category=Constants.SPORTS_NEWS_CATEGORY ;
-                toolbarColor=ContextCompat.getColor(this,R.color.colorPrimaryDark);
+                category = Constants.SPORTS_NEWS_CATEGORY;
+                toolbarColor = ContextCompat.getColor(this, R.color.colorPrimaryDark);
                 break;
             case R.id.politics:
-                category=Constants.POLITICS_NEWS_CATEGORY ;
-                toolbarColor= ContextCompat.getColor(this,R.color.gray);
+                category = Constants.POLITICS_NEWS_CATEGORY;
+                toolbarColor = ContextCompat.getColor(this, R.color.gray);
                 break;
             case R.id.world:
-                category=Constants.WORLD_NEWS_CATEGORY ;
-                toolbarColor=ContextCompat.getColor(this,R.color.green);
+                category = Constants.WORLD_NEWS_CATEGORY;
+                toolbarColor = ContextCompat.getColor(this, R.color.green);
                 break;
 
             case R.id.top_stories:
-                category=Constants.TOP_STORIES_NEWS_CATEGORY;
-                toolbarColor=ContextCompat.getColor(this,R.color.dark_blue);
+                category = Constants.TOP_STORIES_NEWS_CATEGORY;
+                toolbarColor = ContextCompat.getColor(this, R.color.dark_blue);
                 break;
 
             case R.id.bookmarks:
-                category=Constants.BOOKMARK_CATEGORY;
-                toolbarColor=ContextCompat.getColor(this,R.color.purple_dark);
+                category = Constants.BOOKMARK_CATEGORY;
+                toolbarColor = ContextCompat.getColor(this, R.color.purple_dark);
                 break;
         }
 
@@ -223,8 +225,8 @@ public class NewsHomeActivity extends BaseActivity
 
         newsHomeFragment = new NewsHomeFragment();
 
-        bundle.putString(Constants.CATEGORY_NAME,category);
-        bundle.putInt(Constants.TOOLBAR_COLOR,toolbarColor);
+        bundle.putString(Constants.CATEGORY_NAME, category);
+        bundle.putInt(Constants.TOOLBAR_COLOR, toolbarColor);
         newsHomeFragment.setArguments(bundle);
 
         fragmentInflate();
@@ -251,7 +253,7 @@ public class NewsHomeActivity extends BaseActivity
     }
 
     @Override
-    protected void onRestart(){
+    protected void onRestart() {
         super.onRestart();
     }
 }
